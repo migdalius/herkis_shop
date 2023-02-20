@@ -1,0 +1,9 @@
+.active {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #ddd;
+}
+
+.button-focus:focus {
+  background-color: #222;
+}

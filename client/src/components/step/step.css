@@ -1,0 +1,146 @@
+.STEP__first-container {
+  height: 170px;
+}
+
+.STEP_conteiner-one {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.STEP__second-title {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.STEP__inpust-one {
+  width: 60%;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.STEP_conteiner-two {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.STEP__two-icons-container {
+  display: flex;
+  padding-top: 10px;
+  gap: 50px;
+}
+
+.STEP__icons {
+  width: 60px;
+  height: 60px;
+}
+
+.STEP__two-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 90px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.STEP__small-input {
+  border: 1px solid #ddd;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.STEP_conteiner-three {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.STEP_conteiner-three div {
+  font-size: 16px;
+}
+
+.STEP_conteiner-four {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.STEP__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  width: 80%;
+  height: 50px;
+  border: none;
+  background-color: #08284a;
+  color: #f9fafb;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.STEP__link-button {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+}
+
+.btn-p {
+  position: relative;
+}
+
+.squer-1 {
+  background-color: #08284a;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 340px;
+  left: 1010px;
+}
+
+.squer-2 {
+  background-color: #08284a;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 340px;
+  left: 1180px;
+}
+
+.squer-3 {
+  background-color: #08284a;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 220px;
+  left: 1010px;
+}
+
+.squer-4 {
+  background-color: #08284a;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 220px;
+  left: 1180px;
+}

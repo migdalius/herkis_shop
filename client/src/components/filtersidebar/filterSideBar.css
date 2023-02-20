@@ -1,0 +1,61 @@
+:root {
+  --form-control-color: #14b8a6;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.form-control {
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #fff;
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.form-control:focus-within {
+  color: var(--form-control-color);
+}
