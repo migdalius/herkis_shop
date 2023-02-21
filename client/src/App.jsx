@@ -6,7 +6,7 @@ import Home from "./pages/home/Home";
 import StepTwo from "./pages/stepTwo/StepTwo";
 import StepThree from "./pages/stepThree/StepThree";
 import StepFour from "./pages/stepFour/StepFour";
-import StepFive from "./pages/stepFive/StepFive";
+
 import StepOne from "./pages/stepOne/StepOne";
 
 import SingleProduct from "./pages/singleProduct/SingleProduct";
@@ -35,8 +35,6 @@ function App() {
         <Route path="/krok-2" element={<StepTwo />} />
         <Route path="/krok-3" element={<StepThree />} />
         <Route path="/krok-4" element={<StepFour />} />
-        <Route path="/krok-5" element={<StepFive />} />
-        <Route path="/krok-6" element={<StepFive />} />
         <Route path="/lista-produktow/:id" element={<SingleProduct />} />
         <Route path="/admin/dashboard" element={<HomeAdmin />} />
         <Route path="/admin/adres-dostawy" element={<AdressAdmin />} />
