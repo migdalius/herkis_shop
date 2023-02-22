@@ -3,12 +3,11 @@ import { ArrowRight, Basket3, BoxArrowInRight } from "react-bootstrap-icons";
 import img from "../../img/home/mask.jpg";
 const Container = styled.div`
   display: flex;
+  border-bottom: 1px solid #ddd;
 `;
 
 const LeftNav = styled.div`
   width: 65%;
-  background-image: url(${img});
-  height: 100vh;
 `;
 const RightNav = styled.div`
   width: 35%;
@@ -19,11 +18,6 @@ const MainNavContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
-const Logo = styled.img`
-  width: 40px;
-  height: 40px;
-  margin-right: 30px;
-`;
 
 const VerticalHr = styled.div`
   border-left: ${(props) =>
@@ -32,15 +26,32 @@ const VerticalHr = styled.div`
   height: 35px;
 `;
 
+const breatheAnimation = keyframes`
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+`;
+
 const List = styled.ul`
   margin-left: 30px;
   display: flex;
   gap: 30px;
   align-items: center;
   list-style-type: none;
+  animation-name: ${breatheAnimation};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+`;
+
+const Logo = styled.img`
+  width: 130px;
+  height: 40px;
+  margin-right: 30px;
+  animation-name: ${breatheAnimation};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
 `;
 const ListItem = styled.li`
-  color: #fff;
+  color: #222;
   cursor: pointer;
 `;
 
@@ -59,37 +70,42 @@ const NavText = styled.p`
     display: none;
   }
 `;
+
+const HeroContainer = styled.div``;
+
 const Navigation = () => {
   return (
-    <Container>
-      <LeftNav>
-        <MainNavContainer>
-          <Logo src="https://demo.phlox.pro/shop-plant/wp-content/uploads/sites/309/2021/03/logo-plants.svg" />
-          <VerticalHr white />
-          <List>
-            <ListItem>Jak to działa?</ListItem>
-            <ListItem>Nasze zestawy</ListItem>
-            <ListItem>Cennik</ListItem>
-            <ListItem>Kontakt</ListItem>
-          </List>
-        </MainNavContainer>
-      </LeftNav>
-      <RightNav>
-        <MainNavContainer>
-          <NavContainer>
-            <ContentWrapper>
-              <BoxArrowInRight size={25} />
-              <NavText>Logowanie</NavText>
-            </ContentWrapper>
-            <VerticalHr />
-            <ContentWrapper>
-              <Basket3 size={25} />
-              <NavText>Koszyk</NavText>
-            </ContentWrapper>
-          </NavContainer>
-        </MainNavContainer>
-      </RightNav>
-    </Container>
+    <>
+      <Container>
+        <LeftNav>
+          <MainNavContainer>
+            <Logo src="https://www.szybkauprawa.pl/img/logo.png" />
+            <VerticalHr white />
+            <List>
+              <ListItem>Jak to działa?</ListItem>
+              <ListItem>Nasze zestawy</ListItem>
+              <ListItem>Cennik</ListItem>
+              <ListItem>Kontakt</ListItem>
+            </List>
+          </MainNavContainer>
+        </LeftNav>
+        <RightNav>
+          <MainNavContainer>
+            <NavContainer>
+              <ContentWrapper>
+                <BoxArrowInRight size={25} color={"#3a9842"} />
+                <NavText>Logowanie</NavText>
+              </ContentWrapper>
+              <VerticalHr />
+              <ContentWrapper>
+                <Basket3 size={25} color={"#3a9842"} />
+                <NavText>Koszyk</NavText>
+              </ContentWrapper>
+            </NavContainer>
+          </MainNavContainer>
+        </RightNav>
+      </Container>
+    </>
   );
 };
 
