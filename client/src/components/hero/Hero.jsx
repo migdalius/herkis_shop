@@ -31,9 +31,7 @@ const HeroBg = styled.div`
 const Hero = () => {
   return (
     <Container>
-      <LeftHero>
-        <HeroBg />
-      </LeftHero>
+      <LeftHero></LeftHero>
       <RightHero>b</RightHero>
     </Container>
   );
