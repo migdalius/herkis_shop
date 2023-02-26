@@ -3,14 +3,15 @@ import { ArrowRight, Basket3, BoxArrowInRight } from "react-bootstrap-icons";
 import img from "../../img/home/mask.jpg";
 const Container = styled.div`
   display: flex;
-  border-bottom: 1px solid #ddd;
 `;
 
 const LeftNav = styled.div`
-  width: 65%;
+  width: 50%;
+  background-color: #22c55e;
 `;
 const RightNav = styled.div`
-  width: 35%;
+  width: 50%;
+  background-color: #fff;
 `;
 
 const MainNavContainer = styled.div`
@@ -51,7 +52,7 @@ const Logo = styled.img`
   animation-fill-mode: forwards;
 `;
 const ListItem = styled.li`
-  color: #222;
+  color: #fff;
   cursor: pointer;
 `;
 
@@ -66,6 +67,7 @@ const NavContainer = styled.div`
 `;
 
 const NavText = styled.p`
+  color: #222;
   @media (max-width: 905px) {
     display: none;
   }
@@ -93,12 +95,12 @@ const Navigation = () => {
           <MainNavContainer>
             <NavContainer>
               <ContentWrapper>
-                <BoxArrowInRight size={25} color={"#3a9842"} />
+                <BoxArrowInRight size={25} color={"#22c55e"} />
                 <NavText>Logowanie</NavText>
               </ContentWrapper>
               <VerticalHr />
               <ContentWrapper>
-                <Basket3 size={25} color={"#3a9842"} />
+                <Basket3 size={25} color={"#22c55e"} />
                 <NavText>Koszyk</NavText>
               </ContentWrapper>
             </NavContainer>
