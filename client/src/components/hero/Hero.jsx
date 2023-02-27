@@ -86,6 +86,41 @@ const ButtonSecond = styled.button`
     transition: 0.5s;
   }
 `;
+
+const PriceContainer = styled.div`
+  position: absolute;
+  left: 700px;
+  top: 700px;
+`;
+const Price = styled.div``;
+
+const ContainerDetail = styled.div`
+  padding-left: 450px;
+`;
+const Title = styled.h2``;
+const SubContaine = styled.div`
+  width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+`;
+const Count = styled.p`
+  font-size: 18px;
+`;
+const Icons = styled.img`
+  width: 35px;
+  height: 35px;
+`;
+const Desc = styled.p`
+  font-size: 18px;
+`;
+
+const ContainerWrapper = styled.div`
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
 const Hero = () => {
   return (
     <Container>
@@ -102,10 +137,46 @@ const Hero = () => {
           </ButtonContainer>
         </TextContainer>
       </LeftHero>
-      <RightHero>aa</RightHero>
+      <RightHero>
+        <TextContainer>
+          <ContainerDetail>
+            <Title>Co dostaniesz w zestawie?</Title>
+            <ContainerWrapper>
+              <SubContaine>
+                <Count>1 szt</Count>
+                <Icons src="../img/pot.png" />
+                <Desc>Doniczka do uprawy 13 cm</Desc>
+              </SubContaine>
+              <SubContaine>
+                <Count>1L</Count>
+                <Icons src="../img/pot.png" />
+                <Desc>Podłoże organiczne z nawozem</Desc>
+              </SubContaine>
+              <SubContaine>
+                <Count>1op.</Count>
+                <Icons src="../img/pot.png" />
+                <Desc>Pałeczki nawozowe do uprawy</Desc>
+              </SubContaine>
+              <SubContaine>
+                <Count>1op.</Count>
+                <Icons src="../img/pot.png" />
+                <Desc>Kreramzyt - drenaż na spód doniczki</Desc>
+              </SubContaine>
+              <SubContaine>
+                <Count>1op.</Count>
+                <Icons src="../img/pot.png" />
+                <Desc>Hydrożel - przechowuje nadmiar wody w doniczce</Desc>
+              </SubContaine>
+            </ContainerWrapper>
+          </ContainerDetail>
+        </TextContainer>
+      </RightHero>
       <ImgContainer>
         <Img src="../img/product.png" />
       </ImgContainer>
+      <PriceContainer>
+        <Price>Abonament 200zł</Price>
+      </PriceContainer>
     </Container>
   );
 };
