@@ -3,24 +3,24 @@ import { ArrowRight, Basket3, BoxArrowInRight } from "react-bootstrap-icons";
 import img from "../../img/home/hero.jpg";
 const Container = styled.div`
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 80px);
   position: relative;
 `;
 
 const LeftHero = styled.div`
   width: 50%;
   background-color: #22c55e;
-  height: 100vh;
+  height: calc(100vh - 80px);
 `;
 const RightHero = styled.div`
   width: 50%;
   background-color: #fff;
-  height: 100vh;
+  height: calc(100vh - 80px);
 `;
 
 const TextContainer = styled.div`
   width: 600px;
-  height: 50%;
+  height: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,33 +73,34 @@ const ButtonFirst = styled.button`
     transition: 0.5s;
   }
 `;
-const ButtonSecond = styled.button`
-  padding: 20px 40px;
-  border-radius: 5px;
-  border: none;
-  color: #f3f3f3;
-  background-color: #15803d;
-  cursor: pointer;
-  font-size: 16px;
-  &:hover {
-    background-color: #222;
-    transition: 0.5s;
-  }
-`;
 
 const PriceContainer = styled.div`
+  display: flex;
+  align-items: center;
   position: absolute;
-  left: 700px;
-  top: 700px;
+
+  left: 720px;
+  top: 660px;
+  width: 500px;
+  height: 90px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
-const Price = styled.div``;
+const Price = styled.div`
+  margin-left: 50px;
+  font-size: 26px;
+`;
 
 const ContainerDetail = styled.div`
   padding-left: 450px;
+  margin-top: 350px;
 `;
-const Title = styled.h2``;
+const Title = styled.h2`
+  font-size: 30px;
+`;
 const SubContaine = styled.div`
-  width: 400px;
+  width: 450px;
   display: flex;
   align-items: center;
   gap: 30px;
@@ -121,6 +122,67 @@ const ContainerWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
 `;
+
+const DescInfo = styled.p`
+  font-size: 14px;
+`;
+
+const spanRed = styled.p`
+  color: red;
+`;
+
+const StepWrapper = styled.div`
+  width: 670px;
+  display: flex;
+  flex-direction: column;
+
+  margin: 30px;
+`;
+const Step = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+const StepNumber = styled.h2`
+  font-size: 35px;
+  color: #14532d;
+`;
+const StepTitle = styled.p`
+  font-size: 20px;
+  color: #166534;
+  font-weight: 600;
+`;
+const StepDesc = styled.p`
+  font-size: 18px;
+  color: #f3f3f3;
+`;
+
+const Arrow = styled.img`
+  width: 90px;
+`;
+
+const PriceButton = styled.button`
+  border: none;
+  height: 90px;
+  border-radius: 10px 0px 0px 10px;
+  width: 30%;
+  background-color: #ef4444;
+  color: #fff;
+  font-size: 17px;
+
+  cursor: pointer;
+  &:hover {
+    background-color: #222;
+  }
+`;
+
+const PriceWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+`;
+const Delivery = styled.p``;
 const Hero = () => {
   return (
     <Container>
@@ -131,11 +193,31 @@ const Hero = () => {
             Nigdy nie wiesz co będziesz uprawiał, co tydzień nowy zestaw do
             uprawy wysyłany bezpośrednio do twojego domu lub paczkomatu.
           </TextSubtitle>
-          <ButtonContainer>
-            <ButtonFirst>Jak to działa?</ButtonFirst>
-            <ButtonSecond>Co zawiera zestaw?</ButtonSecond>
-          </ButtonContainer>
         </TextContainer>
+        <StepWrapper>
+          <Step>
+            <StepNumber>1</StepNumber>
+            <StepTitle>Wybierz plan subskrypcji</StepTitle>
+            <StepDesc>Co tydzień/miesiąc otrzymuj nowy zestaw</StepDesc>
+          </Step>
+          <Step>
+            <Arrow src="../img/arrow.png" />
+          </Step>
+
+          <Step>
+            <StepNumber>2</StepNumber>
+            <StepTitle>Dostawa do domu</StepTitle>
+            <StepDesc>Wybierz rodzaj dostawy Kurier/Paczkomat</StepDesc>
+          </Step>
+          <Step>
+            <Arrow src="../img/arrow1.png" />
+          </Step>
+          <Step>
+            <StepNumber>3</StepNumber>
+            <StepTitle>Uprawa domowa</StepTitle>
+            <StepDesc>Potrzebujesz tylko wody, reszta w zestawie</StepDesc>
+          </Step>
+        </StepWrapper>
       </LeftHero>
       <RightHero>
         <TextContainer>
@@ -149,24 +231,39 @@ const Hero = () => {
               </SubContaine>
               <SubContaine>
                 <Count>1L</Count>
-                <Icons src="../img/pot.png" />
+                <Icons src="../img/soil.png" />
                 <Desc>Podłoże organiczne z nawozem</Desc>
               </SubContaine>
               <SubContaine>
                 <Count>1op.</Count>
-                <Icons src="../img/pot.png" />
+                <Icons src="../img/seeds.png" />
+                <Desc>Nasiona do uprawy (na dwa wysiewy)</Desc>
+              </SubContaine>
+              <SubContaine>
+                <Count>1op.</Count>
+                <Icons src="../img/nawoz.png" />
                 <Desc>Pałeczki nawozowe do uprawy</Desc>
               </SubContaine>
               <SubContaine>
                 <Count>1op.</Count>
-                <Icons src="../img/pot.png" />
+                <Icons src="../img/keramzyt.png" />
                 <Desc>Kreramzyt - drenaż na spód doniczki</Desc>
               </SubContaine>
               <SubContaine>
                 <Count>1op.</Count>
-                <Icons src="../img/pot.png" />
+                <Icons src="../img/hydro.png" />
                 <Desc>Hydrożel - przechowuje nadmiar wody w doniczce</Desc>
               </SubContaine>
+              <SubContaine>
+                <Count>1 szt</Count>
+                <Icons src="../img/inst.png" />
+                <Desc>Papierowa instrukcja uprawy</Desc>
+              </SubContaine>
+              <DescInfo>
+                *Niektóre rośliny wymagają, dodatkowego drenażu jak np: piasek
+                lub dodatkowego nawozu, w takich przypadkach dokładny skład
+                zestawu znajduje się w instrukcji.
+              </DescInfo>
             </ContainerWrapper>
           </ContainerDetail>
         </TextContainer>
@@ -175,7 +272,11 @@ const Hero = () => {
         <Img src="../img/product.png" />
       </ImgContainer>
       <PriceContainer>
-        <Price>Abonament 200zł</Price>
+        <PriceButton>Kup Subskrypcje</PriceButton>
+        <PriceWrapper>
+          <Price>39,99 zł</Price>
+          <Delivery>(Darmowa Dostawa)</Delivery>
+        </PriceWrapper>
       </PriceContainer>
     </Container>
   );
