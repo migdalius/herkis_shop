@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 const Container = styled.div`
-  height: 100vh;
+  height: 120px;
   width: 100vw;
   background-color: #fff;
 `;
