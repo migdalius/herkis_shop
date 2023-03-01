@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { ArrowRight, Basket3, BoxArrowInRight } from "react-bootstrap-icons";
-import img from "../../img/home/hero.jpg";
+
 const Container = styled.div`
   display: flex;
   height: calc(100vh - 80px);
