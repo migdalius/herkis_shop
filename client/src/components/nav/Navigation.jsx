@@ -44,8 +44,8 @@ const List = styled.ul`
 `;
 
 const Logo = styled.img`
-  width: 130px;
-  height: 40px;
+  width: 140px;
+
   margin-right: 30px;
   animation-name: ${breatheAnimation};
   animation-duration: 3s;
@@ -81,7 +81,7 @@ const Navigation = () => {
       <Container>
         <LeftNav>
           <MainNavContainer>
-            <Logo src="https://www.szybkauprawa.pl/img/logo.png" />
+            <Logo src="../img/herkis_logo.png" />
             <VerticalHr white />
             <List>
               <ListItem>Jak to działa?</ListItem>
