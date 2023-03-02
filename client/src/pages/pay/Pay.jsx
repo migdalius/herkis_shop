@@ -14,8 +14,7 @@ import { useSelector } from "react-redux";
 const MainContainer = styled.div`
   background-color: #f4f6f9;
   width: 100vw;
-  height: auto;
-  padding-bottom: 20px;
+  height: 100vh;
 `;
 
 const Container = styled.div`
@@ -191,55 +190,34 @@ const ButtonWrapper = styled.div`
   gap: 10px;
 `;
 
-const FormWrapper = styled.div``;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin: 20px;
-`;
-const Input = styled.input`
-  border: 1px solid #bfbfbf;
-  border-radius: 5px;
-  width: 600px;
-  height: 45px;
+const WrapButton = styled.div`
   padding: 10px;
-
-  &:focus {
-    outline: none !important;
-    border: 1px solid #22c55e;
-  }
 `;
-
-const SecondTitle = styled.h3`
-  font-size: 24px;
-  margin: 20px;
-`;
-
-const WrapperButton = styled.div`
-  margin: 20px;
-`;
-const DeliveryButton = styled.button`
-  width: 200px;
-  height: 100px;
-  cursor: pointer;
-  border: 1px solid #bfbfbf;
-  background-color: #fff;
+const PayButton = styled.button`
+  width: 100%;
+  height: 60px;
+  border: none;
+  background-color: #f1f5f9;
   border-radius: 5px;
-  &:active {
-    border: 1px solid #22c55e;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e2e8f0;
   }
 `;
-
-const DeliveryImg = styled.img`
-  width: 140px;
-  height: auto;
+const ImgPay = styled.img`
+  height: 50px;
 `;
 
-const SubTitle = styled.p`
-  margin: 20px;
+const DescWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 `;
-
+const Desc = styled.p`
+  font-size: 18px;
+`;
 const Pay = () => {
   const cart = useSelector((state) => state.cart);
   return (
@@ -253,38 +231,27 @@ const Pay = () => {
           </NavItem>
           <Line />
           <NavItem>
-            <Truck color="#22c55e" size={30} />
+            <Truck color="#222" size={30} />
             <CategoryTitle>Dostawa</CategoryTitle>
           </NavItem>
           <Line />
           <NavItem>
-            <CreditCard2Back color="#222" size={30} />
+            <CreditCard2Back color="#22c55e" size={30} />
             <CategoryTitle>Płatności</CategoryTitle>
           </NavItem>
         </NavigationContainer>
         <BodyContainer>
           <Wrapper>
-            <Title>Adres dostawy</Title>
+            <Title>Rodzaj płatności</Title>
             <CartContainer>
-              <FormContainer>
-                <FormWrapper>
-                  <Form>
-                    <Input placeholder="Imię i Nazwisko" />
-                    <Input placeholder="Adres Dostawy" />
-                    <Input placeholder="Kod Pocztowy" />
-                    <Input placeholder="Miasto" />
-                    <Input placeholder="Numer Telefonu" />
-                    <Input placeholder="Adres E-mail" />
-                  </Form>
-                </FormWrapper>
-              </FormContainer>
-              <SecondTitle>Wybierz rodzaj dostawy</SecondTitle>
-              <SubTitle>Darmowa dostawa</SubTitle>
-              <WrapperButton>
-                <DeliveryButton>
-                  <DeliveryImg src="../img/inpost_logo.png" />
-                </DeliveryButton>
-              </WrapperButton>
+              <WrapButton>
+                <PayButton>
+                  <ImgPay src="../img/dotpay.png" />
+                </PayButton>
+                <DescWrap>
+                  <Desc>Lub</Desc>
+                </DescWrap>
+              </WrapButton>
             </CartContainer>
           </Wrapper>
           <Wrapper>
