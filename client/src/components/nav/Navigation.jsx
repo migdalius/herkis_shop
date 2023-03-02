@@ -81,7 +81,7 @@ const Navigation = () => {
       <Container>
         <LeftNav>
           <MainNavContainer>
-            <Logo src="../img/herkis_logo.png" />
+            <Logo src="../img/herkis.png" />
             <VerticalHr white />
             <List>
               <ListItem>Jak to działa?</ListItem>

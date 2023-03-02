@@ -20,8 +20,9 @@ import Cart from "./pages/cart/Cart";
 import Delivery from "./pages/delivery/Delivery";
 import AllProduct from "./pages/allproduct/AllProduct";
 import CartEmpty from "./pages/cart/CartEmpty";
-import { useSelector } from "react-redux";
 import ProductList from "./pages/productList/ProductList";
+import { useSelector } from "react-redux";
+import Pay from "./pages/pay/Pay";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -31,6 +32,10 @@ function App() {
       <Routes>
         <Route path="*" element={<Err404 />} />
         <Route path="/" element={<Home />} />
+        <Route path="/koszyk" element={<Cart />} />
+        <Route path="/dostawa" element={<Delivery />} />
+        <Route path="/platnosc" element={<Pay />} />
+
         <Route path="/krok-1" element={<StepOne />} />
         <Route path="/krok-2" element={<StepTwo />} />
         <Route path="/krok-3" element={<StepThree />} />
@@ -45,11 +50,9 @@ function App() {
           element={user ? <Navigate to="/" /> : <Login />}
         />
         <Route path="/auth/rejestracja" element={<Register />} />
-        <Route path="/koszyk" element={<Cart />} />
+
         <Route path="/lista-produktow/wszystkie" element={<AllProduct />} />
         <Route path="/koszyk/pusty" element={<CartEmpty />} />
-
-        <Route path="/dostawa" element={<Delivery />} />
 
         {/* 
 

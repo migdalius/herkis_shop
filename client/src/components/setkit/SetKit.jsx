@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import Footer from "../footer/Footer";
 
 const Container = styled.div`
   height: 100vh;
@@ -93,115 +94,118 @@ const TitleSet = styled.h2`
 `;
 const SetKit = () => {
   return (
-    <Container>
-      <TitleBox>
-        <TitleSet>Co zawiera każdy z naszych zestawów do uprawy</TitleSet>
-      </TitleBox>
-      <SubContainer>
-        <Wrapper>
-          <ContentContainer>
-            <ProductWrapper>
-              <ImageContainer>
-                <Img src="../img/doniczka.png" />
-                <TextContainer first>
-                  <TitleProduct>Doniczka 13cm</TitleProduct>
-                  <DescProduct>
-                    Doniczka o średnicy 13 cm, idealna na domowy parapet,
-                    doniczkę można użyć wielokrotnie.
-                  </DescProduct>
-                </TextContainer>
-              </ImageContainer>
-            </ProductWrapper>
-          </ContentContainer>
-          <ContentContainer down>
-            <ProductWrapper>
-              <ImageContainer>
-                <Img src="../img/podloze.png" />
-                <TextContainer second>
-                  <TitleProduct>Podłoże Organiczne 1L</TitleProduct>
-                  <DescProduct>
-                    Profesjonalne podłoże z bio humusem i kompostem, ph podłoża
-                    dopasowane do zestawu w danym tygodniu.
-                  </DescProduct>
-                </TextContainer>
-              </ImageContainer>
-            </ProductWrapper>
-          </ContentContainer>
-        </Wrapper>
-        <Wrapper>
-          <ContentContainer>
-            <ProductWrapper>
-              <ImageContainer>
-                <Img src="../img/keramzyt100.png" />
-                <TextContainer first>
-                  <TitleProduct>Keramzyt / Drenaż</TitleProduct>
-                  <DescProduct>
-                    Kruszywo wypalane z gliny ilastej, bardzo dobrze zatrzymuje
-                    wilgoć.
-                  </DescProduct>
-                </TextContainer>
-              </ImageContainer>
-            </ProductWrapper>
-          </ContentContainer>
-          <ContentContainer down>
-            <ProductWrapper>
-              <ImageContainer>
-                <Img src="../img/nasiona.png" />
-                <TextContainer second>
-                  <TitleProduct>Nasiona (co tydzień nowe)</TitleProduct>
-                  <DescProduct>
-                    Wygląd nasiona lub wyrośniętej rośliny nie są ujawniane, co
-                    tydzień otrzymujesz zestaw i instrukcje do uprawy, nasiona
-                    nigdy się nie powtarzają i są testowane, zanim stworzymy
-                    zestaw na ich podstawie.
-                  </DescProduct>
-                </TextContainer>
-              </ImageContainer>
-            </ProductWrapper>
-          </ContentContainer>
-        </Wrapper>
-        <Wrapper>
-          <ContentContainer>
-            <ProductWrapper>
-              <ImageContainer>
-                <Img src="../img/hydrozel.png" />
-                <TextContainer first>
-                  <TitleProduct>Hydrożel</TitleProduct>
-                  <DescProduct>
-                    Magazynuje wodę a następnie gdy roślina ją potrzebuje
-                    oddaje, nie pachnie w żaden sposób należy go zmieszać
-                    bezpośrednio z ziemią
-                  </DescProduct>
-                </TextContainer>
-              </ImageContainer>
-            </ProductWrapper>
-          </ContentContainer>
-          <ContentContainer down>
-            <ProductWrapper>
-              <ImageContainer>
-                <Img src="../img/paleczki.png" />
-                <TextContainer second>
-                  <TitleProduct>Nawóz (Pałeczki nawozowe)</TitleProduct>
-                  <DescProduct>
-                    W zestawie znajdują się pałeczki nawozowe przeznaczone na
-                    cały cykl wzrostu rośliny łącznie z kwitnieniem, dzięki
-                    czemu nie ma potrzeby dokupywania dodatkowych nawozów w celu
-                    dokończenia uprawy.
-                  </DescProduct>
-                </TextContainer>
-              </ImageContainer>
-            </ProductWrapper>
-          </ContentContainer>
-        </Wrapper>
-      </SubContainer>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#f1f5f9"
-          fill-opacity="1"
-          d="M0,96L60,80C120,64,240,32,360,58.7C480,85,600,171,720,181.3C840,192,960,128,1080,112C1200,96,1320,128,1380,144L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-        ></path>
-      </svg>
-    </Container>
+    <>
+      <Container>
+        <TitleBox>
+          <TitleSet>Co zawiera każdy z naszych zestawów do uprawy</TitleSet>
+        </TitleBox>
+        <SubContainer>
+          <Wrapper>
+            <ContentContainer>
+              <ProductWrapper>
+                <ImageContainer>
+                  <Img src="../img/doniczka.png" />
+                  <TextContainer first>
+                    <TitleProduct>Doniczka 13cm</TitleProduct>
+                    <DescProduct>
+                      Doniczka o średnicy 13 cm, idealna na domowy parapet,
+                      doniczkę można użyć wielokrotnie.
+                    </DescProduct>
+                  </TextContainer>
+                </ImageContainer>
+              </ProductWrapper>
+            </ContentContainer>
+            <ContentContainer down>
+              <ProductWrapper>
+                <ImageContainer>
+                  <Img src="../img/podloze.png" />
+                  <TextContainer second>
+                    <TitleProduct>Podłoże Organiczne 1L</TitleProduct>
+                    <DescProduct>
+                      Profesjonalne podłoże z bio humusem i kompostem, ph
+                      podłoża dopasowane do zestawu w danym tygodniu.
+                    </DescProduct>
+                  </TextContainer>
+                </ImageContainer>
+              </ProductWrapper>
+            </ContentContainer>
+          </Wrapper>
+          <Wrapper>
+            <ContentContainer>
+              <ProductWrapper>
+                <ImageContainer>
+                  <Img src="../img/keramzyt100.png" />
+                  <TextContainer first>
+                    <TitleProduct>Keramzyt / Drenaż</TitleProduct>
+                    <DescProduct>
+                      Kruszywo wypalane z gliny ilastej, bardzo dobrze
+                      zatrzymuje wilgoć.
+                    </DescProduct>
+                  </TextContainer>
+                </ImageContainer>
+              </ProductWrapper>
+            </ContentContainer>
+            <ContentContainer down>
+              <ProductWrapper>
+                <ImageContainer>
+                  <Img src="../img/nasiona.png" />
+                  <TextContainer second>
+                    <TitleProduct>Nasiona (co tydzień nowe)</TitleProduct>
+                    <DescProduct>
+                      Wygląd nasiona lub wyrośniętej rośliny nie są ujawniane,
+                      co tydzień otrzymujesz zestaw i instrukcje do uprawy,
+                      nasiona nigdy się nie powtarzają i są testowane, zanim
+                      stworzymy zestaw na ich podstawie.
+                    </DescProduct>
+                  </TextContainer>
+                </ImageContainer>
+              </ProductWrapper>
+            </ContentContainer>
+          </Wrapper>
+          <Wrapper>
+            <ContentContainer>
+              <ProductWrapper>
+                <ImageContainer>
+                  <Img src="../img/hydrozel.png" />
+                  <TextContainer first>
+                    <TitleProduct>Hydrożel</TitleProduct>
+                    <DescProduct>
+                      Magazynuje wodę a następnie gdy roślina ją potrzebuje
+                      oddaje, nie pachnie w żaden sposób należy go zmieszać
+                      bezpośrednio z ziemią
+                    </DescProduct>
+                  </TextContainer>
+                </ImageContainer>
+              </ProductWrapper>
+            </ContentContainer>
+            <ContentContainer down>
+              <ProductWrapper>
+                <ImageContainer>
+                  <Img src="../img/paleczki.png" />
+                  <TextContainer second>
+                    <TitleProduct>Nawóz (Pałeczki nawozowe)</TitleProduct>
+                    <DescProduct>
+                      W zestawie znajdują się pałeczki nawozowe przeznaczone na
+                      cały cykl wzrostu rośliny łącznie z kwitnieniem, dzięki
+                      czemu nie ma potrzeby dokupywania dodatkowych nawozów w
+                      celu dokończenia uprawy.
+                    </DescProduct>
+                  </TextContainer>
+                </ImageContainer>
+              </ProductWrapper>
+            </ContentContainer>
+          </Wrapper>
+        </SubContainer>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#f1f5f9"
+            fill-opacity="1"
+            d="M0,96L60,80C120,64,240,32,360,58.7C480,85,600,171,720,181.3C840,192,960,128,1080,112C1200,96,1320,128,1380,144L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+          ></path>
+        </svg>
+        <Footer />
+      </Container>
+    </>
   );
 };
 

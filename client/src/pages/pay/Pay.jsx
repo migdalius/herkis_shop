@@ -8,15 +8,14 @@ import {
   ShieldCheck,
   TrashFill,
   Truck,
-  XLg,
 } from "react-bootstrap-icons";
-import { useSelector, useDispatch } from "react-redux";
-import { removeProduct } from "../../redux/cartRedux";
+import { useSelector } from "react-redux";
 
 const MainContainer = styled.div`
   background-color: #f4f6f9;
   width: 100vw;
-  height: 100vh;
+  height: auto;
+  padding-bottom: 20px;
 `;
 
 const Container = styled.div`
@@ -28,7 +27,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 160px;
+  width: 120px;
 `;
 const NavigationContainer = styled.div`
   display: flex;
@@ -67,6 +66,7 @@ const BodyContainer = styled.div`
 const CartContainer = styled.div`
   width: 670px;
   height: auto;
+  padding-bottom: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -85,7 +85,7 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-const Product = styled.div`
+const FormContainer = styled.form`
   display: flex;
   gap: 35px;
   margin: 20px;
@@ -111,6 +111,29 @@ const ProductTitle = styled.h3`
 const ProductDesc = styled.p`
   color: #949494e5;
   font-size: 12px;
+`;
+const CounterWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #f3f3f3;
+  width: 80px;
+  height: 35px;
+  border-radius: 5px;
+`;
+const Button = styled.button`
+  width: 25px;
+  height: 25px;
+  border: none;
+  background-color: #f3f3f3;
+  cursor: pointer;
+`;
+const CounterProduct = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f3f3;
+  width: 25px;
+  height: 25px;
 `;
 
 const PriceWrapper = styled.div`
@@ -168,46 +191,69 @@ const ButtonWrapper = styled.div`
   gap: 10px;
 `;
 
-const CounterWrapper = styled.div`
+const FormWrapper = styled.div``;
+const Form = styled.form`
   display: flex;
-  align-items: center;
-  background-color: #f3f3f3;
-  width: 80px;
-  height: 35px;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px;
+`;
+const Input = styled.input`
+  border: 1px solid #bfbfbf;
   border-radius: 5px;
+  width: 600px;
+  height: 45px;
+  padding: 10px;
+
+  &:focus {
+    outline: none !important;
+    border: 1px solid #22c55e;
+  }
 `;
-const Button = styled.button`
-  width: 25px;
-  height: 25px;
-  border: none;
-  background-color: #f3f3f3;
+
+const SecondTitle = styled.h3`
+  font-size: 24px;
+  margin: 20px;
+`;
+
+const WrapperButton = styled.div`
+  margin: 20px;
+`;
+const DeliveryButton = styled.button`
+  width: 200px;
+  height: 100px;
   cursor: pointer;
+  border: 1px solid #bfbfbf;
+  background-color: #fff;
+  border-radius: 5px;
+  &:active {
+    border: 1px solid #22c55e;
+  }
 `;
-const CounterProduct = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f3f3f3;
-  width: 25px;
-  height: 25px;
+
+const DeliveryImg = styled.img`
+  width: 140px;
+  height: auto;
 `;
-const Cart = () => {
+
+const SubTitle = styled.p`
+  margin: 20px;
+`;
+
+const Pay = () => {
   const cart = useSelector((state) => state.cart);
-
-  const dispatch = useDispatch();
-
   return (
     <MainContainer>
       <Container>
         <Logo src="../img/herkis_logo.png" />
         <NavigationContainer>
           <NavItem>
-            <Basket color="#22c55e" size={30} />
+            <Basket color="#222" size={30} />
             <CategoryTitle>Koszyk</CategoryTitle>
           </NavItem>
           <Line />
           <NavItem>
-            <Truck color="#222" size={30} />
+            <Truck color="#22c55e" size={30} />
             <CategoryTitle>Dostawa</CategoryTitle>
           </NavItem>
           <Line />
@@ -218,37 +264,27 @@ const Cart = () => {
         </NavigationContainer>
         <BodyContainer>
           <Wrapper>
-            <Title>Wszystkie Subskrypcje</Title>
+            <Title>Adres dostawy</Title>
             <CartContainer>
-              {cart.products.map((product) => (
-                <Product>
-                  <ProductImg src={product.img} />
-                  <ProductBody>
-                    <ProductTitle>{product.title}</ProductTitle>
-                    {console.log(product._id)}
-                    {console.log(cart.products)}
-                    <ProductDesc>Waga: 550g</ProductDesc>
-                    <CounterWrapper>
-                      <Button>+</Button>
-                      <CounterProduct>{product.quantity}</CounterProduct>
-                      <Button>-</Button>
-                    </CounterWrapper>
-                  </ProductBody>
-                  <PriceWrapper>
-                    <TrashFill
-                      color="#222"
-                      size={20}
-                      style={{ cursor: "pointer" }}
-                      onClick={() => dispatch(removeProduct(product))}
-                    />
-                    <Price>{product.price} zł</Price>
-                  </PriceWrapper>
-                </Product>
-              ))}
-              <ProductFooter>
-                <ProductTitle>Dostawa Darmowa</ProductTitle>
-                <ProductDesc>Bez względu na ilość subskrypcji</ProductDesc>
-              </ProductFooter>
+              <FormContainer>
+                <FormWrapper>
+                  <Form>
+                    <Input placeholder="Imię i Nazwisko" />
+                    <Input placeholder="Adres Dostawy" />
+                    <Input placeholder="Kod Pocztowy" />
+                    <Input placeholder="Miasto" />
+                    <Input placeholder="Numer Telefonu" />
+                    <Input placeholder="Adres E-mail" />
+                  </Form>
+                </FormWrapper>
+              </FormContainer>
+              <SecondTitle>Wybierz rodzaj dostawy</SecondTitle>
+              <SubTitle>Darmowa dostawa</SubTitle>
+              <WrapperButton>
+                <DeliveryButton>
+                  <DeliveryImg src="../img/inpost_logo.png" />
+                </DeliveryButton>
+              </WrapperButton>
             </CartContainer>
           </Wrapper>
           <Wrapper>
@@ -289,8 +325,7 @@ const Cart = () => {
                 </Wrapper>
               </DeliveryOptions>
               <ButtonWrapper>
-                <NextButton>Przejdz do dostawy</NextButton>
-                <NextButton>Wracam do zakupów</NextButton>
+                <NextButton>Przejdz do płatności</NextButton>
               </ButtonWrapper>
             </PriceContainer>
           </Wrapper>
@@ -300,4 +335,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default Pay;

@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import {
   Basket,
+  BoxArrowRight,
   BoxSeam,
   Cash,
   CreditCard2Back,
@@ -13,7 +14,8 @@ import { useSelector } from "react-redux";
 const MainContainer = styled.div`
   background-color: #f4f6f9;
   width: 100vw;
-  height: 100vh;
+  height: auto;
+  padding-bottom: 20px;
 `;
 
 const Container = styled.div`
@@ -64,6 +66,7 @@ const BodyContainer = styled.div`
 const CartContainer = styled.div`
   width: 670px;
   height: auto;
+  padding-bottom: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -82,7 +85,7 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-const formContainer = styled.form`
+const FormContainer = styled.form`
   display: flex;
   gap: 35px;
   margin: 20px;
@@ -158,7 +161,7 @@ const NextButton = styled.button`
   width: 100%;
   height: 40px;
   border-radius: 5px;
-  background-color: #0d9488;
+  background-color: #22c55e;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -187,12 +190,61 @@ const ButtonWrapper = styled.div`
   padding-top: 20px;
   gap: 10px;
 `;
+
+const FormWrapper = styled.div``;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px;
+`;
+const Input = styled.input`
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  width: 600px;
+  height: 45px;
+  padding: 10px;
+
+  &:focus {
+    outline: none !important;
+    border: 1px solid #22c55e;
+  }
+`;
+
+const SecondTitle = styled.h3`
+  font-size: 24px;
+  margin: 20px;
+`;
+
+const WrapperButton = styled.div`
+  margin: 20px;
+`;
+const DeliveryButton = styled.button`
+  width: 200px;
+  height: 100px;
+  cursor: pointer;
+  border: 1px solid #bfbfbf;
+  background-color: #fff;
+  border-radius: 5px;
+  &:active {
+    border: 1px solid #22c55e;
+  }
+`;
+
+const DeliveryImg = styled.img`
+  width: 140px;
+  height: auto;
+`;
+
+const SubTitle = styled.p`
+  margin: 20px;
+`;
 const Delivery = () => {
   const cart = useSelector((state) => state.cart);
   return (
     <MainContainer>
       <Container>
-        <Logo src="../img/products/logo.jpg" />
+        <Logo src="../img/herkis_logo.png" />
         <NavigationContainer>
           <NavItem>
             <Basket color="#222" size={30} />
@@ -200,7 +252,7 @@ const Delivery = () => {
           </NavItem>
           <Line />
           <NavItem>
-            <Truck color="#0d9488" size={30} />
+            <Truck color="#22c55e" size={30} />
             <CategoryTitle>Dostawa</CategoryTitle>
           </NavItem>
           <Line />
@@ -213,47 +265,66 @@ const Delivery = () => {
           <Wrapper>
             <Title>Adres dostawy</Title>
             <CartContainer>
-              <formContainer>a</formContainer>
+              <FormContainer>
+                <FormWrapper>
+                  <Form>
+                    <Input placeholder="Imię i Nazwisko" />
+                    <Input placeholder="Adres Dostawy" />
+                    <Input placeholder="Kod Pocztowy" />
+                    <Input placeholder="Miasto" />
+                    <Input placeholder="Numer Telefonu" />
+                    <Input placeholder="Adres E-mail" />
+                  </Form>
+                </FormWrapper>
+              </FormContainer>
+              <SecondTitle>Wybierz rodzaj dostawy</SecondTitle>
+              <SubTitle>Darmowa dostawa</SubTitle>
+              <WrapperButton>
+                <DeliveryButton>
+                  <DeliveryImg src="../img/inpost_logo.png" />
+                </DeliveryButton>
+              </WrapperButton>
             </CartContainer>
           </Wrapper>
           <Wrapper>
             <Title>Podsumowanie</Title>
             <PriceContainer>
               <PriceWrap>
-                <ProductTitle>Wartość produktów</ProductTitle>
+                <ProductTitle>Koszt Subskrypcji</ProductTitle>
                 <Price>{cart.total} zł</Price>
               </PriceWrap>
               <Line />
 
               <DeliveryOptions>
                 <Wrapper>
-                  <ShieldCheck
-                    color="#0d9488"
+                  <BoxArrowRight
+                    color="#22c55e"
                     size={20}
                     style={{ cursor: "pointer" }}
                   />
-                  <Span>Bezpieczne Zakupy</Span>
+                  <Span>
+                    Możliwość anulowania subskrypcji w każdym momencie!
+                  </Span>
                 </Wrapper>
                 <Wrapper>
                   <BoxSeam
-                    color="#0d9488"
+                    color="#22c55e"
                     size={20}
                     style={{ cursor: "pointer" }}
                   />
-                  <Span>Dostawa następnego dnia</Span>
+                  <Span>Wysyłka co tydzień w czwartek</Span>
                 </Wrapper>
                 <Wrapper>
                   <Cash
-                    color="#0d9488"
+                    color="#22c55e"
                     size={20}
                     style={{ cursor: "pointer" }}
                   />
-                  <Span>Szybkie płatności</Span>
+                  <Span>Szybkie płatności lub płatność kartą</Span>
                 </Wrapper>
               </DeliveryOptions>
               <ButtonWrapper>
                 <NextButton>Przejdz do płatności</NextButton>
-                <NextButton>Wróć</NextButton>
               </ButtonWrapper>
             </PriceContainer>
           </Wrapper>

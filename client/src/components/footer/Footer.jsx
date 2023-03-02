@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 const MainContainer = styled.div`
   width: 100%;
   height: 70px;
-  background-color: #0d9488;
+  background-color: #222;
 `;
 
 const CopyRight = styled.p`
@@ -17,7 +17,7 @@ const CopyRight = styled.p`
 const Footer = () => {
   return (
     <MainContainer>
-      <CopyRight>Copyright © 2022 - wszelkie prawa zastrzeżone</CopyRight>
+      <CopyRight>Copyright © 2023 - wszelkie prawa zastrzeżone</CopyRight>
     </MainContainer>
   );
 };
