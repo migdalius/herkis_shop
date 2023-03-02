@@ -4,7 +4,9 @@ import {
   BoxArrowRight,
   BoxSeam,
   Cash,
+  CreditCard,
   CreditCard2Back,
+  LockFill,
   ShieldCheck,
   TrashFill,
   Truck,
@@ -14,7 +16,8 @@ import { useSelector } from "react-redux";
 const MainContainer = styled.div`
   background-color: #f4f6f9;
   width: 100vw;
-  height: 100vh;
+  height: auto;
+  padding-bottom: 20px;
 `;
 
 const Container = styled.div`
@@ -188,6 +191,9 @@ const ButtonWrapper = styled.div`
   flex-direction: column;
   padding-top: 20px;
   gap: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
 `;
 
 const WrapButton = styled.div`
@@ -218,6 +224,116 @@ const DescWrap = styled.div`
 const Desc = styled.p`
   font-size: 18px;
 `;
+
+const PayTitleWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+  margin: 10px;
+  margin-left: 40px;
+  font-size: 18px;
+  font-weight: 600;
+`;
+const PayTitle = styled.p``;
+
+const FormWrapper = styled.div``;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px;
+`;
+const Input = styled.input`
+  /* border: 1px solid #bfbfbf; */
+  border-radius: 5px;
+  width: 550px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+
+  &:focus {
+    outline: none !important;
+    border: 1px solid #22c55e;
+  }
+`;
+
+const InputHolder = styled.div`
+  display: flex;
+  align-items: center;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  padding: 10px;
+  width: 550px;
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  width: 550px;
+  gap: 30px;
+`;
+
+const SingleInput = styled.input`
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  height: 60px;
+  padding: 10px;
+  width: 260px;
+
+  &:focus {
+    outline: none !important;
+    border: 1px solid #22c55e;
+  }
+`;
+
+const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  padding: 10px;
+`;
+const SecondInput = styled.input`
+  border: none;
+  height: 40px;
+  padding: 10px;
+  width: 260px;
+
+  &:focus {
+    outline: none !important;
+    border: 1px solid #22c55e;
+  }
+`;
+
+const WrapAlert = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+const AlertDesc = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  width: 600px;
+  height: 60px;
+  background-color: #fffdef;
+  margin: 20px;
+`;
+
+const WrapSecondAlert = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const SecondAlertDec = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  width: 600px;
+  height: 120px;
+  background-color: #f3fbfd;
+  padding: 20px;
+`;
+
 const Pay = () => {
   const cart = useSelector((state) => state.cart);
   return (
@@ -252,6 +368,49 @@ const Pay = () => {
                   <Desc>Lub</Desc>
                 </DescWrap>
               </WrapButton>
+              <PayTitleWrapper>
+                <LockFill color="#22c55e" size={20} />
+                <PayTitle>Zapłać kartą</PayTitle>
+              </PayTitleWrapper>
+              <FormContainer>
+                <FormWrapper>
+                  <Form>
+                    <InputHolder>
+                      <Input placeholder="1234 5678 9012 3456" />
+                      <CreditCard color="#22c55e" size={26} />
+                    </InputHolder>
+                    <InputWrapper>
+                      <SingleInput placeholder="MM/YY" />
+                      <Wrap>
+                        <SecondInput placeholder="123" />
+                        <CreditCard2Back color="#22c55e" size={26} />
+                      </Wrap>
+                    </InputWrapper>
+                  </Form>
+                </FormWrapper>
+              </FormContainer>
+              <WrapAlert>
+                <AlertDesc>
+                  Klikając „Złóż zamówienie”, wyrażasz zgodę na nasze Warunki i
+                  Politykę prywatności.
+                </AlertDesc>
+              </WrapAlert>
+              <WrapSecondAlert>
+                <SecondAlertDec>
+                  Klikając „Złóż zamówienie”, zgadzasz się, że wybrane
+                  subskrypcje będą automatycznie odnawiane na kolejne warunki
+                  subskrypcji, dopóki nie anulujesz. Po każdym odnowieniu Twoja
+                  metoda płatności zostanie automatycznie obciążona opłatą w
+                  wysokości 39,99zł. Możesz anulować swoje subskrypcje (zgodnie
+                  z warunkami naszej Polityki anulowania, którą znajdziesz
+                  tutaj), postępując zgodnie z instrukcjami na stronie konta
+                  Herkis lub wysyłając wiadomość e-mail na adres
+                  kontakt@herkis.pl.
+                </SecondAlertDec>
+              </WrapSecondAlert>
+              <ButtonWrapper>
+                <NextButton>Złóż Zamówienie</NextButton>
+              </ButtonWrapper>
             </CartContainer>
           </Wrapper>
           <Wrapper>
@@ -261,39 +420,6 @@ const Pay = () => {
                 <ProductTitle>Koszt Subskrypcji</ProductTitle>
                 <Price>{cart.total} zł</Price>
               </PriceWrap>
-              <Line />
-
-              <DeliveryOptions>
-                <Wrapper>
-                  <BoxArrowRight
-                    color="#22c55e"
-                    size={20}
-                    style={{ cursor: "pointer" }}
-                  />
-                  <Span>
-                    Możliwość anulowania subskrypcji w każdym momencie!
-                  </Span>
-                </Wrapper>
-                <Wrapper>
-                  <BoxSeam
-                    color="#22c55e"
-                    size={20}
-                    style={{ cursor: "pointer" }}
-                  />
-                  <Span>Wysyłka co tydzień w czwartek</Span>
-                </Wrapper>
-                <Wrapper>
-                  <Cash
-                    color="#22c55e"
-                    size={20}
-                    style={{ cursor: "pointer" }}
-                  />
-                  <Span>Szybkie płatności lub płatność kartą</Span>
-                </Wrapper>
-              </DeliveryOptions>
-              <ButtonWrapper>
-                <NextButton>Przejdz do płatności</NextButton>
-              </ButtonWrapper>
             </PriceContainer>
           </Wrapper>
         </BodyContainer>
