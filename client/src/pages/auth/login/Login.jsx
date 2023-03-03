@@ -57,6 +57,7 @@ const Login = () => {
   `;
 
   const Button = styled.button`
+    margin-top: 40px;
     width: 350px;
     height: 50px;
     border: none;
@@ -87,14 +88,10 @@ const Login = () => {
                 <Input placeholder="Hasło" />
               </Form>
             </FormWraper>
-            <AgreeTerms>
-              Klikając „Zarejestruj się”, wyrażasz zgodę na nasze Warunki i
-              Politykę prywatności.
-            </AgreeTerms>
             <Button>Zaloguj się</Button>
             <RegisterContainer>
               <AgreeTerms>Nie masz jeszcze konta?</AgreeTerms>
-              <Link to={"/"}>Rejestracja</Link>
+              <Link to={"/rejestracja"}>Rejestracja</Link>
             </RegisterContainer>
           </Wrap>
         </Container>

@@ -20,7 +20,7 @@ const Register = () => {
   };
 
   const MainContainer = styled.div`
-    height: calc(100vh - 150px);
+    height: 100vh;
     background-color: #f2f2f2;
     display: flex;
     justify-content: center;
@@ -29,7 +29,7 @@ const Register = () => {
 
   const Container = styled.div`
     width: 500px;
-    height: 500px;
+    height: auto;
     background-color: #fff;
   `;
   const Wrap = styled.div`
@@ -81,21 +81,26 @@ const Register = () => {
       <MainContainer>
         <Container>
           <Wrap>
-            <Title>Zaloguj się</Title>
+            <Title>Rejestracja</Title>
             <FormWraper>
               <Form>
                 <Input placeholder="Email" />
                 <Input placeholder="Hasło" />
+                <Input placeholder="Imię i Nazwisko" />
+                <Input placeholder="Adres Dostawy" />
+                <Input placeholder="Kod pocztowy" />
+                <Input placeholder="Miasto" />
+                <Input placeholder="Numer Telefonu" />
               </Form>
             </FormWraper>
             <AgreeTerms>
               Klikając „Zarejestruj się”, wyrażasz zgodę na nasze Warunki i
               Politykę prywatności.
             </AgreeTerms>
-            <Button>Zaloguj się</Button>
+            <Button>Zarejestruj się</Button>
             <RegisterContainer>
-              <AgreeTerms>Nie masz jeszcze konta?</AgreeTerms>
-              <Link to={"/"}>Rejestracja</Link>
+              <AgreeTerms>Masz już konto?</AgreeTerms>
+              <Link to={"/logowanie"}>Logowanie</Link>
             </RegisterContainer>
           </Wrap>
         </Container>

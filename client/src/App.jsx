@@ -23,6 +23,7 @@ import CartEmpty from "./pages/cart/CartEmpty";
 import ProductList from "./pages/productList/ProductList";
 import { useSelector } from "react-redux";
 import Pay from "./pages/pay/Pay";
+import Sub from "./pages/sub/Sub";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -37,6 +38,7 @@ function App() {
         <Route path="/platnosc" element={<Pay />} />
         <Route path="/logowanie" element={<Login />} />
         <Route path="/rejestracja" element={<Register />} />
+        <Route path="/subskrypcja" element={<Sub />} />
 
         <Route path="/krok-1" element={<StepOne />} />
         <Route path="/krok-2" element={<StepTwo />} />

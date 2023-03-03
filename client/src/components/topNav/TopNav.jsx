@@ -86,7 +86,7 @@ const TopNav = () => {
             <List>
               <ListItem>Jak to działa?</ListItem>
               <ListItem>Nasze zestawy</ListItem>
-              <ListItem>Cennik</ListItem>
+              <ListItem>Subskrypcja</ListItem>
               <ListItem>Kontakt</ListItem>
             </List>
           </MainNavContainer>

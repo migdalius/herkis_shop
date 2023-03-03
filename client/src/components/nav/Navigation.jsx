@@ -87,7 +87,7 @@ const Navigation = () => {
             <List>
               <ListItem>Jak to działa?</ListItem>
               <ListItem>Nasze zestawy</ListItem>
-              <ListItem>Cennik</ListItem>
+              <ListItem>Subskrypcja</ListItem>
               <ListItem>Kontakt</ListItem>
             </List>
           </MainNavContainer>
@@ -96,8 +96,18 @@ const Navigation = () => {
           <MainNavContainer>
             <NavContainer>
               <ContentWrapper>
-                <BoxArrowInRight size={25} color={"#22c55e"} />
-                <NavText>Logowanie</NavText>
+                <Link
+                  to={"/logowanie"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <BoxArrowInRight size={25} color={"#22c55e"} />
+                  <NavText>Logowanie</NavText>
+                </Link>
               </ContentWrapper>
               <VerticalHr />
 
