@@ -35,6 +35,8 @@ function App() {
         <Route path="/koszyk" element={<Cart />} />
         <Route path="/dostawa" element={<Delivery />} />
         <Route path="/platnosc" element={<Pay />} />
+        <Route path="/logowanie" element={<Login />} />
+        <Route path="/rejestracja" element={<Register />} />
 
         <Route path="/krok-1" element={<StepOne />} />
         <Route path="/krok-2" element={<StepTwo />} />

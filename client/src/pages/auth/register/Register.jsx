@@ -1,132 +1,107 @@
 import styled, { keyframes } from "styled-components";
 import Footer from "../../../components/footer/Footer";
-import Navigation from "../../../components/nav/Navigation";
 
-const MainContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 90vh;
-`;
-const Container = styled.div`
-  display: flex;
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-  width: 500px;
-  height: 600px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-`;
+import { login } from "../../../redux/apiCalls";
+import TopNav from "../../../components/topNav/TopNav";
+import { Link } from "react-router-dom";
 
-const RightContainer = styled.div`
-  flex: 1;
-`;
-const BackgroundContainer = styled.div`
-  width: 100vw;
-  height: auto;
-  background-color: #eceff1;
-`;
-
-const ContentContainer = styled.div`
-  width: 500px;
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const RightTextContainer = styled.div`
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #222;
-`;
-const RightLoginTitle = styled.h3`
-  margin-bottom: 30px;
-  color: #14b8a6;
-`;
-const LoginInput = styled.input`
-  border: 1px solid #ddd;
-  width: 210px;
-  height: 30px;
-  background-color: #f1f5f9;
-  border-left: 3px solid #14b8a6;
-  margin-bottom: 20px;
-  padding: 5px;
-`;
-const LoginButton = styled.button`
-  padding: 10px 70px;
-  border-radius: 5px;
-  border: none;
-  background-color: #14b8a6;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-`;
-
-const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-`;
-
-const RegLabel = styled.label`
-  display: flex;
-  gap: 10px;
-  font-size: 12px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-`;
-
-const RegInput = styled.input``;
 const Register = () => {
-  return (
-    <div className="app">
-      <BackgroundContainer>
-        <Navigation />
-        <MainContainer>
-          <Container>
-            <RightContainer>
-              <ContentContainer>
-                <RightTextContainer>
-                  <RightLoginTitle>Rejestracja Użytkownika</RightLoginTitle>
-                  <GridContainer>
-                    <LoginInput type="text" placeholder="Imię" />
-                    <LoginInput type="text" placeholder="Nazwisko" />
-                    <LoginInput
-                      type="text"
-                      placeholder="Ulica i number mieszkania"
-                    />
-                    <LoginInput type="text" placeholder="Kod pocztowy" />
-                    <LoginInput type="text" placeholder="Miasto" />
-                    <LoginInput type="text" placeholder="Telefon" />
-                    <LoginInput type="text" placeholder="Adres email" />
-                    <LoginInput type="password" placeholder="Password" />
-                  </GridContainer>
-                  <RegLabel>
-                    <RegInput
-                      type="radio"
-                      name="test1"
-                      value="test1"
-                      id="test1"
-                    />
-                    *Akceptuję warunki regulaminu. Zgadzam się na otrzymywanie
-                    informacji dotyczących zamówień w myśl ustawy z dnia 18
-                    lipca 2002r. o świadczeniu usług drogą elektroniczną.
-                  </RegLabel>
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
 
-                  <LoginButton>Zarejestruj konto</LoginButton>
-                </RightTextContainer>
-              </ContentContainer>
-            </RightContainer>
-          </Container>
-        </MainContainer>
-      </BackgroundContainer>
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch, { username, password });
+  };
+
+  const MainContainer = styled.div`
+    height: calc(100vh - 150px);
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
+
+  const Container = styled.div`
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+  `;
+  const Wrap = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 60px;
+  `;
+  const Title = styled.h3`
+    font-size: 32px;
+  `;
+  const FormWraper = styled.div``;
+  const Form = styled.form``;
+  const Input = styled.input`
+    margin-top: 20px;
+    width: 350px;
+    height: 50px;
+    border: 1px solid #bfbfbf;
+    border-radius: 5px;
+    padding: 10px;
+  `;
+
+  const AgreeTerms = styled.p`
+    font-size: 12px;
+    margin: 20px;
+  `;
+
+  const Button = styled.button`
+    width: 350px;
+    height: 50px;
+    border: none;
+    background-color: #22c55e;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+      background-color: #222;
+    }
+  `;
+
+  const RegisterContainer = styled.div`
+    display: flex;
+    align-items: center;
+  `;
+
+  return (
+    <>
+      <TopNav />
+      <MainContainer>
+        <Container>
+          <Wrap>
+            <Title>Zaloguj się</Title>
+            <FormWraper>
+              <Form>
+                <Input placeholder="Email" />
+                <Input placeholder="Hasło" />
+              </Form>
+            </FormWraper>
+            <AgreeTerms>
+              Klikając „Zarejestruj się”, wyrażasz zgodę na nasze Warunki i
+              Politykę prywatności.
+            </AgreeTerms>
+            <Button>Zaloguj się</Button>
+            <RegisterContainer>
+              <AgreeTerms>Nie masz jeszcze konta?</AgreeTerms>
+              <Link to={"/"}>Rejestracja</Link>
+            </RegisterContainer>
+          </Wrap>
+        </Container>
+      </MainContainer>
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { removeProduct } from "../../redux/cartRedux";
+import { Link } from "react-router-dom";
 
 const MainContainer = styled.div`
   background-color: #f4f6f9;
@@ -225,8 +226,7 @@ const Cart = () => {
                   <ProductImg src={product.img} />
                   <ProductBody>
                     <ProductTitle>{product.title}</ProductTitle>
-                    {console.log(product._id)}
-                    {console.log(cart.products)}
+
                     <ProductDesc>Waga: 550g</ProductDesc>
                     <CounterWrapper>
                       <Button>+</Button>
@@ -289,8 +289,28 @@ const Cart = () => {
                 </Wrapper>
               </DeliveryOptions>
               <ButtonWrapper>
-                <NextButton>Przejdz do dostawy</NextButton>
-                <NextButton>Wracam do zakupów</NextButton>
+                <Link
+                  to={"/dostawa"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <NextButton>Przejdz do dostawy</NextButton>
+                </Link>
+                <Link
+                  to={"/"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <NextButton>Wracam do zakupów</NextButton>
+                </Link>
               </ButtonWrapper>
             </PriceContainer>
           </Wrapper>

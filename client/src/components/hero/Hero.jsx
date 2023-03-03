@@ -27,14 +27,39 @@ const TextContainer = styled.div`
   margin: 60px;
 `;
 
+const textAnimate = keyframes`
+0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+`;
+
 const TextTitle = styled.h1`
   font-size: 60px;
   color: #f3f3f3;
+  animation-name: ${textAnimate};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
 `;
+
 const TextSubtitle = styled.p`
   padding-top: 30px;
   font-size: 20px;
   color: #f3f3f3;
+  animation-name: ${textAnimate};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
 `;
 const ImgContainer = styled.div`
   display: flex;
@@ -47,9 +72,17 @@ const ImgContainer = styled.div`
   left: 600px;
 `;
 
+const breatheAnimation = keyframes`
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+`;
+
 const Img = styled.img`
   width: 600px;
   height: auto;
+  animation-name: ${breatheAnimation};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
 `;
 
 const ButtonContainer = styled.div`
@@ -273,7 +306,7 @@ const Hero = () => {
       <PriceContainer>
         <PriceButton>Kup Subskrypcje</PriceButton>
         <PriceWrapper>
-          <Price>39,99 zł</Price>
+          <Price>49,99 zł</Price>
           <Delivery>(Darmowa Dostawa)</Delivery>
         </PriceWrapper>
       </PriceContainer>

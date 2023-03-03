@@ -1,110 +1,124 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
+import { ArrowRight, Basket3, BoxArrowInRight } from "react-bootstrap-icons";
+import img from "../../img/home/mask.jpg";
+import { Link } from "react-router-dom";
 
-const TopContainer = styled.div`
+const Container = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 700px;
-  height: 120px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+`;
+
+const LeftNav = styled.div`
+  width: 50%;
   background-color: #fff;
-  border-radius: 10px;
-  /* border: 1px solid #ddd; */
-
-  @media (max-width: 805px) {
-    width: 600px;
-  }
-
-  @media (max-width: 610px) {
-    width: 450px;
-  }
-
-  @media (max-width: 455px) {
-    width: 300px;
-    gap: 10px;
-  }
-
-  @media (max-width: 355px) {
-    width: 250px;
-  }
 `;
-const CategoryContainer = styled.div`
-  width: 100px;
+const RightNav = styled.div`
+  width: 50%;
+  background-color: #fff;
+`;
+
+const MainNavContainer = styled.div`
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+`;
+
+const VerticalHr = styled.div`
+  border-left: 1px solid #707070;
+  width: 10px;
+  height: 35px;
+`;
+
+const breatheAnimation = keyframes`
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+`;
+
+const List = styled.ul`
+  margin-left: 30px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  list-style-type: none;
+  animation-name: ${breatheAnimation};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+`;
+
+const Logo = styled.img`
+  width: 140px;
+
+  margin-right: 30px;
+  animation-name: ${breatheAnimation};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+`;
+const ListItem = styled.li`
+  color: #222;
+  cursor: pointer;
+`;
+
+const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
-  gap: 5px;
+  gap: 10px;
+`;
+const NavContainer = styled.div`
+  display: flex;
+  gap: 20px;
 `;
 
-const TopImage = styled.img`
-  width: 50px;
-  height: 50px;
-  @media (max-width: 610px) {
-    width: 35px;
-    height: 35px;
-  }
-  @media (max-width: 455px) {
-    width: 30px;
-    height: 30px;
-  }
-  @media (max-width: 355px) {
-    width: 25px;
-    height: 25px;
-  }
-`;
-
-const Dots = styled.img`
-  width: 30px;
-  @media (max-width: 610px) {
-    width: 15px;
-  }
-  @media (max-width: 455px) {
+const NavText = styled.p`
+  color: #222;
+  @media (max-width: 905px) {
     display: none;
   }
 `;
 
-const TopTitle = styled.p`
-  @media (max-width: 455px) {
-    font-size: 12px;
-  }
-  @media (max-width: 355px) {
-    font-size: 10px;
-  }
-`;
 const TopNav = () => {
   return (
-    <TopContainer>
-      <CategoryContainer>
-        <TopImage src="../img/step/start.png" />
-        <TopTitle>Start</TopTitle>
-      </CategoryContainer>
-      <Dots src="../img/step/dots.png" />
-      <CategoryContainer>
-        <TopImage src="../img/step/nasiona.png" />
-        <TopTitle>Nasiona</TopTitle>
-      </CategoryContainer>
-      <Dots src="../img/step/dots.png" />
-      <CategoryContainer>
-        <TopImage src="../img/step/doniczka.png" />
-        <TopTitle>Doniczki/Osłonki</TopTitle>
-      </CategoryContainer>
-      <Dots src="../img/step/dots.png" />
-      <CategoryContainer>
-        <TopImage src="../img/step/podloze.png" />
-        <TopTitle>Podłoże</TopTitle>
-      </CategoryContainer>
+    <>
+      <Container>
+        <LeftNav>
+          <MainNavContainer>
+            <Logo src="../img/herkis_logo.png" />
+            <VerticalHr white />
+            <List>
+              <ListItem>Jak to działa?</ListItem>
+              <ListItem>Nasze zestawy</ListItem>
+              <ListItem>Cennik</ListItem>
+              <ListItem>Kontakt</ListItem>
+            </List>
+          </MainNavContainer>
+        </LeftNav>
+        <RightNav>
+          <MainNavContainer>
+            <NavContainer>
+              <ContentWrapper>
+                <BoxArrowInRight size={25} color={"#707070"} />
+                <NavText>Logowanie</NavText>
+              </ContentWrapper>
+              <VerticalHr />
 
-      <Dots src="../img/step/dots.png" />
-      <CategoryContainer>
-        <TopImage src="../img/step/drenaz.png" />
-        <TopTitle>Drenaż</TopTitle>
-      </CategoryContainer>
-      <Dots src="../img/step/dots.png" />
-      <CategoryContainer>
-        <TopImage src="../img/step/nawoz.png" />
-        <TopTitle>Nawóz</TopTitle>
-      </CategoryContainer>
-    </TopContainer>
+              <ContentWrapper>
+                <Link
+                  to={"/koszyk"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <Basket3 size={25} color={"#707070"} />
+                  <NavText>Koszyk</NavText>
+                </Link>
+              </ContentWrapper>
+            </NavContainer>
+          </MainNavContainer>
+        </RightNav>
+      </Container>
+    </>
   );
 };
 

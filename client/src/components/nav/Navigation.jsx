@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { ArrowRight, Basket3, BoxArrowInRight } from "react-bootstrap-icons";
 import img from "../../img/home/mask.jpg";
+import { Link } from "react-router-dom";
 const Container = styled.div`
   display: flex;
 `;
@@ -99,9 +100,20 @@ const Navigation = () => {
                 <NavText>Logowanie</NavText>
               </ContentWrapper>
               <VerticalHr />
+
               <ContentWrapper>
-                <Basket3 size={25} color={"#22c55e"} />
-                <NavText>Koszyk</NavText>
+                <Link
+                  to={"/koszyk"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <Basket3 size={25} color={"#22c55e"} />
+                  <NavText>Koszyk</NavText>
+                </Link>
               </ContentWrapper>
             </NavContainer>
           </MainNavContainer>

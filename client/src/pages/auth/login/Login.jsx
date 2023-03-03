@@ -1,114 +1,12 @@
 import styled, { keyframes } from "styled-components";
 import Footer from "../../../components/footer/Footer";
-import Navigation from "../../../components/nav/Navigation";
 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { login } from "../../../redux/apiCalls";
-
-const MainContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 90vh;
-`;
-const Container = styled.div`
-  display: flex;
-
-  width: 1000px;
-  height: 600px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-`;
-const LeftContainer = styled.div`
-  flex: 1;
-  /* background-color: #14b8a6; */
-  background-color: rgba(20, 184, 166, 1);
-  background-image: linear-gradient(
-    231deg,
-    rgba(20, 184, 166, 1) 15%,
-    rgba(16, 185, 129, 1) 100%
-  );
-  border-right: 1px solid #ddd;
-  border-radius: 10px 0px 0px 10px;
-`;
-const RightContainer = styled.div`
-  flex: 1;
-`;
-const BackgroundContainer = styled.div`
-  width: 100vw;
-  height: auto;
-  background-color: #eceff1;
-`;
-
-const LeftTextContainer = styled.div`
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-`;
-
-const ContentContainer = styled.div`
-  width: 500px;
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const LeftLoginSpan = styled.span`
-  font-size: 12px;
-  margin-bottom: 10px;
-`;
-const LeftLoginTitle = styled.h2`
-  font-size: 30px;
-  margin-bottom: 20px;
-`;
-const LeftLoginDesc = styled.p``;
-
-const RightTextContainer = styled.div`
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #222;
-`;
-const RightLoginTitle = styled.h3`
-  margin-bottom: 30px;
-  color: #14b8a6;
-`;
-const LoginInput = styled.input`
-  border: 1px solid #ddd;
-  width: 210px;
-  height: 30px;
-  background-color: #f1f5f9;
-  border-left: 3px solid #14b8a6;
-  margin-bottom: 20px;
-  padding: 5px;
-`;
-const LoginButton = styled.button`
-  padding: 10px 70px;
-  border-radius: 5px;
-  border: none;
-  background-color: #14b8a6;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-
-  &:disabled {
-    background-color: grey;
-    cursor: not-allowed;
-  }
-`;
-
-const Error = styled.span`
-  color: red;
-`;
+import TopNav from "../../../components/topNav/TopNav";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -121,51 +19,88 @@ const Login = () => {
     login(dispatch, { username, password });
   };
 
-  return (
-    <div className="app">
-      <BackgroundContainer>
-        <Navigation />
-        <MainContainer>
-          <Container>
-            <LeftContainer>
-              <ContentContainer>
-                <LeftTextContainer>
-                  <LeftLoginSpan>Witaj ponownie!</LeftLoginSpan>
-                  <LeftLoginTitle>Zaloguj się do system X</LeftLoginTitle>
-                  <LeftLoginDesc>
-                    Zaloguj się i zobacz swoje zakupy, obserwowane oferty i
-                    powiadomienia. W X jesteś u siebie!
-                  </LeftLoginDesc>
-                </LeftTextContainer>
-              </ContentContainer>
-            </LeftContainer>
-            <RightContainer>
-              <ContentContainer>
-                <RightTextContainer>
-                  <RightLoginTitle>Logowanie użytkownika</RightLoginTitle>
-                  <LoginInput
-                    type="text"
-                    placeholder="UserName"
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-                  <LoginInput
-                    type="password"
-                    placeholder="Password"
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <LoginButton onClick={handleClick} disabled={isFetching}>
-                    Zaloguj się
-                  </LoginButton>
+  const MainContainer = styled.div`
+    height: calc(100vh - 150px);
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `;
 
-                  {error && <Error>Błędna nazwa użytkownika lub email.</Error>}
-                </RightTextContainer>
-              </ContentContainer>
-            </RightContainer>
-          </Container>
-        </MainContainer>
-      </BackgroundContainer>
+  const Container = styled.div`
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+  `;
+  const Wrap = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 60px;
+  `;
+  const Title = styled.h3`
+    font-size: 32px;
+  `;
+  const FormWraper = styled.div``;
+  const Form = styled.form``;
+  const Input = styled.input`
+    margin-top: 20px;
+    width: 350px;
+    height: 50px;
+    border: 1px solid #bfbfbf;
+    border-radius: 5px;
+    padding: 10px;
+  `;
+
+  const AgreeTerms = styled.p`
+    font-size: 12px;
+    margin: 20px;
+  `;
+
+  const Button = styled.button`
+    width: 350px;
+    height: 50px;
+    border: none;
+    background-color: #22c55e;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+      background-color: #222;
+    }
+  `;
+
+  const RegisterContainer = styled.div`
+    display: flex;
+    align-items: center;
+  `;
+  return (
+    <>
+      <TopNav />
+      <MainContainer>
+        <Container>
+          <Wrap>
+            <Title>Zaloguj się</Title>
+            <FormWraper>
+              <Form>
+                <Input placeholder="Email" />
+                <Input placeholder="Hasło" />
+              </Form>
+            </FormWraper>
+            <AgreeTerms>
+              Klikając „Zarejestruj się”, wyrażasz zgodę na nasze Warunki i
+              Politykę prywatności.
+            </AgreeTerms>
+            <Button>Zaloguj się</Button>
+            <RegisterContainer>
+              <AgreeTerms>Nie masz jeszcze konta?</AgreeTerms>
+              <Link to={"/"}>Rejestracja</Link>
+            </RegisterContainer>
+          </Wrap>
+        </Container>
+      </MainContainer>
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -10,6 +10,7 @@ import {
   Truck,
 } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const MainContainer = styled.div`
   background-color: #f4f6f9;
@@ -324,7 +325,17 @@ const Delivery = () => {
                 </Wrapper>
               </DeliveryOptions>
               <ButtonWrapper>
-                <NextButton>Przejdz do płatności</NextButton>
+                <Link
+                  to={"/platnosc"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <NextButton>Przejdz do płatności</NextButton>
+                </Link>
               </ButtonWrapper>
             </PriceContainer>
           </Wrapper>
