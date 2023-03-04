@@ -311,7 +311,7 @@ const Hero = () => {
           <PriceButton>Kup Subskrypcje</PriceButton>
         </Link>
         <PriceWrapper>
-          <Price>49,99 zł</Price>
+          <Price>od 39,99 zł</Price>
           <Delivery>(Darmowa Dostawa)</Delivery>
         </PriceWrapper>
       </PriceContainer>

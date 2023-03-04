@@ -95,7 +95,17 @@ const Navigation = () => {
             </Link>
             <VerticalHr white />
             <List>
-              <ListItem>Jak to działa?</ListItem>
+              <Link
+                to={"/jak-dziala-zestaw-do-uprawy"}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  textDecoration: "none",
+                }}
+              >
+                <ListItem>Jak to działa?</ListItem>
+              </Link>
               <ListItem>Nasze zestawy</ListItem>
               <Link
                 to={"/subskrypcja"}
