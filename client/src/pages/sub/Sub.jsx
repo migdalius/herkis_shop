@@ -72,6 +72,69 @@ const Counter = styled.p`
   font-size: 28px;
 `;
 const Days = styled.p``;
+
+const PriceContainer = styled.div`
+  display: flex;
+  margin-top: 20px;
+  gap: 10px;
+`;
+const PriceWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  flex: 1;
+  border: 1px solid #ddd;
+  height: 400px;
+  border-radius: 5px;
+`;
+
+const PriceTitle = styled.p`
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #22c55e;
+`;
+
+const SubContainer = styled.div`
+  display: flex;
+  width: 240px;
+  height: 75px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 1px solid #ddd;
+`;
+
+const LeftContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 50%;
+  margin: 3px;
+`;
+const RightContainer = styled.div`
+  width: 50%;
+`;
+
+const TitleContainer = styled.p``;
+const TitleContainerPrice = styled.p`
+  color: #222;
+  font-size: 11px;
+`;
+
+const SubTitlePrice = styled.p`
+  color: #6b7284;
+  font-size: 12px;
+`;
+
+const Button = styled.button`
+  height: 100%;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #fbbf24;
+  }
+`;
 const Sub = () => {
   return (
     <>
@@ -109,6 +172,110 @@ const Sub = () => {
               </TimeWrap>
             </ClockContainer>
             <Line />
+            <PriceContainer>
+              <PriceWrap>
+                <PriceTitle>Nowy zestaw co tydzień</PriceTitle>
+                <SubContainer>
+                  <LeftContainer>
+                    <TitleContainer>Miesięczny</TitleContainer>
+                    <TitleContainerPrice>
+                      234,95 zł / miesięcznie
+                    </TitleContainerPrice>
+                    <SubTitlePrice>Oszczędzasz 15 zł</SubTitlePrice>
+                  </LeftContainer>
+                  <RightContainer>
+                    <Button>Subskrybuj</Button>
+                  </RightContainer>
+                </SubContainer>
+                <SubContainer>
+                  <LeftContainer>
+                    <TitleContainer>3 Miesiące</TitleContainer>
+                    <TitleContainerPrice>
+                      224,95 zł / miesięcznie
+                    </TitleContainerPrice>
+                    <SubTitlePrice>Oszczędzasz 75 zł</SubTitlePrice>
+                  </LeftContainer>
+                  <RightContainer>
+                    <Button>Subskrybuj</Button>
+                  </RightContainer>
+                </SubContainer>
+                <SubContainer>
+                  <LeftContainer>
+                    <TitleContainer>6 Miesięcy</TitleContainer>
+                    <TitleContainerPrice>
+                      214,85 zł / miesięcznie
+                    </TitleContainerPrice>
+                    <SubTitlePrice>Oszczędzasz 421,20 zł</SubTitlePrice>
+                  </LeftContainer>
+                  <RightContainer>
+                    <Button>Subskrybuj</Button>
+                  </RightContainer>
+                </SubContainer>
+                <SubContainer>
+                  <LeftContainer>
+                    <TitleContainer>12 Miesięcy</TitleContainer>
+                    <TitleContainerPrice>
+                      199,95 zł / miesięcznie
+                    </TitleContainerPrice>
+                    <SubTitlePrice>Oszczędzasz 606 zł</SubTitlePrice>
+                  </LeftContainer>
+                  <RightContainer>
+                    <Button>Subskrybuj</Button>
+                  </RightContainer>
+                </SubContainer>
+              </PriceWrap>
+              <PriceWrap>
+                <PriceTitle>Now zestaw co miesiąc</PriceTitle>
+                <SubContainer>
+                  <LeftContainer>
+                    <TitleContainer>Miesięczny</TitleContainer>
+                    <TitleContainerPrice>
+                      49,99 zł / miesięcznie
+                    </TitleContainerPrice>
+                    <SubTitlePrice>Zestaw próbny</SubTitlePrice>
+                  </LeftContainer>
+                  <RightContainer>
+                    <Button>Subskrybuj</Button>
+                  </RightContainer>
+                </SubContainer>
+                <SubContainer>
+                  <LeftContainer>
+                    <TitleContainer>3 Miesiące</TitleContainer>
+                    <TitleContainerPrice>
+                      46,99 zł / miesięcznie
+                    </TitleContainerPrice>
+                    <SubTitlePrice>Oszczędzasz 9 zł</SubTitlePrice>
+                  </LeftContainer>
+                  <RightContainer>
+                    <Button>Subskrybuj</Button>
+                  </RightContainer>
+                </SubContainer>
+                <SubContainer>
+                  <LeftContainer>
+                    <TitleContainer>6 Miesięcy</TitleContainer>
+                    <TitleContainerPrice>
+                      45,99 zł / miesięcznie
+                    </TitleContainerPrice>
+                    <SubTitlePrice>Oszczędzasz 24 zł</SubTitlePrice>
+                  </LeftContainer>
+                  <RightContainer>
+                    <Button>Subskrybuj</Button>
+                  </RightContainer>
+                </SubContainer>
+                <SubContainer>
+                  <LeftContainer>
+                    <TitleContainer>12 Miesięcy</TitleContainer>
+                    <TitleContainerPrice>
+                      40,99 zł / miesięcznie
+                    </TitleContainerPrice>
+                    <SubTitlePrice>Oszczędzasz 108 zł</SubTitlePrice>
+                  </LeftContainer>
+                  <RightContainer>
+                    <Button>Subskrybuj</Button>
+                  </RightContainer>
+                </SubContainer>
+              </PriceWrap>
+            </PriceContainer>
           </Wrap>
         </Container>
       </MainContainer>
