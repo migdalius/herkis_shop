@@ -7,17 +7,19 @@ import { Link } from "react-router-dom";
 import { Basket, Clock } from "react-bootstrap-icons";
 
 const MainContainer = styled.div`
-  height: calc(100vh - 150px);
+  height: auto;
   background-color: #f2f2f2;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 `;
 
 const Container = styled.div`
   display: flex;
   width: 1200px;
-  height: 800px;
+  height: auto;
   background-color: #fff;
 `;
 const Wrap = styled.div`
@@ -135,6 +137,31 @@ const Button = styled.button`
     background-color: #fbbf24;
   }
 `;
+
+const Deliver = styled.h3`
+  font-size: 24px;
+  color: #22c55e;
+  margin-top: 5px;
+`;
+
+const BigTitle = styled.h2`
+  margin: 10px;
+`;
+const BigDesc = styled.p`
+  margin: 10px;
+`;
+
+const List = styled.ul`
+  margin: 20px;
+`;
+const ListItem = styled.li`
+  margin-top: 10px;
+`;
+
+const BigDescTitle = styled.p`
+  font-weight: 600;
+  margin: 10px;
+`;
 const Sub = () => {
   return (
     <>
@@ -143,11 +170,39 @@ const Sub = () => {
         <Container>
           <Wrap>
             <Img src="../img/product.png" />
-            <Desc>aaa</Desc>
+            <Desc>
+              <BigTitle>Po co mi zestaw do uprawy?</BigTitle>
+              <BigDesc>
+                Prawdopodobnie, zawsze myślałeś/aś ,że fajnie byłoby mieć jakieś
+                rośliny w domu. Natomiast kupienie sadzonki w markecie lub
+                kwiatów w kwiaciarni to niestety nie to samo, co zasadzenie i
+                dbanie o roślinę.
+              </BigDesc>
+              <BigDescTitle>
+                Zestaw rozwiązuje dwa główne problemy:
+              </BigDescTitle>
+              <List>
+                <ListItem>
+                  Zawiera wszystkie elementy potrzebne do uprawy, wystarczy
+                  dodać tylko wody.
+                </ListItem>
+                <ListItem>
+                  Instrukcja krok po kroku jak należy uprawiać roślinę.
+                </ListItem>
+              </List>
+              <BigDescTitle>
+                I Najważniejszy element, dlaczego powinieneś kupić zestaw:
+              </BigDescTitle>
+              <BigDesc>
+                Ponieważ, nie wiesz co będziesz uprawiać i to jest największa
+                przyjemność, niepewność i ciekawość co z tego wyrośnie?
+              </BigDesc>
+            </Desc>
           </Wrap>
           <Wrap>
             <Title>Zestaw do uprawy Domowej</Title>
             <Time>Numer zestawu do uprawy: 01/2023</Time>
+            <Deliver>Darmowa Dostawa - Kurierem</Deliver>
             <Line />
             <WrapContainer>
               <Clock color="#22c55e" size={22} />
@@ -225,7 +280,7 @@ const Sub = () => {
                 </SubContainer>
               </PriceWrap>
               <PriceWrap>
-                <PriceTitle>Now zestaw co miesiąc</PriceTitle>
+                <PriceTitle>Nowy zestaw co miesiąc</PriceTitle>
                 <SubContainer>
                   <LeftContainer>
                     <TitleContainer>Miesięczny</TitleContainer>

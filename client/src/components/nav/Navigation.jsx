@@ -82,12 +82,32 @@ const Navigation = () => {
       <Container>
         <LeftNav>
           <MainNavContainer>
-            <Logo src="../img/herkis.png" />
+            <Link
+              to={"/"}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+                textDecoration: "none",
+              }}
+            >
+              <Logo src="../img/herkis.png" />
+            </Link>
             <VerticalHr white />
             <List>
               <ListItem>Jak to działa?</ListItem>
               <ListItem>Nasze zestawy</ListItem>
-              <ListItem>Subskrypcja</ListItem>
+              <Link
+                to={"/subskrypcja"}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  textDecoration: "none",
+                }}
+              >
+                <ListItem>Subskrypcja</ListItem>
+              </Link>
               <ListItem>Kontakt</ListItem>
             </List>
           </MainNavContainer>

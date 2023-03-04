@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -197,10 +198,11 @@ const PriceButton = styled.button`
   border: none;
   height: 90px;
   border-radius: 10px 0px 0px 10px;
-  width: 30%;
+  width: 100%;
   background-color: #ef4444;
   color: #fff;
   font-size: 17px;
+  padding: 10px;
 
   cursor: pointer;
   &:hover {
@@ -215,6 +217,7 @@ const PriceWrapper = styled.div`
   gap: 10px;
 `;
 const Delivery = styled.p``;
+
 const Hero = () => {
   return (
     <Container>
@@ -304,7 +307,9 @@ const Hero = () => {
         <Img src="../img/product.png" />
       </ImgContainer>
       <PriceContainer>
-        <PriceButton>Kup Subskrypcje</PriceButton>
+        <Link to={"/subskrypcja"}>
+          <PriceButton>Kup Subskrypcje</PriceButton>
+        </Link>
         <PriceWrapper>
           <Price>49,99 zł</Price>
           <Delivery>(Darmowa Dostawa)</Delivery>
