@@ -106,7 +106,7 @@ const Navigation = () => {
               >
                 <ListItem>Jak to działa?</ListItem>
               </Link>
-              <ListItem>Nasze zestawy</ListItem>
+
               <Link
                 to={"/subskrypcja"}
                 style={{
@@ -118,7 +118,17 @@ const Navigation = () => {
               >
                 <ListItem>Subskrypcja</ListItem>
               </Link>
-              <ListItem>Kontakt</ListItem>
+              <Link
+                to={"/kontakt"}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  textDecoration: "none",
+                }}
+              >
+                <ListItem>Kontakt</ListItem>
+              </Link>
             </List>
           </MainNavContainer>
         </LeftNav>

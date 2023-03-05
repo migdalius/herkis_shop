@@ -81,13 +81,52 @@ const TopNav = () => {
       <Container>
         <LeftNav>
           <MainNavContainer>
-            <Logo src="../img/herkis_logo.png" />
+            <Link
+              to={"/"}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "5px",
+                textDecoration: "none",
+              }}
+            >
+              <Logo src="../img/herkis_logo.png" />
+            </Link>
             <VerticalHr white />
             <List>
-              <ListItem>Jak to działa?</ListItem>
-              <ListItem>Nasze zestawy</ListItem>
-              <ListItem>Subskrypcja</ListItem>
-              <ListItem>Kontakt</ListItem>
+              <Link
+                to={"/jak-dziala-zestaw-do-uprawy"}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  textDecoration: "none",
+                }}
+              >
+                <ListItem>Jak to działa?</ListItem>
+              </Link>
+              <Link
+                to={"/subskrypcja"}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  textDecoration: "none",
+                }}
+              >
+                <ListItem>Subskrypcja</ListItem>
+              </Link>
+              <Link
+                to={"/kontakt"}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  textDecoration: "none",
+                }}
+              >
+                <ListItem>Kontakt</ListItem>
+              </Link>
             </List>
           </MainNavContainer>
         </LeftNav>
@@ -95,8 +134,18 @@ const TopNav = () => {
           <MainNavContainer>
             <NavContainer>
               <ContentWrapper>
-                <BoxArrowInRight size={25} color={"#707070"} />
-                <NavText>Logowanie</NavText>
+                <Link
+                  to={"/logowanie"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                  }}
+                >
+                  <BoxArrowInRight size={25} color={"#707070"} />
+                  <NavText>Logowanie</NavText>
+                </Link>
               </ContentWrapper>
               <VerticalHr />
 

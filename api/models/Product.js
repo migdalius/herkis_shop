@@ -6,10 +6,7 @@ const ProductSchema = new mongoose.Schema(
     desc: { type: String, required: true },
     img: { type: String, required: true },
     categories: { type: Array },
-    subcategories: { type: Array },
-    growtime: { type: Number },
     price: { type: Number, required: true },
-    InStock: { type: Boolean, default: true },
   },
   { timestamps: true }
 );

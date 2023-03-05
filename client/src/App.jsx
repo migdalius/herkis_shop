@@ -25,6 +25,7 @@ import { useSelector } from "react-redux";
 import Pay from "./pages/pay/Pay";
 import Sub from "./pages/sub/Sub";
 import Work from "./pages/work/Work";
+import Contact from "./pages/contact/Contact";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -41,6 +42,7 @@ function App() {
         <Route path="/rejestracja" element={<Register />} />
         <Route path="/subskrypcja" element={<Sub />} />
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
+        <Route path="/kontakt" element={<Contact />} />
 
         <Route path="/krok-1" element={<StepOne />} />
         <Route path="/krok-2" element={<StepTwo />} />
