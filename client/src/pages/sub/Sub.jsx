@@ -21,15 +21,50 @@ const Container = styled.div`
   width: 1200px;
   height: auto;
   background-color: #fff;
+
+  @media (max-width: 1215px) {
+    width: 900px;
+  }
+  @media (max-width: 915px) {
+    width: 700px;
+  }
+  @media (max-width: 710px) {
+    flex-direction: column-reverse;
+    width: 500px;
+  }
+  @media (max-width: 510px) {
+    width: 400px;
+  }
+  @media (max-width: 410px) {
+    width: 300px;
+  }
 `;
 const Wrap = styled.div`
   width: 50%;
   margin: 20px;
+  @media (max-width: 710px) {
+    width: 100%;
+  }
 `;
 
 const Img = styled.img`
   width: 600px;
   height: auto;
+  @media (max-width: 1215px) {
+    width: 400px;
+  }
+  @media (max-width: 915px) {
+    width: 300px;
+  }
+  @media (max-width: 710px) {
+    width: 450px;
+  }
+  @media (max-width: 510px) {
+    width: 350px;
+  }
+  @media (max-width: 410px) {
+    width: 270px;
+  }
 `;
 
 const Desc = styled.p``;
@@ -46,6 +81,9 @@ const Line = styled.div`
   border-top: 1px solid #ddd;
   width: 50%;
   margin-top: 20px;
+  @media (max-width: 710px) {
+    width: 90%;
+  }
 `;
 
 const WrapContainer = styled.div`
@@ -79,10 +117,28 @@ const PriceContainer = styled.div`
   display: flex;
   margin-top: 20px;
   gap: 10px;
+  width: 530px;
+  @media (max-width: 1215px) {
+    flex-direction: column;
+    width: 400px;
+  }
+  @media (max-width: 915px) {
+    width: 300px;
+  }
+  @media (max-width: 710px) {
+    width: 450px;
+  }
+  @media (max-width: 510px) {
+    width: 360px;
+  }
+  @media (max-width: 410px) {
+    width: 270px;
+  }
 `;
 const PriceWrap = styled.div`
   display: flex;
   flex-direction: column;
+
   gap: 10px;
   align-items: center;
   flex: 1;
@@ -104,6 +160,22 @@ const SubContainer = styled.div`
   height: 75px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border: 1px solid #ddd;
+  @media (max-width: 1215px) {
+    width: 360px;
+  }
+  @media (max-width: 915px) {
+    width: 260px;
+  }
+  @media (max-width: 710px) {
+    width: 400px;
+    margin: 10px;
+  }
+  @media (max-width: 510px) {
+    width: 300px;
+  }
+  @media (max-width: 410px) {
+    width: 240px;
+  }
 `;
 
 const LeftContainer = styled.div`
@@ -112,15 +184,24 @@ const LeftContainer = styled.div`
   gap: 5px;
   width: 50%;
   margin: 3px;
+  @media (max-width: 1215px) {
+    width: 70%;
+  }
 `;
 const RightContainer = styled.div`
   width: 50%;
+  @media (max-width: 1215px) {
+    width: 30%;
+  }
 `;
 
 const TitleContainer = styled.p``;
 const TitleContainerPrice = styled.p`
   color: #222;
   font-size: 11px;
+  @media (max-width: 1215px) {
+    font-size: 14px;
+  }
 `;
 
 const SubTitlePrice = styled.p`
@@ -148,7 +229,7 @@ const BigTitle = styled.h2`
   margin: 10px;
 `;
 const BigDesc = styled.p`
-  margin: 10px;
+  margin: 20px;
 `;
 
 const List = styled.ul`

@@ -38,12 +38,13 @@ function App() {
         <Route path="/koszyk" element={<Cart />} />
         <Route path="/dostawa" element={<Delivery />} />
         <Route path="/platnosc" element={<Pay />} />
+        {/* RWD */}
         <Route path="/logowanie" element={<Login />} />
+        {/* RWD */}
         <Route path="/rejestracja" element={<Register />} />
         <Route path="/subskrypcja" element={<Sub />} />
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
         <Route path="/kontakt" element={<Contact />} />
-
         <Route path="/moje-konto" element={<HomeAdmin />} />
 
         <Route path="/krok-1" element={<StepOne />} />
