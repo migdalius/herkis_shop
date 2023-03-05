@@ -46,15 +46,21 @@ const List = styled.ul`
 
 const Logo = styled.img`
   width: 140px;
-
   margin-right: 30px;
   animation-name: ${breatheAnimation};
   animation-duration: 3s;
   animation-fill-mode: forwards;
+  @media (max-width: 960px) {
+    width: 110px;
+    margin-right: 15px;
+  }
 `;
 const ListItem = styled.li`
   color: #fff;
   cursor: pointer;
+  @media (max-width: 1115px) {
+    font-size: 16px;
+  }
 `;
 
 const ContentWrapper = styled.div`

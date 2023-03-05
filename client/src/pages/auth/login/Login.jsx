@@ -31,11 +31,24 @@ const Login = () => {
     width: 500px;
     height: 500px;
     background-color: #fff;
+
+    @media (max-width: 510px) {
+      width: 400px;
+      height: 400px;
+    }
+
+    @media (max-width: 415px) {
+      width: 300px;
+      height: 400px;
+    }
   `;
   const Wrap = styled.div`
     display: flex;
     flex-direction: column;
     margin: 60px;
+    @media (max-width: 415px) {
+      margin: 30px;
+    }
   `;
   const Title = styled.h3`
     font-size: 32px;
@@ -49,6 +62,12 @@ const Login = () => {
     border: 1px solid #bfbfbf;
     border-radius: 5px;
     padding: 10px;
+    @media (max-width: 510px) {
+      width: 300px;
+    }
+    @media (max-width: 415px) {
+      width: 220px;
+    }
   `;
 
   const AgreeTerms = styled.p`
@@ -68,6 +87,12 @@ const Login = () => {
     cursor: pointer;
     &:hover {
       background-color: #222;
+    }
+    @media (max-width: 510px) {
+      width: 300px;
+    }
+    @media (max-width: 415px) {
+      width: 200px;
     }
   `;
 

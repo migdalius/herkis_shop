@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   height: calc(100vh - 80px);
+  width: 100vw;
   position: relative;
 `;
 
@@ -26,6 +27,9 @@ const TextContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 60px;
+  @media (max-width: 1770px) {
+    width: 550px;
+  }
 `;
 
 const textAnimate = keyframes`
@@ -52,6 +56,9 @@ const TextTitle = styled.h1`
   animation-name: ${textAnimate};
   animation-duration: 3s;
   animation-fill-mode: forwards;
+  @media (max-width: 1595px) {
+    font-size: 46px;
+  }
 `;
 
 const TextSubtitle = styled.p`
@@ -61,6 +68,13 @@ const TextSubtitle = styled.p`
   animation-name: ${textAnimate};
   animation-duration: 3s;
   animation-fill-mode: forwards;
+  @media (max-width: 1770px) {
+    width: 550px;
+  }
+  @media (max-width: 1595px) {
+    font-size: 18px;
+    width: 500px;
+  }
 `;
 const ImgContainer = styled.div`
   display: flex;
@@ -71,6 +85,13 @@ const ImgContainer = styled.div`
   border-radius: 10px;
   position: absolute;
   left: 600px;
+  @media (max-width: 1770px) {
+    left: 500px;
+  }
+  @media (max-width: 1595px) {
+    width: 650px;
+    height: 650px;
+  }
 `;
 
 const breatheAnimation = keyframes`
@@ -84,26 +105,8 @@ const Img = styled.img`
   animation-name: ${breatheAnimation};
   animation-duration: 3s;
   animation-fill-mode: forwards;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: 30px;
-`;
-const ButtonFirst = styled.button`
-  padding: 20px 40px;
-  border: none;
-  color: #f3f3f3;
-  background-color: #ef4444;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-  &:hover {
-    background-color: #222;
-    transition: 0.5s;
+  @media (max-width: 1610px) {
+    width: 550px;
   }
 `;
 
@@ -119,15 +122,37 @@ const PriceContainer = styled.div`
   background-color: #f3f3f3;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  @media (max-width: 1770px) {
+    left: 620px;
+  }
+
+  @media (max-width: 1610px) {
+    width: 460px;
+    left: 640px;
+    top: 630px;
+  }
+
+  @media (max-width: 1595px) {
+    width: 460px;
+    left: 610px;
+    top: 600px;
+  }
 `;
 const Price = styled.div`
   margin-left: 50px;
   font-size: 26px;
+  @media (max-width: 1610px) {
+    margin-left: 10px;
+  }
 `;
 
 const ContainerDetail = styled.div`
   padding-left: 450px;
   margin-top: 350px;
+  @media (max-width: 1595px) {
+    padding-left: 400px;
+  }
 `;
 const Title = styled.h2`
   font-size: 30px;
@@ -137,6 +162,9 @@ const SubContaine = styled.div`
   display: flex;
   align-items: center;
   gap: 30px;
+  @media (max-width: 1560px) {
+    width: 400px;
+  }
 `;
 const Count = styled.p`
   font-size: 18px;
@@ -160,21 +188,23 @@ const DescInfo = styled.p`
   font-size: 14px;
 `;
 
-const spanRed = styled.p`
-  color: red;
-`;
-
 const StepWrapper = styled.div`
   width: 670px;
   display: flex;
   flex-direction: column;
 
   margin: 30px;
+  @media (max-width: 1505px) {
+    width: 300px;
+  }
 `;
 const Step = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+  @media (max-width: 1770px) {
+    width: 600px;
+  }
 `;
 const StepNumber = styled.h2`
   font-size: 35px;
@@ -184,6 +214,7 @@ const StepTitle = styled.p`
   font-size: 20px;
   color: #166534;
   font-weight: 600;
+  width: 150px;
 `;
 const StepDesc = styled.p`
   font-size: 18px;
