@@ -44,12 +44,14 @@ function App() {
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
         <Route path="/kontakt" element={<Contact />} />
 
+        <Route path="/moje-konto" element={<HomeAdmin />} />
+
         <Route path="/krok-1" element={<StepOne />} />
         <Route path="/krok-2" element={<StepTwo />} />
         <Route path="/krok-3" element={<StepThree />} />
         <Route path="/krok-4" element={<StepFour />} />
         <Route path="/lista-produktow/:id" element={<SingleProduct />} />
-        <Route path="/admin/dashboard" element={<HomeAdmin />} />
+
         <Route path="/admin/adres-dostawy" element={<AdressAdmin />} />
         <Route path="/admin/moje-zamowienia" element={<OrderAdmin />} />
         <Route path="/produkty" element={<ProductList />} />

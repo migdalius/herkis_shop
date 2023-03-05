@@ -1,11 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import Footer from "../../../components/footer/Footer";
-import Navigation from "../../../components/nav/Navigation";
 
 import AdminSidebar from "../../../components/adminsidebar/AdminSidebar";
 import OrderProduct from "../../../components/orderproduct/OrderProduct";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import TopNav from "../../../components/topNav/TopNav";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -16,7 +16,7 @@ const BackgroundContainer = styled.div`
 const MainContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: 1920px;
+  width: 100vw;
   height: 100vh;
   margin-left: 5%;
   margin-right: 5%;
@@ -26,13 +26,13 @@ const MainContainer = styled.div`
 `;
 
 const LeftContainer = styled.div`
-  width: 12%;
+  width: 300px;
   height: 350px;
   background-color: #fff;
 `;
 
 const CenterContainer = styled.div`
-  width: 45%;
+  width: 900px;
   height: 500px;
   background-color: #fff;
 `;
@@ -107,7 +107,7 @@ const OrderAdmin = () => {
   return (
     <div className="app">
       <BackgroundContainer>
-        <Navigation />
+        <TopNav />
         <MainContainer>
           <LeftContainer>
             <AdminSidebar />
@@ -115,7 +115,7 @@ const OrderAdmin = () => {
           <CenterContainer>
             <AdminCenterContainer>
               <AdminTextContainer>
-                <AdminTextTitle>Moje Zakupy</AdminTextTitle>
+                <AdminTextTitle>Moje Subskrypcje</AdminTextTitle>
               </AdminTextContainer>
               <ProductContainer>
                 <OrderProduct />

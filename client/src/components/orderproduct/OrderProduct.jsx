@@ -22,6 +22,8 @@ const ProductSum = styled.div`
 `;
 const DeliveryTitle = styled.p`
   font-size: 14px;
+  color: green;
+  font-weight: 600;
 `;
 
 const ProductImage = styled.img`
@@ -40,12 +42,28 @@ const DContainer = styled.div`
 const DeliverTime = styled.p`
   font-size: 14px;
 `;
+
+const WrapButton = styled.div`
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+`;
+const Button = styled.button`
+  width: 200px;
+  height: 40px;
+  border: none;
+  background-color: #ef4444;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+`;
 const OrderProduct = () => {
   return (
     <Container>
       <DContainer>
         <DeliveryStage>
-          <DeliveryTitle>Przesyłka odebrana</DeliveryTitle>
+          <DeliveryTitle>Subskrypcja aktywna</DeliveryTitle>
           <BoxSeam color="#222" size={20} />
         </DeliveryStage>
         <DeliverTime>15 sie 2022, 14:20</DeliverTime>
@@ -62,6 +80,9 @@ const OrderProduct = () => {
         <AllProductTitle>Razem z darmową dostawą</AllProductTitle>
         <AllProductSum>49,98 zł</AllProductSum>
       </ProductSum>
+      <WrapButton>
+        <Button>Anuluj Subskrypcje</Button>
+      </WrapButton>
     </Container>
   );
 };

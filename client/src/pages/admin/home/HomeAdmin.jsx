@@ -1,10 +1,11 @@
 import styled, { keyframes } from "styled-components";
 import Footer from "../../../components/footer/Footer";
-import Navigation from "../../../components/nav/Navigation";
+
 import { Bag, Cart, DoorClosed, Truck } from "react-bootstrap-icons";
 import AdminSidebar from "../../../components/adminsidebar/AdminSidebar";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import TopNav from "../../../components/topNav/TopNav";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -15,7 +16,7 @@ const BackgroundContainer = styled.div`
 const MainContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: 1920px;
+  width: 100vw;
   height: 100vh;
   margin-left: 5%;
   margin-right: 5%;
@@ -25,13 +26,13 @@ const MainContainer = styled.div`
 `;
 
 const LeftContainer = styled.div`
-  width: 12%;
+  width: 300px;
   height: 350px;
   background-color: #fff;
 `;
 
 const CenterContainer = styled.div`
-  width: 40%;
+  width: 900px;
   height: 500px;
   background-color: #fff;
 `;
@@ -88,7 +89,7 @@ const HomeAdmin = () => {
   return (
     <div className="app">
       <BackgroundContainer>
-        <Navigation />
+        <TopNav />
         <MainContainer>
           <LeftContainer>
             <AdminSidebar />
@@ -107,33 +108,60 @@ const HomeAdmin = () => {
                 </AdminTextDesc>
               </AdminTextContainer>
               <AdminCartContener>
-                <Link to={"/admin/moje-zamowienia"}>
+                <Link
+                  to={"/admin/moje-zamowienia"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                    color: "#222",
+                  }}
+                >
                   <AdminCart>
                     <Ring>
-                      <Bag color="#0d9488" size={35} />
+                      <Bag color="#22c55e" size={35} />
                     </Ring>
                     <AdminCartTitle>Zamówienia</AdminCartTitle>
                   </AdminCart>
                 </Link>
-                <Link to={"/admin/adres-dostawy"}>
+                <Link
+                  to={"/admin/adres-dostawy"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                    color: "#222",
+                  }}
+                >
                   <AdminCart>
                     <Ring>
-                      <Truck color="#0d9488" size={35} />
+                      <Truck color="#22c55e" size={35} />
                     </Ring>
                     <AdminCartTitle>Adres dostawy</AdminCartTitle>
                   </AdminCart>
                 </Link>
-                <Link to={"/koszyk"}>
+                <Link
+                  to={"/koszyk"}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "5px",
+                    textDecoration: "none",
+                    color: "#222",
+                  }}
+                >
                   <AdminCart>
                     <Ring>
-                      <Cart color="#0d9488" size={35} />
+                      <Cart color="#22c55e" size={35} />
                     </Ring>
                     <AdminCartTitle>Koszyk Zakupów</AdminCartTitle>
                   </AdminCart>
                 </Link>
                 <AdminCart>
                   <Ring>
-                    <DoorClosed color="#0d9488" size={35} />
+                    <DoorClosed color="#22c55e" size={35} />
                   </Ring>
                   <AdminCartTitle>Wyloguj</AdminCartTitle>
                 </AdminCart>

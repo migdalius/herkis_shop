@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import AdminSidebar from "../../../components/adminsidebar/AdminSidebar";
 import Footer from "../../../components/footer/Footer";
-import Navigation from "../../../components/nav/Navigation";
+import TopNav from "../../../components/topNav/TopNav";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -12,7 +12,7 @@ const BackgroundContainer = styled.div`
 const MainContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: 1920px;
+  width: 100vw;
   height: 100vh;
   margin-left: 5%;
   margin-right: 5%;
@@ -22,14 +22,14 @@ const MainContainer = styled.div`
 `;
 
 const LeftContainer = styled.div`
-  width: 12%;
+  width: 300px;
   height: 350px;
   background-color: #fff;
 `;
 
 const CenterContainer = styled.div`
-  width: 40%;
-  height: 800px;
+  width: 900px;
+  height: 550px;
   background-color: #fff;
 `;
 
@@ -56,6 +56,7 @@ const InputContainer = styled.input`
   border-radius: 3px;
   height: 40px;
   width: 250px;
+  margin-top: 5px;
 `;
 
 const InputSubmit = styled.input`
@@ -63,7 +64,7 @@ const InputSubmit = styled.input`
   align-items: center;
   justify-content: center;
   border: none;
-  background-color: #14b8a6;
+  background-color: #22c55e;
   border-radius: 3px;
   height: 40px;
   width: 250px;
@@ -78,7 +79,7 @@ const AdressAdmin = () => {
   return (
     <div className="app">
       <BackgroundContainer>
-        <Navigation />
+        <TopNav />
         <MainContainer>
           <LeftContainer>
             <AdminSidebar />
@@ -89,40 +90,24 @@ const AdressAdmin = () => {
                 <AdminTextTitle>Adres Dostawy</AdminTextTitle>
                 <FormContainer>
                   <LabelContainer>
-                    *Imię:
+                    Imię i Nazwisko:
                     <InputContainer type="text" name="name" />
                   </LabelContainer>
                   <LabelContainer>
-                    *Nazwisko:
+                    Adres Dostawy:
                     <InputContainer type="text" name="lastName" />
                   </LabelContainer>
                   <LabelContainer>
-                    *Telefon:
+                    Kod Pocztowy:
                     <InputContainer type="text" name="phone" />
                   </LabelContainer>
                   <LabelContainer>
-                    Nazwa firmy:
+                    Miasto:
                     <InputContainer type="text" name="company" />
                   </LabelContainer>
                   <LabelContainer>
-                    NIP:
+                    Numer Telefonu:
                     <InputContainer type="text" name="nip" />
-                  </LabelContainer>
-                  <LabelContainer>
-                    *Ulica i nr domu:
-                    <InputContainer type="text" name="street" />
-                  </LabelContainer>
-                  <LabelContainer>
-                    *Kod pocztowy:
-                    <InputContainer type="text" name="zip" />
-                  </LabelContainer>
-                  <LabelContainer>
-                    *Miasto:
-                    <InputContainer type="text" name="city" />
-                  </LabelContainer>
-                  <LabelContainer>
-                    Kraj:
-                    <InputContainer type="text" name="country" />
                   </LabelContainer>
                   <InputSubmit type="submit" value="Zapisz" />
                 </FormContainer>
