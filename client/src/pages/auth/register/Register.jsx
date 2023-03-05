@@ -31,6 +31,12 @@ const Register = () => {
     width: 500px;
     height: auto;
     background-color: #fff;
+    @media (max-width: 510px) {
+      width: 400px;
+    }
+    @media (max-width: 410px) {
+      width: 300px;
+    }
   `;
   const Wrap = styled.div`
     display: flex;
@@ -49,6 +55,12 @@ const Register = () => {
     border: 1px solid #bfbfbf;
     border-radius: 5px;
     padding: 10px;
+    @media (max-width: 510px) {
+      width: 300px;
+    }
+    @media (max-width: 410px) {
+      width: 200px;
+    }
   `;
 
   const AgreeTerms = styled.p`
@@ -67,6 +79,12 @@ const Register = () => {
     cursor: pointer;
     &:hover {
       background-color: #222;
+    }
+    @media (max-width: 510px) {
+      width: 300px;
+    }
+    @media (max-width: 410px) {
+      width: 200px;
     }
   `;
 
