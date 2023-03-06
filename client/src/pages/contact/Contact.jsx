@@ -22,15 +22,47 @@ const Container = styled.div`
   height: 700px;
   background-color: #fff;
   border-radius: 10px 0px 0px 10px;
+  @media (max-width: 1015px) {
+    width: 800px;
+  }
+  @media (max-width: 815px) {
+    width: 700px;
+  }
+  @media (max-width: 715px) {
+    width: 600px;
+  }
+  @media (max-width: 615px) {
+    width: 500px;
+  }
+  @media (max-width: 515px) {
+    width: 400px;
+  }
+  @media (max-width: 415px) {
+    width: 300px;
+  }
 `;
 
 const FormContainer = styled.div`
   display: flex;
   width: 1000px;
+  @media (max-width: 615px) {
+    width: 600px;
+  }
+  @media (max-width: 515px) {
+    width: 390px;
+  }
+  @media (max-width: 415px) {
+    width: 290px;
+  }
 `;
 
 const Wrap = styled.div`
   width: 50%;
+  @media (max-width: 615px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const Img = styled.img`
@@ -38,6 +70,9 @@ const Img = styled.img`
   width: 100%;
   object-fit: cover;
   border-radius: 10px 0px 0px 10px;
+  @media (max-width: 615px) {
+    display: none;
+  }
 `;
 
 const Title = styled.h3`
@@ -48,6 +83,22 @@ const Desc = styled.p`
   padding-top: 15px;
   width: 350px;
   font-size: 16px;
+  @media (max-width: 815px) {
+    width: 300px;
+  }
+  @media (max-width: 715px) {
+    width: 250px;
+  }
+  @media (max-width: 615px) {
+    width: 400px;
+    margin: 10px;
+  }
+  @media (max-width: 515px) {
+    width: 350px;
+  }
+  @media (max-width: 415px) {
+    width: 270px;
+  }
 `;
 const FormText = styled.div`
   display: flex;
@@ -55,12 +106,24 @@ const FormText = styled.div`
 
   flex-direction: column;
   margin: 20px;
+  @media (max-width: 615px) {
+    margin: 0;
+  }
+  @media (max-width: 515px) {
+    margin-left: 15px;
+  }
+  @media (max-width: 415px) {
+    margin-left: 0px;
+  }
 `;
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   margin: 20px;
+  @media (max-width: 415px) {
+    width: 270px;
+  }
 `;
 const Input = styled.input`
   width: 350px;
@@ -68,6 +131,22 @@ const Input = styled.input`
   border-radius: 5px;
   border: 1px solid #ddd;
   padding: 10px;
+  @media (max-width: 815px) {
+    width: 300px;
+    margin-left: 10px;
+  }
+  @media (max-width: 715px) {
+    width: 250px;
+  }
+  @media (max-width: 615px) {
+    width: 400px;
+  }
+  @media (max-width: 515px) {
+    width: 350px;
+  }
+  @media (max-width: 415px) {
+    width: 270px;
+  }
 
   &:focus {
     outline: none !important;
@@ -86,6 +165,22 @@ const Textarea = styled.textarea`
     border-color: #22c55e;
   }
   padding: 10px;
+  @media (max-width: 815px) {
+    width: 300px;
+    margin-left: 10px;
+  }
+  @media (max-width: 715px) {
+    width: 250px;
+  }
+  @media (max-width: 615px) {
+    width: 400px;
+  }
+  @media (max-width: 515px) {
+    width: 350px;
+  }
+  @media (max-width: 415px) {
+    width: 270px;
+  }
 `;
 const Label = styled.label`
   color: #6b7284;
@@ -93,6 +188,10 @@ const Label = styled.label`
   width: 350px;
   height: 40px;
   border-radius: 5px;
+  @media (max-width: 815px) {
+    width: 300px;
+    margin-left: 10px;
+  }
 `;
 
 const Button = styled.button`
@@ -106,6 +205,22 @@ const Button = styled.button`
 
   &:hover {
     background-color: #222;
+  }
+  @media (max-width: 815px) {
+    width: 300px;
+    margin-left: 10px;
+  }
+  @media (max-width: 715px) {
+    width: 250px;
+  }
+  @media (max-width: 615px) {
+    width: 400px;
+  }
+  @media (max-width: 515px) {
+    width: 350px;
+  }
+  @media (max-width: 415px) {
+    width: 270px;
   }
 `;
 const Contact = () => {
