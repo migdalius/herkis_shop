@@ -21,6 +21,27 @@ const Container = styled.div`
   width: 1200px;
   height: auto;
   background-color: #fff;
+  @media (max-width: 1215px) {
+    width: 900px;
+  }
+  @media (max-width: 915px) {
+    width: 700px;
+  }
+  @media (max-width: 715px) {
+    width: 600px;
+  }
+  @media (max-width: 615px) {
+    width: 500px;
+  }
+  @media (max-width: 515px) {
+    width: 400px;
+  }
+  @media (max-width: 415px) {
+    width: 350px;
+  }
+  @media (max-width: 360px) {
+    width: 300px;
+  }
 `;
 
 const Wrap = styled.div`
@@ -37,13 +58,26 @@ const TitleSection = styled.h2`
 `;
 const TextWrap = styled.div`
   display: flex;
+  @media (max-width: 915px) {
+    flex-direction: column-reverse;
+  }
 `;
-const ImgWrap = styled.img`
+const ImgWrap = styled.div`
   width: 50%;
+  @media (max-width: 915px) {
+    width: 100%;
+  }
+`;
+
+const Img = styled.img`
+  width: 100%;
 `;
 const DescWrap = styled.div`
   margin: 10px;
   width: 50%;
+  @media (max-width: 915px) {
+    width: 100%;
+  }
 `;
 const Desc = styled.p`
   padding-top: 10px;
@@ -101,12 +135,16 @@ const Work = () => {
                     się żadne informacje, jaka roślina znajduje się w zestawie.
                   </Desc>
                 </DescWrap>
-                <ImgWrap src="../img/zestaw-do-uprawy-1.png" />
+                <ImgWrap>
+                  <Img src="../img/zestaw-do-uprawy-1.png" />
+                </ImgWrap>
               </TextWrap>
             </TextContainer>
             <TextContainer>
               <TextWrap>
-                <ImgWrap src="../img/zestaw-do-uprawy-2.png" />
+                <ImgWrap>
+                  <Img src="../img/zestaw-do-uprawy-2.png" />
+                </ImgWrap>
                 <DescWrap>
                   <SubTitle>Zestaw do uprawy dla dziecka</SubTitle>
                   <Desc>
@@ -160,12 +198,16 @@ const Work = () => {
                     pomożemy w ratowaniu sadzonki.
                   </Desc>
                 </DescWrap>
-                <ImgWrap src="../img/zestaw-do-uprawy-3.png" />
+                <ImgWrap>
+                  <Img src="../img/zestaw-do-uprawy-3.png" />
+                </ImgWrap>
               </TextWrap>
             </TextContainer>
             <TextContainer>
               <TextWrap>
-                <ImgWrap src="../img/zestawy-do-uprawy-4.png" />
+                <ImgWrap>
+                  <Img src="../img/zestawy-do-uprawy-4.png" />
+                </ImgWrap>
                 <DescWrap>
                   <TitleSection>Testowanie zestawów do uprawy</TitleSection>
                   <Desc>

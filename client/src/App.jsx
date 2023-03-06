@@ -42,6 +42,7 @@ function App() {
         <Route path="/logowanie" element={<Login />} />
         {/* RWD */}
         <Route path="/rejestracja" element={<Register />} />
+        {/* RWD */}
         <Route path="/subskrypcja" element={<Sub />} />
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
         <Route path="/kontakt" element={<Contact />} />
