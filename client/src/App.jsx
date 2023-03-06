@@ -44,8 +44,11 @@ function App() {
         <Route path="/rejestracja" element={<Register />} />
         {/* RWD */}
         <Route path="/subskrypcja" element={<Sub />} />
+        {/* RWD */}
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
+        {/* RWD */}
         <Route path="/kontakt" element={<Contact />} />
+        {/* RWD */}
         <Route path="/moje-konto" element={<HomeAdmin />} />
 
         <Route path="/krok-1" element={<StepOne />} />

@@ -16,6 +16,12 @@ const ErrTitle = styled.h1`
 `;
 const ErrDesc = styled.p`
   font-size: 16px;
+  @media (max-width: 545px) {
+    width: 300px;
+  }
+  @media (max-width: 410px) {
+    width: 200px;
+  }
 `;
 const BackButton = styled.button`
   padding: 20px 40px;
