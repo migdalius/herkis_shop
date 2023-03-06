@@ -23,18 +23,66 @@ const MainContainer = styled.div`
   margin-top: 50px;
   gap: 10px;
   padding-bottom: 60px;
+  @media (max-width: 640px) {
+    flex-direction: column-reverse;
+    height: auto;
+  }
 `;
 
 const LeftContainer = styled.div`
   width: 300px;
   height: 350px;
   background-color: #fff;
+  @media (max-width: 1370px) {
+    width: 250px;
+  }
+  @media (max-width: 1090px) {
+    width: 200px;
+  }
+  @media (max-width: 815px) {
+    width: 150px;
+  }
+  @media (max-width: 640px) {
+    width: 500px;
+  }
+  @media (max-width: 535px) {
+    width: 400px;
+  }
+  @media (max-width: 430px) {
+    width: 300px;
+  }
 `;
 
 const CenterContainer = styled.div`
   width: 900px;
   height: 500px;
   background-color: #fff;
+  @media (max-width: 1370px) {
+    width: 800px;
+  }
+  @media (max-width: 1205px) {
+    width: 700px;
+  }
+  @media (max-width: 1090px) {
+    width: 600px;
+  }
+  @media (max-width: 925px) {
+    width: 500px;
+    height: 600px;
+  }
+  @media (max-width: 815px) {
+    width: 400px;
+  }
+  @media (max-width: 640px) {
+    width: 500px;
+  }
+  @media (max-width: 535px) {
+    width: 400px;
+  }
+  @media (max-width: 430px) {
+    width: 300px;
+    height: auto;
+  }
 `;
 
 const AdminCenterContainer = styled.div``;
@@ -48,6 +96,10 @@ const AdminCart = styled.div`
   background-color: #ddd;
   border-radius: 5px;
   cursor: pointer;
+  @media (max-width: 430px) {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 const AdminCartTitle = styled.h3`
@@ -71,6 +123,15 @@ const AdminCartContener = styled.div`
   grid-template-rows: 200px 200px;
   grid-template-columns: 200px 200px 200px;
   margin: 20px;
+  @media (max-width: 925px) {
+    grid-template-rows: 200px 200px 200px;
+    grid-template-columns: 200px 200px;
+  }
+  @media (max-width: 430px) {
+    grid-template-rows: 250px 250px 250px 250px;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 `;
 
 const Ring = styled.div`
@@ -111,9 +172,6 @@ const HomeAdmin = () => {
                 <Link
                   to={"/admin/moje-zamowienia"}
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
                     textDecoration: "none",
                     color: "#222",
                   }}
@@ -128,9 +186,6 @@ const HomeAdmin = () => {
                 <Link
                   to={"/admin/adres-dostawy"}
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
                     textDecoration: "none",
                     color: "#222",
                   }}
@@ -145,9 +200,6 @@ const HomeAdmin = () => {
                 <Link
                   to={"/koszyk"}
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
                     textDecoration: "none",
                     color: "#222",
                   }}
