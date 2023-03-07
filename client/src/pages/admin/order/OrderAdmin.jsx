@@ -23,18 +23,56 @@ const MainContainer = styled.div`
   margin-top: 50px;
   gap: 10px;
   padding-bottom: 60px;
+  @media (max-width: 815px) {
+    flex-direction: column-reverse;
+    height: auto;
+  }
 `;
 
 const LeftContainer = styled.div`
   width: 300px;
   height: 350px;
   background-color: #fff;
+  @media (max-width: 1050px) {
+    width: 200px;
+  }
+  @media (max-width: 815px) {
+    width: 300px;
+  }
 `;
 
 const CenterContainer = styled.div`
   width: 900px;
   height: 500px;
   background-color: #fff;
+  @media (max-width: 1375px) {
+    width: 800px;
+  }
+  @media (max-width: 1260px) {
+    width: 700px;
+  }
+  @media (max-width: 1150px) {
+    width: 600px;
+  }
+  @media (max-width: 920px) {
+    width: 500px;
+  }
+  @media (max-width: 815px) {
+    width: 700px;
+  }
+  @media (max-width: 750px) {
+    width: 600px;
+  }
+  @media (max-width: 640px) {
+    width: 500px;
+  }
+  @media (max-width: 535px) {
+    width: 400px;
+  }
+  @media (max-width: 430px) {
+    width: 370px;
+    height: auto;
+  }
 `;
 
 const AdminCenterContainer = styled.div``;
@@ -88,6 +126,12 @@ const ProductContainer = styled.div`
   margin: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  @media (max-width: 535px) {
+    width: 370px;
+  }
+  @media (max-width: 430px) {
+    border: none;
+  }
 `;
 
 const OrderAdmin = () => {

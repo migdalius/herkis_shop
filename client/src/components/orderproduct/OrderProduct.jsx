@@ -1,6 +1,13 @@
 import styled, { keyframes } from "styled-components";
 import { BoxSeam } from "react-bootstrap-icons";
-const Container = styled.div``;
+const Container = styled.div`
+  @media (max-width: 535px) {
+    width: 300px;
+  }
+  @media (max-width: 430px) {
+    width: 160px;
+  }
+`;
 const DeliveryStage = styled.div`
   display: flex;
   gap: 20px;
