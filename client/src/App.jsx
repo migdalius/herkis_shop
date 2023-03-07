@@ -33,8 +33,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* RWD */}
         <Route path="*" element={<Err404 />} />
         <Route path="/" element={<Home />} />
+        {/* RWD */}
         <Route path="/koszyk" element={<Cart />} />
         <Route path="/dostawa" element={<Delivery />} />
         <Route path="/platnosc" element={<Pay />} />
