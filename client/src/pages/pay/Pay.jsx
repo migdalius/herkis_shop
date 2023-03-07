@@ -36,6 +36,15 @@ const NavigationContainer = styled.div`
   align-items: center;
   margin-top: 50px;
   width: 600px;
+  @media (max-width: 625px) {
+    width: 500px;
+  }
+  @media (max-width: 515px) {
+    width: 400px;
+  }
+  @media (max-width: 420px) {
+    width: 300px;
+  }
 `;
 
 const NavItem = styled.div`
@@ -64,6 +73,9 @@ const BodyContainer = styled.div`
   display: flex;
   gap: 20px;
   margin-top: 40px;
+  @media (max-width: 710px) {
+    flex-direction: column;
+  }
 `;
 const CartContainer = styled.div`
   width: 670px;
@@ -72,6 +84,27 @@ const CartContainer = styled.div`
   background-color: #fff;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  @media (max-width: 1080px) {
+    width: 600px;
+  }
+  @media (max-width: 935px) {
+    width: 500px;
+  }
+  @media (max-width: 835px) {
+    width: 400px;
+  }
+  @media (max-width: 710px) {
+    width: 600px;
+  }
+  @media (max-width: 625px) {
+    width: 500px;
+  }
+  @media (max-width: 515px) {
+    width: 400px;
+  }
+  @media (max-width: 420px) {
+    width: 300px;
+  }
 `;
 const PriceContainer = styled.div`
   width: 370px;
@@ -80,11 +113,29 @@ const PriceContainer = styled.div`
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 20px;
+  @media (max-width: 1080px) {
+    width: 300px;
+  }
+  @media (max-width: 835px) {
+    width: 270px;
+  }
+  @media (max-width: 710px) {
+    width: 400px;
+  }
+  @media (max-width: 515px) {
+    width: 300px;
+  }
+  @media (max-width: 420px) {
+    width: 200px;
+  }
 `;
 const Wrapper = styled.div``;
 const Title = styled.h2`
   font-size: 34px;
   margin-bottom: 20px;
+  @media (max-width: 515px) {
+    font-size: 28px;
+  }
 `;
 
 const FormContainer = styled.form`
@@ -168,6 +219,9 @@ const NextButton = styled.button`
   color: #fff;
   cursor: pointer;
   font-size: 15px;
+  @media (max-width: 420px) {
+    margin-top: 20px;
+  }
 `;
 const Span = styled.p`
   font-size: 12px;
@@ -249,6 +303,24 @@ const Input = styled.input`
   height: 40px;
   padding: 10px;
   border: none;
+  @media (max-width: 935px) {
+    width: 400px;
+  }
+  @media (max-width: 835px) {
+    width: 300px;
+  }
+  @media (max-width: 710px) {
+    width: 450px;
+  }
+  @media (max-width: 625px) {
+    width: 400px;
+  }
+  @media (max-width: 515px) {
+    width: 300px;
+  }
+  @media (max-width: 420px) {
+    width: 200px;
+  }
 
   &:focus {
     outline: none !important;
@@ -263,6 +335,24 @@ const InputHolder = styled.div`
   border-radius: 5px;
   padding: 10px;
   width: 550px;
+  @media (max-width: 935px) {
+    width: 440px;
+  }
+  @media (max-width: 835px) {
+    width: 340px;
+  }
+  @media (max-width: 710px) {
+    width: 500px;
+  }
+  @media (max-width: 625px) {
+    width: 400px;
+  }
+  @media (max-width: 515px) {
+    width: 300px;
+  }
+  @media (max-width: 420px) {
+    width: 250px;
+  }
 `;
 
 const InputWrapper = styled.div`
@@ -277,6 +367,24 @@ const SingleInput = styled.input`
   height: 60px;
   padding: 10px;
   width: 260px;
+  @media (max-width: 935px) {
+    width: 180px;
+  }
+  @media (max-width: 835px) {
+    width: 130px;
+  }
+  @media (max-width: 710px) {
+    width: 210px;
+  }
+  @media (max-width: 625px) {
+    width: 160px;
+  }
+  @media (max-width: 515px) {
+    width: 110px;
+  }
+  @media (max-width: 420px) {
+    width: 80px;
+  }
 
   &:focus {
     outline: none !important;
@@ -296,6 +404,24 @@ const SecondInput = styled.input`
   height: 40px;
   padding: 10px;
   width: 260px;
+  @media (max-width: 935px) {
+    width: 180px;
+  }
+  @media (max-width: 835px) {
+    width: 130px;
+  }
+  @media (max-width: 710px) {
+    width: 210px;
+  }
+  @media (max-width: 625px) {
+    width: 160px;
+  }
+  @media (max-width: 515px) {
+    width: 110px;
+  }
+  @media (max-width: 420px) {
+    width: 95px;
+  }
 
   &:focus {
     outline: none !important;
@@ -332,6 +458,9 @@ const SecondAlertDec = styled.p`
   height: 120px;
   background-color: #f3fbfd;
   padding: 20px;
+  @media (max-width: 420px) {
+    margin-top: 20px;
+  }
 `;
 
 const Pay = () => {
