@@ -35,6 +35,18 @@ const NavigationContainer = styled.div`
   align-items: center;
   margin-top: 50px;
   width: 600px;
+  @media (max-width: 620px) {
+    width: 500px;
+  }
+  @media (max-width: 620px) {
+    width: 400px;
+  }
+  @media (max-width: 420px) {
+    width: 350px;
+  }
+  @media (max-width: 360px) {
+    width: 300px;
+  }
 `;
 
 const NavItem = styled.div`
@@ -63,6 +75,10 @@ const BodyContainer = styled.div`
   display: flex;
   gap: 20px;
   margin-top: 40px;
+  @media (max-width: 740px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const CartContainer = styled.div`
   width: 670px;
@@ -71,6 +87,30 @@ const CartContainer = styled.div`
   background-color: #fff;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  @media (max-width: 1090px) {
+    width: 600px;
+  }
+  @media (max-width: 940px) {
+    width: 500px;
+  }
+  @media (max-width: 835px) {
+    width: 400px;
+  }
+  @media (max-width: 740px) {
+    width: 600px;
+  }
+  @media (max-width: 620px) {
+    width: 500px;
+  }
+  @media (max-width: 525px) {
+    width: 400px;
+  }
+  @media (max-width: 420px) {
+    width: 350px;
+  }
+  @media (max-width: 360px) {
+    width: 300px;
+  }
 `;
 const PriceContainer = styled.div`
   width: 370px;
@@ -79,11 +119,23 @@ const PriceContainer = styled.div`
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 20px;
+  @media (max-width: 1090px) {
+    width: 300px;
+  }
+  @media (max-width: 740px) {
+    width: 400px;
+  }
+  @media (max-width: 420px) {
+    width: 300px;
+  }
 `;
 const Wrapper = styled.div``;
 const Title = styled.h2`
   font-size: 34px;
   margin-bottom: 20px;
+  @media (max-width: 360px) {
+    font-size: 28px;
+  }
 `;
 
 const FormContainer = styled.form`
@@ -205,6 +257,27 @@ const Input = styled.input`
   width: 600px;
   height: 45px;
   padding: 10px;
+  @media (max-width: 1090px) {
+    width: 500px;
+  }
+  @media (max-width: 940px) {
+    width: 400px;
+  }
+  @media (max-width: 835px) {
+    width: 300px;
+  }
+  @media (max-width: 740px) {
+    width: 400px;
+  }
+  @media (max-width: 620px) {
+    width: 300px;
+  }
+  @media (max-width: 420px) {
+    width: 250px;
+  }
+  @media (max-width: 360px) {
+    width: 220px;
+  }
 
   &:focus {
     outline: none !important;

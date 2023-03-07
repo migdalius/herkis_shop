@@ -38,6 +38,7 @@ function App() {
         <Route path="/" element={<Home />} />
         {/* RWD */}
         <Route path="/koszyk" element={<Cart />} />
+        {/* RWD */}
         <Route path="/dostawa" element={<Delivery />} />
         <Route path="/platnosc" element={<Pay />} />
         {/* RWD */}
