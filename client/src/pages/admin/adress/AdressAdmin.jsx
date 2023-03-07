@@ -19,18 +19,64 @@ const MainContainer = styled.div`
   margin-top: 50px;
   gap: 10px;
   padding-bottom: 60px;
+  @media (max-width: 540px) {
+    flex-direction: column-reverse;
+    height: auto;
+    gap: 30px;
+  }
 `;
 
 const LeftContainer = styled.div`
   width: 300px;
   height: 350px;
   background-color: #fff;
+  @media (max-width: 1150px) {
+    width: 200px;
+  }
+  @media (max-width: 600px) {
+    width: 150px;
+  }
+  @media (max-width: 540px) {
+    width: 400px;
+  }
+  @media (max-width: 430px) {
+    width: 300px;
+  }
+  @media (max-width: 330px) {
+    width: 275px;
+  }
 `;
 
 const CenterContainer = styled.div`
   width: 900px;
   height: 550px;
   background-color: #fff;
+  @media (max-width: 1380px) {
+    width: 700px;
+  }
+  @media (max-width: 1150px) {
+    width: 600px;
+  }
+  @media (max-width: 930px) {
+    width: 500px;
+  }
+  @media (max-width: 815px) {
+    width: 400px;
+  }
+  @media (max-width: 715px) {
+    width: 300px;
+    height: 600px;
+  }
+  @media (max-width: 540px) {
+    width: 400px;
+    height: auto;
+  }
+  @media (max-width: 430px) {
+    width: 300px;
+  }
+  @media (max-width: 330px) {
+    width: 275px;
+  }
 `;
 
 const AdminCenterContainer = styled.div``;

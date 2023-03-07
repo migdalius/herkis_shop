@@ -54,22 +54,21 @@ function App() {
         <Route path="/kontakt" element={<Contact />} />
         {/* RWD */}
         <Route path="/moje-konto" element={<HomeAdmin />} />
+        {/* RWD */}
+        <Route path="/moje-konto/adres-dostawy" element={<AdressAdmin />} />
+        <Route path="/moje-konto/moje-zamowienia" element={<OrderAdmin />} />
 
         <Route path="/krok-1" element={<StepOne />} />
         <Route path="/krok-2" element={<StepTwo />} />
         <Route path="/krok-3" element={<StepThree />} />
         <Route path="/krok-4" element={<StepFour />} />
         <Route path="/lista-produktow/:id" element={<SingleProduct />} />
-
-        <Route path="/admin/adres-dostawy" element={<AdressAdmin />} />
-        <Route path="/admin/moje-zamowienia" element={<OrderAdmin />} />
         <Route path="/produkty" element={<ProductList />} />
         <Route
           path="/auth/logowanie"
           element={user ? <Navigate to="/" /> : <Login />}
         />
         <Route path="/auth/rejestracja" element={<Register />} />
-
         <Route path="/lista-produktow/wszystkie" element={<AllProduct />} />
         <Route path="/koszyk/pusty" element={<CartEmpty />} />
 
