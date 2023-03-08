@@ -6,17 +6,29 @@ const Container = styled.div`
   height: calc(100vh - 80px);
   width: 100vw;
   position: relative;
+  @media (max-width: 940px) {
+    flex-direction: column;
+    height: auto;
+  }
 `;
 
 const LeftHero = styled.div`
   width: 50%;
   background-color: #22c55e;
   height: calc(100vh - 80px);
+  @media (max-width: 940px) {
+    height: auto;
+    width: 100%;
+  }
 `;
 const RightHero = styled.div`
   width: 50%;
   background-color: #fff;
   height: calc(100vh - 80px);
+  @media (max-width: 940px) {
+    height: auto;
+    width: 100%;
+  }
 `;
 
 const TextContainer = styled.div`
@@ -26,9 +38,26 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 60px;
+  margin: 30px;
   @media (max-width: 1770px) {
     width: 550px;
+  }
+  @media (max-width: 1595px) {
+    width: 450px;
+  }
+
+  @media (max-width: 1380px) {
+    width: 380px;
+  }
+  @media (max-width: 1305px) {
+    width: 300px;
+  }
+  @media (max-width: 1190px) {
+    width: 100px;
+  }
+  @media (max-width: 940px) {
+    width: 100%;
+    padding-top: 30px;
   }
 `;
 
@@ -59,6 +88,30 @@ const TextTitle = styled.h1`
   @media (max-width: 1595px) {
     font-size: 46px;
   }
+  @media (max-width: 1380px) {
+    font-size: 36px;
+  }
+  @media (max-width: 1305px) {
+    font-size: 30px;
+  }
+  @media (max-width: 1190px) {
+    display: none;
+  }
+  @media (max-width: 940px) {
+    display: block;
+    font-size: 46px;
+  }
+  @media (max-width: 825px) {
+    display: block;
+    font-size: 36px;
+  }
+  @media (max-width: 665px) {
+    font-size: 30px;
+  }
+  @media (max-width: 555px) {
+    font-size: 30px;
+    width: 400px;
+  }
 `;
 
 const TextSubtitle = styled.p`
@@ -73,7 +126,21 @@ const TextSubtitle = styled.p`
   }
   @media (max-width: 1595px) {
     font-size: 18px;
-    width: 500px;
+    width: 450px;
+  }
+  @media (max-width: 1380px) {
+    width: 380px;
+  }
+  @media (max-width: 1305px) {
+    width: 300px;
+  }
+  @media (max-width: 1190px) {
+    display: none;
+  }
+  @media (max-width: 940px) {
+    display: inline;
+    width: 80%;
+    font-size: 20px;
   }
 `;
 const ImgContainer = styled.div`
@@ -92,6 +159,31 @@ const ImgContainer = styled.div`
     width: 650px;
     height: 650px;
   }
+  @media (max-width: 1475px) {
+    left: 450px;
+  }
+  @media (max-width: 1380px) {
+    left: 350px;
+  }
+  @media (max-width: 1305px) {
+    left: 335px;
+    width: 500px;
+  }
+  @media (max-width: 1190px) {
+    width: 400px;
+    height: 350px;
+    left: 10px;
+    top: 15px;
+  }
+  @media (max-width: 940px) {
+    width: 400px;
+    height: 350px;
+    left: 400px;
+    top: 250px;
+  }
+  @media (max-width: 780px) {
+    display: none;
+  }
 `;
 
 const breatheAnimation = keyframes`
@@ -107,6 +199,15 @@ const Img = styled.img`
   animation-fill-mode: forwards;
   @media (max-width: 1610px) {
     width: 550px;
+  }
+  @media (max-width: 1610px) {
+    width: 500px;
+  }
+  @media (max-width: 1240px) {
+    width: 450px;
+  }
+  @media (max-width: 1190px) {
+    width: 400px;
   }
 `;
 
@@ -138,6 +239,28 @@ const PriceContainer = styled.div`
     left: 610px;
     top: 600px;
   }
+  @media (max-width: 1475px) {
+    left: 550px;
+  }
+  @media (max-width: 1380px) {
+    left: 450px;
+  }
+  @media (max-width: 1305px) {
+    left: 430px;
+  }
+  @media (max-width: 1305px) {
+    width: 420px;
+    left: 380px;
+    top: 570px;
+  }
+  @media (max-width: 1240px) {
+    left: 395px;
+    width: 375px;
+    top: 550px;
+  }
+  @media (max-width: 1190px) {
+    display: none;
+  }
 `;
 const Price = styled.div`
   margin-left: 50px;
@@ -145,13 +268,35 @@ const Price = styled.div`
   @media (max-width: 1610px) {
     margin-left: 10px;
   }
+  @media (max-width: 1305px) {
+    font-size: 20px;
+  }
+  @media (max-width: 1240px) {
+    font-size: 18px;
+  }
 `;
 
 const ContainerDetail = styled.div`
   padding-left: 450px;
   margin-top: 350px;
   @media (max-width: 1595px) {
-    padding-left: 400px;
+    padding-left: 450px;
+  }
+  @media (max-width: 1518px) {
+    padding-left: 500px;
+  }
+  @media (max-width: 1465px) {
+    padding-right: 30px;
+  }
+  @media (max-width: 1305px) {
+    padding-left: 450px;
+  }
+  @media (max-width: 940px) {
+    padding-left: 0px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 const Title = styled.h2`
@@ -182,6 +327,15 @@ const ContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media (max-width: 1369px) {
+    margin-right: 20px;
+  }
+  @media (max-width: 1345px) {
+    margin-right: 50px;
+  }
+  @media (max-width: 940px) {
+    margin: 50px;
+  }
 `;
 
 const DescInfo = styled.p`
@@ -192,37 +346,82 @@ const StepWrapper = styled.div`
   width: 670px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 1475px) {
+    width: 500px;
+  }
 
   margin: 30px;
   @media (max-width: 1505px) {
     width: 300px;
   }
+  @media (max-width: 1305px) {
+    margin: 55px;
+  }
+  @media (max-width: 1190px) {
+    margin-left: 55px;
+    margin-top: 150px;
+  }
+  @media (max-width: 780px) {
+    width: 100%;
+  }
 `;
 const Step = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   @media (max-width: 1770px) {
     width: 600px;
+  }
+  @media (max-width: 1475px) {
+    width: 500px;
+  }
+  @media (max-width: 1380px) {
+    width: 400px;
+  }
+  @media (max-width: 1305px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @media (max-width: 780px) {
+    flex-direction: row;
+    width: 70%;
   }
 `;
 const StepNumber = styled.h2`
   font-size: 35px;
   color: #14532d;
+  @media (max-width: 1305px) {
+    display: none;
+  }
+  @media (max-width: 780px) {
+    display: block;
+  }
 `;
 const StepTitle = styled.p`
   font-size: 20px;
   color: #166534;
   font-weight: 600;
   width: 150px;
+  @media (max-width: 1190px) {
+    width: 400px;
+  }
 `;
 const StepDesc = styled.p`
   font-size: 18px;
   color: #f3f3f3;
+  @media (max-width: 1305px) {
+    font-size: 16px;
+  }
+  @media (max-width: 780px) {
+    font-size: 18px;
+  }
 `;
 
 const Arrow = styled.img`
   width: 90px;
+  @media (max-width: 1305px) {
+    width: 60px;
+  }
 `;
 
 const PriceButton = styled.button`
@@ -239,6 +438,13 @@ const PriceButton = styled.button`
   &:hover {
     background-color: #222;
   }
+  @media (max-width: 1240px) {
+    font-size: 16px;
+  }
+  @media (max-width: 1190px) {
+    height: 70px;
+    border-radius: 10px;
+  }
 `;
 
 const PriceWrapper = styled.div`
@@ -246,9 +452,57 @@ const PriceWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  @media (max-width: 1240px) {
+    width: 70%;
+  }
 `;
-const Delivery = styled.p``;
+const Delivery = styled.p`
+  @media (max-width: 1240px) {
+    font-size: 14px;
+  }
+`;
+const ImgLowContainer = styled.div`
+  visibility: hidden;
+  @media (max-width: 780px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: auto;
+  }
+`;
+const ImgLow = styled.img`
+  visibility: hidden;
+  @media (max-width: 780px) {
+    visibility: visible;
+    width: 100%;
+    height: auto;
+  }
+`;
+const Tech = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+const SadButton = styled.button`
+  visibility: hidden;
 
+  @media (max-width: 1190px) {
+    visibility: visible;
+    border: none;
+    height: 90px;
+    border-radius: 10px 0px 0px 10px;
+    width: 100%;
+    background-color: #ef4444;
+    color: #fff;
+    font-size: 17px;
+    padding: 10px;
+
+    cursor: pointer;
+    &:hover {
+      background-color: #222;
+    }
+  }
+`;
 const Hero = () => {
   return (
     <Container>
@@ -260,6 +514,11 @@ const Hero = () => {
             uprawy wysyłany bezpośrednio do twojego domu lub paczkomatu.
           </TextSubtitle>
         </TextContainer>
+        <Tech>
+          <ImgLowContainer>
+            <ImgLow src="../img/product.png" />
+          </ImgLowContainer>
+        </Tech>
         <StepWrapper>
           <Step>
             <StepNumber>1</StepNumber>
@@ -330,6 +589,9 @@ const Hero = () => {
                 lub dodatkowego nawozu, w takich przypadkach dokładny skład
                 zestawu znajduje się w instrukcji.
               </DescInfo>
+              <Link to={"/subskrypcja"}>
+                <SadButton>Kup Subskrypcje</SadButton>
+              </Link>
             </ContainerWrapper>
           </ContainerDetail>
         </TextContainer>

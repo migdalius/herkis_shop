@@ -56,6 +56,7 @@ function App() {
         <Route path="/moje-konto" element={<HomeAdmin />} />
         {/* RWD */}
         <Route path="/moje-konto/adres-dostawy" element={<AdressAdmin />} />
+        {/* RWD */}
         <Route path="/moje-konto/moje-zamowienia" element={<OrderAdmin />} />
 
         <Route path="/krok-1" element={<StepOne />} />

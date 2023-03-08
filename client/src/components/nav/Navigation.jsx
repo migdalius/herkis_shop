@@ -13,6 +13,9 @@ const LeftNav = styled.div`
 const RightNav = styled.div`
   width: 50%;
   background-color: #fff;
+  @media (max-width: 940px) {
+    background-color: #22c55e;
+  }
 `;
 
 const MainNavContainer = styled.div`
