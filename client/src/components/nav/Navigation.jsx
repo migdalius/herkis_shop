@@ -1,7 +1,14 @@
 import styled, { keyframes } from "styled-components";
-import { ArrowRight, Basket3, BoxArrowInRight } from "react-bootstrap-icons";
+import {
+  ArrowRight,
+  Basket3,
+  BoxArrowInRight,
+  ListCheck,
+} from "react-bootstrap-icons";
 import img from "../../img/home/mask.jpg";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+import { useState } from "react";
 const Container = styled.div`
   display: flex;
 `;
@@ -22,6 +29,10 @@ const MainNavContainer = styled.div`
   margin: 20px;
   display: flex;
   justify-content: center;
+  @media (max-width: 1105px) {
+    margin: 20px;
+    margin-bottom: 40px;
+  }
 `;
 
 const VerticalHr = styled.div`
@@ -29,6 +40,9 @@ const VerticalHr = styled.div`
     props.white ? "1px solid #fff" : "1px solid #222"};
   width: 10px;
   height: 35px;
+  @media (max-width: 940px) {
+    border-left: 1px solid #fff;
+  }
 `;
 
 const breatheAnimation = keyframes`
@@ -45,6 +59,10 @@ const List = styled.ul`
   animation-name: ${breatheAnimation};
   animation-duration: 3s;
   animation-fill-mode: forwards;
+  @media (max-width: 1105px) {
+    margin-left: 15px;
+    gap: 15px;
+  }
 `;
 
 const Logo = styled.img`
@@ -78,19 +96,44 @@ const NavContainer = styled.div`
 
 const NavText = styled.p`
   color: #222;
-  @media (max-width: 905px) {
-    display: none;
+
+  @media (max-width: 940px) {
+    color: #fff;
   }
 `;
 
 const HeroContainer = styled.div``;
 
+const HamburgerMenu = styled.div`
+  display: none;
+
+  @media (max-width: 920px) {
+    display: block;
+    cursor: pointer;
+  }
+`;
+
+const Nav = styled.div`
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  @media (max-width: 1105px) {
+    margin: 20px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 920px) {
+    display: none;
+  }
+`;
+
 const Navigation = () => {
+  const [showNav, setShowNav] = useState(false);
+
   return (
     <>
       <Container>
         <LeftNav>
-          <MainNavContainer>
+          <Nav>
             <Link
               to={"/"}
               style={{
@@ -139,7 +182,10 @@ const Navigation = () => {
                 <ListItem>Kontakt</ListItem>
               </Link>
             </List>
-          </MainNavContainer>
+            <HamburgerMenu onClick={() => setShowNav(!showNav)}>
+              <Basket3 size={25} color={"#222"} />
+            </HamburgerMenu>
+          </Nav>
         </LeftNav>
         <RightNav>
           <MainNavContainer>
@@ -154,7 +200,7 @@ const Navigation = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <BoxArrowInRight size={25} color={"#22c55e"} />
+                  <BoxArrowInRight size={25} color={"#064e3b"} />
                   <NavText>Logowanie</NavText>
                 </Link>
               </ContentWrapper>
@@ -170,7 +216,7 @@ const Navigation = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <Basket3 size={25} color={"#22c55e"} />
+                  <Basket3 size={25} color={"#064e3b"} />
                   <NavText>Koszyk</NavText>
                 </Link>
               </ContentWrapper>

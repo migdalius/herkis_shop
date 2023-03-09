@@ -480,8 +480,12 @@ const ImgLow = styled.img`
   }
 `;
 const Tech = styled.div`
-  display: flex;
-  justify-content: center;
+  display: none;
+  @media (max-width: 780px) {
+    display: block;
+    display: flex;
+    justify-content: center;
+  }
 `;
 const SadButton = styled.button`
   visibility: hidden;
@@ -490,7 +494,7 @@ const SadButton = styled.button`
     visibility: visible;
     border: none;
     height: 90px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px;
     width: 100%;
     background-color: #ef4444;
     color: #fff;
