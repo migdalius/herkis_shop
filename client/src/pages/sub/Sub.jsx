@@ -5,6 +5,10 @@ import TopNav from "../../components/topNav/TopNav";
 import { Link } from "react-router-dom";
 
 import { Basket, Clock } from "react-bootstrap-icons";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addProduct } from "../../redux/cartRedux";
 
 const MainContainer = styled.div`
   height: auto;
@@ -244,6 +248,34 @@ const BigDescTitle = styled.p`
   margin: 10px;
 `;
 const Sub = () => {
+  const [product, setProduct] = useState({});
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
+
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:5000/api/products?category=week"
+        );
+        setProducts(res.data);
+      } catch (err) {}
+    };
+    getProducts();
+  }, []);
+
+  const handleClick = () => {
+    //update cart
+    dispatch(
+      addProduct({
+        ...product,
+        quantity,
+      })
+    );
+  };
+  console.log(products);
+
   return (
     <>
       <TopNav />
@@ -311,54 +343,24 @@ const Sub = () => {
             <PriceContainer>
               <PriceWrap>
                 <PriceTitle>Nowy zestaw co tydzień</PriceTitle>
-                <SubContainer>
-                  <LeftContainer>
-                    <TitleContainer>Miesięczny</TitleContainer>
-                    <TitleContainerPrice>
-                      234,95 zł / miesięcznie
-                    </TitleContainerPrice>
-                    <SubTitlePrice>Oszczędzasz 15 zł</SubTitlePrice>
-                  </LeftContainer>
-                  <RightContainer>
-                    <Button>Subskrybuj</Button>
-                  </RightContainer>
-                </SubContainer>
-                <SubContainer>
-                  <LeftContainer>
-                    <TitleContainer>3 Miesiące</TitleContainer>
-                    <TitleContainerPrice>
-                      224,95 zł / miesięcznie
-                    </TitleContainerPrice>
-                    <SubTitlePrice>Oszczędzasz 75 zł</SubTitlePrice>
-                  </LeftContainer>
-                  <RightContainer>
-                    <Button>Subskrybuj</Button>
-                  </RightContainer>
-                </SubContainer>
-                <SubContainer>
-                  <LeftContainer>
-                    <TitleContainer>6 Miesięcy</TitleContainer>
-                    <TitleContainerPrice>
-                      214,85 zł / miesięcznie
-                    </TitleContainerPrice>
-                    <SubTitlePrice>Oszczędzasz 421,20 zł</SubTitlePrice>
-                  </LeftContainer>
-                  <RightContainer>
-                    <Button>Subskrybuj</Button>
-                  </RightContainer>
-                </SubContainer>
-                <SubContainer>
-                  <LeftContainer>
-                    <TitleContainer>12 Miesięcy</TitleContainer>
-                    <TitleContainerPrice>
-                      199,95 zł / miesięcznie
-                    </TitleContainerPrice>
-                    <SubTitlePrice>Oszczędzasz 606 zł</SubTitlePrice>
-                  </LeftContainer>
-                  <RightContainer>
-                    <Button>Subskrybuj</Button>
-                  </RightContainer>
-                </SubContainer>
+                {products.map((item) => {
+                  return (
+                    <SubContainer>
+                      <LeftContainer>
+                        <TitleContainer>Miesięczny</TitleContainer>
+                        <TitleContainerPrice>
+                          {item.price} zł / miesięcznie
+                        </TitleContainerPrice>
+                        <SubTitlePrice>
+                          Oszczędzasz {item.bonus} zł
+                        </SubTitlePrice>
+                      </LeftContainer>
+                      <RightContainer>
+                        <Button onClick={handleClick}>Subskrybuj</Button>
+                      </RightContainer>
+                    </SubContainer>
+                  );
+                })}
               </PriceWrap>
               <PriceWrap>
                 <PriceTitle>Nowy zestaw co miesiąc</PriceTitle>

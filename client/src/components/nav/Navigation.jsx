@@ -88,6 +88,7 @@ const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
 `;
 const NavContainer = styled.div`
   display: flex;
@@ -104,31 +105,27 @@ const NavText = styled.p`
 
 const HeroContainer = styled.div``;
 
-const HamburgerMenu = styled.div`
-  display: none;
-
-  @media (max-width: 920px) {
-    display: block;
-    cursor: pointer;
-  }
-`;
-
 const Nav = styled.div`
   margin: 20px;
   display: flex;
   justify-content: center;
-  @media (max-width: 1105px) {
-    margin: 20px;
-    margin-bottom: 40px;
-  }
-  @media (max-width: 920px) {
-    display: none;
-  }
 `;
 
-const Navigation = () => {
-  const [showNav, setShowNav] = useState(false);
+const Circle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #facc15;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -9px;
+  left: 14px;
+`;
+const CircleNumber = styled.p``;
 
+const Navigation = () => {
   return (
     <>
       <Container>
@@ -182,9 +179,6 @@ const Navigation = () => {
                 <ListItem>Kontakt</ListItem>
               </Link>
             </List>
-            <HamburgerMenu onClick={() => setShowNav(!showNav)}>
-              <Basket3 size={25} color={"#222"} />
-            </HamburgerMenu>
           </Nav>
         </LeftNav>
         <RightNav>
@@ -218,6 +212,9 @@ const Navigation = () => {
                 >
                   <Basket3 size={25} color={"#064e3b"} />
                   <NavText>Koszyk</NavText>
+                  <Circle>
+                    <CircleNumber>0</CircleNumber>
+                  </Circle>
                 </Link>
               </ContentWrapper>
             </NavContainer>

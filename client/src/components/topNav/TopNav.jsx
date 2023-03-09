@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { ArrowRight, Basket3, BoxArrowInRight } from "react-bootstrap-icons";
 import img from "../../img/home/mask.jpg";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -62,6 +63,7 @@ const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
 `;
 const NavContainer = styled.div`
   display: flex;
@@ -74,8 +76,22 @@ const NavText = styled.p`
     display: none;
   }
 `;
+const Circle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #facc15;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -9px;
+  left: 14px;
+`;
+const CircleNumber = styled.p``;
 
 const TopNav = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
   return (
     <>
       <Container>
@@ -161,6 +177,9 @@ const TopNav = () => {
                 >
                   <Basket3 size={25} color={"#707070"} />
                   <NavText>Koszyk</NavText>
+                  <Circle>
+                    <CircleNumber>{quantity}</CircleNumber>
+                  </Circle>
                 </Link>
               </ContentWrapper>
             </NavContainer>
