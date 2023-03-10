@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/cartRedux";
+import Counter from "../../components/counter/Counter";
 
 const MainContainer = styled.div`
   height: auto;
@@ -100,22 +101,6 @@ const WrapContainer = styled.div`
 const Txt = styled.p`
   color: #6b7284;
 `;
-
-const ClockContainer = styled.div`
-  display: flex;
-  margin: 20px;
-`;
-const TimeWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100px;
-`;
-const Counter = styled.p`
-  font-weight: 600;
-  font-size: 28px;
-`;
-const Days = styled.p``;
 
 const PriceContainer = styled.div`
   display: flex;
@@ -274,7 +259,6 @@ const Sub = () => {
       })
     );
   };
-  console.log(products);
 
   return (
     <>
@@ -321,24 +305,7 @@ const Sub = () => {
               <Clock color="#22c55e" size={22} />
               <Txt>Następny zestaw pojawi się za:</Txt>
             </WrapContainer>
-            <ClockContainer>
-              <TimeWrap>
-                <Counter>6</Counter>
-                <Days>Dni</Days>
-              </TimeWrap>
-              <TimeWrap>
-                <Counter>8</Counter>
-                <Days>Godzin</Days>
-              </TimeWrap>
-              <TimeWrap>
-                <Counter>7</Counter>
-                <Days>Minut</Days>
-              </TimeWrap>
-              <TimeWrap>
-                <Counter>36</Counter>
-                <Days>Sekund</Days>
-              </TimeWrap>
-            </ClockContainer>
+            <Counter />
             <Line />
             <PriceContainer>
               <PriceWrap>

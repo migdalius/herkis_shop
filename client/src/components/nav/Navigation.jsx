@@ -9,6 +9,7 @@ import img from "../../img/home/mask.jpg";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 const Container = styled.div`
   display: flex;
 `;
@@ -126,6 +127,7 @@ const Circle = styled.div`
 const CircleNumber = styled.p``;
 
 const Navigation = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
   return (
     <>
       <Container>
@@ -213,7 +215,7 @@ const Navigation = () => {
                   <Basket3 size={25} color={"#064e3b"} />
                   <NavText>Koszyk</NavText>
                   <Circle>
-                    <CircleNumber>0</CircleNumber>
+                    <CircleNumber>{quantity}</CircleNumber>
                   </Circle>
                 </Link>
               </ContentWrapper>
