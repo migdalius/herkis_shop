@@ -33,30 +33,21 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* RWD */}
         <Route path="*" element={<Err404 />} />
         <Route path="/" element={<Home />} />
-        {/* RWD */}
         <Route path="/koszyk" element={<Cart />} />
-        {/* RWD */}
         <Route path="/dostawa" element={<Delivery />} />
-        {/* RWD */}
         <Route path="/platnosc" element={<Pay />} />
-        {/* RWD */}
-        <Route path="/logowanie" element={<Login />} />
-        {/* RWD */}
+        <Route
+          path="/logowanie"
+          element={user ? <Navigate to="/moje-konto" /> : <Login />}
+        />
         <Route path="/rejestracja" element={<Register />} />
-        {/* RWD */}
         <Route path="/subskrypcja" element={<Sub />} />
-        {/* RWD */}
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
-        {/* RWD */}
         <Route path="/kontakt" element={<Contact />} />
-        {/* RWD */}
         <Route path="/moje-konto" element={<HomeAdmin />} />
-        {/* RWD */}
         <Route path="/moje-konto/adres-dostawy" element={<AdressAdmin />} />
-        {/* RWD */}
         <Route path="/moje-konto/moje-zamowienia" element={<OrderAdmin />} />
 
         <Route path="/krok-1" element={<StepOne />} />

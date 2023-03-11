@@ -146,7 +146,10 @@ const Ring = styled.div`
 const HomeAdmin = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log(user.currentUser.username);
+
+  const handleLogout = () => {
+    window.location.href = "/";
+  };
   return (
     <div className="app">
       <BackgroundContainer>
@@ -170,7 +173,7 @@ const HomeAdmin = () => {
               </AdminTextContainer>
               <AdminCartContener>
                 <Link
-                  to={"/admin/moje-zamowienia"}
+                  to={"/moje-konto/moje-zamowienia"}
                   style={{
                     textDecoration: "none",
                     color: "#222",
@@ -184,7 +187,7 @@ const HomeAdmin = () => {
                   </AdminCart>
                 </Link>
                 <Link
-                  to={"/admin/adres-dostawy"}
+                  to={"/moje-konto/adres-dostawy"}
                   style={{
                     textDecoration: "none",
                     color: "#222",
@@ -215,7 +218,9 @@ const HomeAdmin = () => {
                   <Ring>
                     <DoorClosed color="#22c55e" size={35} />
                   </Ring>
-                  <AdminCartTitle>Wyloguj</AdminCartTitle>
+                  <AdminCartTitle onClick={handleLogout}>
+                    Wyloguj
+                  </AdminCartTitle>
                 </AdminCart>
               </AdminCartContener>
             </AdminCenterContainer>
