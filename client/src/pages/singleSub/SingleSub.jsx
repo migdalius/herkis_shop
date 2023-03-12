@@ -85,8 +85,12 @@ const DescWrap = styled.div`
     width: 100%;
   }
 `;
-const Desc = styled.p`
-  padding-top: 10px;
+const Desc = styled.p``;
+
+const FinalPrice = styled.h2`
+  padding-top: 36px;
+  font-weight: 700;
+  color: green;
 `;
 
 const List = styled.ul`
@@ -101,14 +105,19 @@ const SubTitle = styled.h3`
 `;
 
 const Button = styled.button`
-  width: 400px;
-  height: 90px;
+  width: 300px;
+  height: 60px;
   border: none;
   border-radius: 5px;
   background-color: #ef4444;
   color: #fff;
-  font-size: 28px;
+  font-size: 24px;
   cursor: pointer;
+`;
+
+const SubDesc = styled.p`
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const SingleSub = () => {
@@ -160,7 +169,7 @@ const SingleSub = () => {
               <TitleSection>{product.title}</TitleSection>
               <TextWrap>
                 <DescWrap>
-                  <Desc>Cena: {product.price} zł</Desc>
+                  <FinalPrice>Cena: {product.price} zł</FinalPrice>
                   <SubTitle>Skład zestawu do uprawy:</SubTitle>
                   <List>
                     <ListItem>1x Doniczka do uprawy 13 cm</ListItem>
@@ -178,13 +187,20 @@ const SingleSub = () => {
                       1op. Hydrożel - przechowuje nadmiar wody w doniczce
                     </ListItem>
                   </List>
-                  <SubTitle>Instrukcja uprawy</SubTitle>
+                  <SubTitle>Płatnośći</SubTitle>
+                  <SubDesc>
+                    Jeżeli wybierzesz formę płatności kartą, możesz anulować
+                    subskrypcje w każdym momencie, natomiast zamówienia opłacone
+                    z góry za cały okres będą realizowane według planu i
+                    niestety nie ma możliwości późniejszej anulacji takiego
+                    zamówienia.
+                  </SubDesc>
                   <Desc>
-                    <Button onClick={handleClick}>Subskrybuj</Button>
+                    <Button onClick={handleClick}>Dodaj do koszyka</Button>
                   </Desc>
                 </DescWrap>
                 <ImgWrap>
-                  <Img src="../img/zestaw-do-uprawy-1.png" />
+                  <Img src="../img/product.png" />
                 </ImgWrap>
               </TextWrap>
             </TextContainer>

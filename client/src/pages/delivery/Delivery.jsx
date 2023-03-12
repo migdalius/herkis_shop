@@ -356,10 +356,15 @@ const DevButton = styled.button`
   background-color: #64748b;
   color: #fff;
   border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #222;
+  }
 `;
 const Delivery = () => {
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
 
   return (
     <MainContainer>
@@ -396,7 +401,9 @@ const Delivery = () => {
                       <DCity>Miasto: {user.city}</DCity>
                       <DPhone>Telefon: {user.phone}</DPhone>
                     </DevAdress>
-                    <DevButton>Zmień Adres</DevButton>
+                    <Link to={"/moje-konto"}>
+                      <DevButton>Zmień Adres</DevButton>
+                    </Link>
                   </DevMain>
                 </DevContainer>
               ) : (
