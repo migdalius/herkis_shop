@@ -12,6 +12,9 @@ import {
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 const MainContainer = styled.div`
   background-color: #f4f6f9;
   width: 100vw;
@@ -313,8 +316,51 @@ const DeliveryImg = styled.img`
 const SubTitle = styled.p`
   margin: 20px;
 `;
+
+const DevContainer = styled.div`
+  margin: 20px;
+  padding-top: 30px;
+`;
+
+const DevMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: auto;
+  background-color: #e2e8f0;
+  border-radius: 5px;
+  padding: 10px;
+`;
+
+const DevTitle = styled.h2`
+  font-size: 20px;
+  padding-bottom: 10px;
+`;
+const DevAdress = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const DName = styled.p``;
+const DAdress = styled.p``;
+const DZip = styled.p``;
+const DCity = styled.p``;
+const DPhone = styled.p``;
+
+const DevButton = styled.button`
+  width: 30%;
+  height: 30px;
+  margin-top: 10px;
+  border: none;
+  background-color: #64748b;
+  color: #fff;
+  border-radius: 5px;
+`;
 const Delivery = () => {
   const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user.currentUser);
+
   return (
     <MainContainer>
       <Container>
@@ -339,18 +385,34 @@ const Delivery = () => {
           <Wrapper>
             <Title>Adres dostawy</Title>
             <CartContainer>
-              <FormContainer>
-                <FormWrapper>
-                  <Form>
-                    <Input placeholder="Imię i Nazwisko" />
-                    <Input placeholder="Adres Dostawy" />
-                    <Input placeholder="Kod Pocztowy" />
-                    <Input placeholder="Miasto" />
-                    <Input placeholder="Numer Telefonu" />
-                    <Input placeholder="Adres E-mail" />
-                  </Form>
-                </FormWrapper>
-              </FormContainer>
+              {user ? (
+                <DevContainer>
+                  <DevMain>
+                    <DevTitle>Adres Dostawy</DevTitle>
+                    <DevAdress>
+                      <DName>Imię i Nazwisko: {user.name}</DName>
+                      <DAdress>Adres Dostawy: {user.delivery}</DAdress>
+                      <DZip>Kod pocztowy: {user.zip}</DZip>
+                      <DCity>Miasto: {user.city}</DCity>
+                      <DPhone>Telefon: {user.phone}</DPhone>
+                    </DevAdress>
+                    <DevButton>Zmień Adres</DevButton>
+                  </DevMain>
+                </DevContainer>
+              ) : (
+                <FormContainer>
+                  <FormWrapper>
+                    <Form>
+                      <Input placeholder="Imię i Nazwisko" />
+                      <Input placeholder="Adres Dostawy" />
+                      <Input placeholder="Kod Pocztowy" />
+                      <Input placeholder="Miasto" />
+                      <Input placeholder="Numer Telefonu" />
+                      <Input placeholder="Adres E-mail" />
+                    </Form>
+                  </FormWrapper>
+                </FormContainer>
+              )}
               <SecondTitle>Wybierz rodzaj dostawy</SecondTitle>
               <SubTitle>Darmowa dostawa</SubTitle>
               <WrapperButton>

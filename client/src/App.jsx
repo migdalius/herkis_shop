@@ -26,6 +26,7 @@ import Pay from "./pages/pay/Pay";
 import Sub from "./pages/sub/Sub";
 import Work from "./pages/work/Work";
 import Contact from "./pages/contact/Contact";
+import SingleSub from "./pages/singleSub/SingleSub";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -44,6 +45,7 @@ function App() {
         />
         <Route path="/rejestracja" element={<Register />} />
         <Route path="/subskrypcja" element={<Sub />} />
+        <Route path="/subskrypcja/:id" element={<SingleSub />} />
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
         <Route path="/kontakt" element={<Contact />} />
         <Route path="/moje-konto" element={<HomeAdmin />} />

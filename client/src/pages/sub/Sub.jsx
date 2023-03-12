@@ -10,6 +10,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/cartRedux";
 import Counter from "../../components/counter/Counter";
+import Modal from "react-modal";
 
 const MainContainer = styled.div`
   height: auto;
@@ -234,8 +235,6 @@ const BigDescTitle = styled.p`
 `;
 const Sub = () => {
   const [product, setProduct] = useState({});
-  const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(1);
 
   const [products, setProducts] = useState([]);
   const [months, setMonths] = useState([]);
@@ -262,16 +261,6 @@ const Sub = () => {
     };
     getProducts();
   }, []);
-
-  const handleClick = () => {
-    //update cart
-    dispatch(
-      addProduct({
-        ...product,
-        quantity,
-      })
-    );
-  };
 
   return (
     <>
@@ -336,7 +325,9 @@ const Sub = () => {
                         </SubTitlePrice>
                       </LeftContainer>
                       <RightContainer>
-                        <Button onClick={handleClick}>Subskrybuj</Button>
+                        <Link to={`../subskrypcja/${item._id}`}>
+                          <Button>Subskrybuj</Button>
+                        </Link>
                       </RightContainer>
                     </SubContainer>
                   );
@@ -357,7 +348,9 @@ const Sub = () => {
                         </SubTitlePrice>
                       </LeftContainer>
                       <RightContainer>
-                        <Button onClick={handleClick}>Subskrybuj</Button>
+                        <Link to={`../subskrypcja/${item._id}`}>
+                          <Button>Subskrybuj</Button>
+                        </Link>
                       </RightContainer>
                     </SubContainer>
                   );
