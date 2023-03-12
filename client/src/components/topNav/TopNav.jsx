@@ -1,5 +1,10 @@
 import styled, { keyframes } from "styled-components";
-import { ArrowRight, Basket3, BoxArrowInRight } from "react-bootstrap-icons";
+import {
+  ArrowRight,
+  Basket3,
+  BoxArrowInRight,
+  PersonCircle,
+} from "react-bootstrap-icons";
 import img from "../../img/home/mask.jpg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -92,6 +97,7 @@ const CircleNumber = styled.p``;
 
 const TopNav = () => {
   const quantity = useSelector((state) => state.cart.quantity);
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <>
       <Container>
@@ -149,20 +155,37 @@ const TopNav = () => {
         <RightNav>
           <MainNavContainer>
             <NavContainer>
-              <ContentWrapper>
-                <Link
-                  to={"/logowanie"}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    textDecoration: "none",
-                  }}
-                >
-                  <BoxArrowInRight size={25} color={"#707070"} />
-                  <NavText>Logowanie</NavText>
-                </Link>
-              </ContentWrapper>
+              {user ? (
+                <ContentWrapper>
+                  <Link
+                    to={"/moje-konto"}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <PersonCircle size={25} color={"#707070"} />
+                    <NavText>Moje Konto</NavText>
+                  </Link>
+                </ContentWrapper>
+              ) : (
+                <ContentWrapper>
+                  <Link
+                    to={"/logowanie"}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <BoxArrowInRight size={25} color={"#707070"} />
+                    <NavText>Logowanie</NavText>
+                  </Link>
+                </ContentWrapper>
+              )}
               <VerticalHr />
 
               <ContentWrapper>

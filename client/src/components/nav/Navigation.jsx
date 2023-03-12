@@ -4,6 +4,7 @@ import {
   Basket3,
   BoxArrowInRight,
   ListCheck,
+  PersonCircle,
 } from "react-bootstrap-icons";
 import img from "../../img/home/mask.jpg";
 import { Link } from "react-router-dom";
@@ -127,7 +128,9 @@ const Circle = styled.div`
 const CircleNumber = styled.p``;
 
 const Navigation = () => {
+  const user = useSelector((state) => state.user.currentUser);
   const quantity = useSelector((state) => state.cart.quantity);
+
   return (
     <>
       <Container>
@@ -186,20 +189,37 @@ const Navigation = () => {
         <RightNav>
           <MainNavContainer>
             <NavContainer>
-              <ContentWrapper>
-                <Link
-                  to={"/logowanie"}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    textDecoration: "none",
-                  }}
-                >
-                  <BoxArrowInRight size={25} color={"#064e3b"} />
-                  <NavText>Logowanie</NavText>
-                </Link>
-              </ContentWrapper>
+              {user ? (
+                <ContentWrapper>
+                  <Link
+                    to={"/moje-konto"}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <PersonCircle size={25} color={"#064e3b"} />
+                    <NavText>Moje Konto</NavText>
+                  </Link>
+                </ContentWrapper>
+              ) : (
+                <ContentWrapper>
+                  <Link
+                    to={"/logowanie"}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <BoxArrowInRight size={25} color={"#064e3b"} />
+                    <NavText>Logowanie</NavText>
+                  </Link>
+                </ContentWrapper>
+              )}
               <VerticalHr />
 
               <ContentWrapper>
