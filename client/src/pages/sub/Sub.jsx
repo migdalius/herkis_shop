@@ -238,6 +238,7 @@ const Sub = () => {
   const [quantity, setQuantity] = useState(1);
 
   const [products, setProducts] = useState([]);
+  const [months, setMonths] = useState([]);
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -245,6 +246,18 @@ const Sub = () => {
           "http://localhost:5000/api/products?category=week"
         );
         setProducts(res.data);
+      } catch (err) {}
+    };
+    getProducts();
+  }, []);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:5000/api/products?category=month"
+        );
+        setMonths(res.data);
       } catch (err) {}
     };
     getProducts();
@@ -331,19 +344,25 @@ const Sub = () => {
               </PriceWrap>
               <PriceWrap>
                 <PriceTitle>Nowy zestaw co miesiąc</PriceTitle>
-                <SubContainer>
-                  <LeftContainer>
-                    <TitleContainer>Miesięczny</TitleContainer>
-                    <TitleContainerPrice>
-                      49,99 zł / miesięcznie
-                    </TitleContainerPrice>
-                    <SubTitlePrice>Zestaw próbny</SubTitlePrice>
-                  </LeftContainer>
-                  <RightContainer>
-                    <Button>Subskrybuj</Button>
-                  </RightContainer>
-                </SubContainer>
-                <SubContainer>
+                {months.map((item) => {
+                  return (
+                    <SubContainer>
+                      <LeftContainer>
+                        <TitleContainer>Miesięczny</TitleContainer>
+                        <TitleContainerPrice>
+                          {item.price} zł / miesięcznie
+                        </TitleContainerPrice>
+                        <SubTitlePrice>
+                          Oszczędzasz {item.bonus} zł
+                        </SubTitlePrice>
+                      </LeftContainer>
+                      <RightContainer>
+                        <Button onClick={handleClick}>Subskrybuj</Button>
+                      </RightContainer>
+                    </SubContainer>
+                  );
+                })}
+                {/* <SubContainer>
                   <LeftContainer>
                     <TitleContainer>3 Miesiące</TitleContainer>
                     <TitleContainerPrice>
@@ -354,8 +373,8 @@ const Sub = () => {
                   <RightContainer>
                     <Button>Subskrybuj</Button>
                   </RightContainer>
-                </SubContainer>
-                <SubContainer>
+                </SubContainer> */}
+                {/* <SubContainer>
                   <LeftContainer>
                     <TitleContainer>6 Miesięcy</TitleContainer>
                     <TitleContainerPrice>
@@ -366,8 +385,8 @@ const Sub = () => {
                   <RightContainer>
                     <Button>Subskrybuj</Button>
                   </RightContainer>
-                </SubContainer>
-                <SubContainer>
+                </SubContainer> */}
+                {/* <SubContainer>
                   <LeftContainer>
                     <TitleContainer>12 Miesięcy</TitleContainer>
                     <TitleContainerPrice>
@@ -378,7 +397,7 @@ const Sub = () => {
                   <RightContainer>
                     <Button>Subskrybuj</Button>
                   </RightContainer>
-                </SubContainer>
+                </SubContainer> */}
               </PriceWrap>
             </PriceContainer>
           </Wrap>
