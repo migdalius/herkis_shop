@@ -4,7 +4,7 @@ import Footer from "../../../components/footer/Footer";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { login, register } from "../../../redux/apiCalls";
+import { login } from "../../../redux/apiCalls";
 import TopNav from "../../../components/topNav/TopNav";
 import { Link } from "react-router-dom";
 const MainContainer = styled.div`
@@ -95,7 +95,6 @@ const Register = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    register(dispatch, { username, password, name });
   };
 
   // change reducer to register, changes user model in api!!!

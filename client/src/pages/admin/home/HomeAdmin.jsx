@@ -6,6 +6,7 @@ import AdminSidebar from "../../../components/adminsidebar/AdminSidebar";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import TopNav from "../../../components/topNav/TopNav";
+import { logoutSucess } from "../../../redux/userRedux";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -148,6 +149,8 @@ const HomeAdmin = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    dispatch(logoutSucess());
+    // console.log(dispatch(logoutSucess()));
     window.location.href = "/";
   };
   return (
@@ -214,13 +217,11 @@ const HomeAdmin = () => {
                     <AdminCartTitle>Koszyk Zakupów</AdminCartTitle>
                   </AdminCart>
                 </Link>
-                <AdminCart>
+                <AdminCart onClick={handleLogout}>
                   <Ring>
                     <DoorClosed color="#22c55e" size={35} />
                   </Ring>
-                  <AdminCartTitle onClick={handleLogout}>
-                    Wyloguj
-                  </AdminCartTitle>
+                  <AdminCartTitle>Wyloguj</AdminCartTitle>
                 </AdminCart>
               </AdminCartContener>
             </AdminCenterContainer>
