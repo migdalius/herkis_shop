@@ -18,7 +18,7 @@ import axios from "axios";
 const MainContainer = styled.div`
   background-color: #f4f6f9;
   width: 100vw;
-  height: auto;
+  height: 1200px;
   padding-bottom: 20px;
 `;
 
@@ -361,10 +361,31 @@ const DevButton = styled.button`
     background-color: #222;
   }
 `;
+const OrContainer = styled.div`
+  margin-left: 40px;
+  font-weight: 600;
+  font-size: 20px;
+`;
+const LoginWraper = styled.div`
+  margin: 40px;
+`;
+
+const LoginButton = styled.button`
+  background-color: #22c55e;
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #222;
+  }
+`;
 const Delivery = () => {
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
-  console.log(user);
 
   return (
     <MainContainer>
@@ -407,18 +428,26 @@ const Delivery = () => {
                   </DevMain>
                 </DevContainer>
               ) : (
-                <FormContainer>
-                  <FormWrapper>
-                    <Form>
-                      <Input placeholder="Imię i Nazwisko" />
-                      <Input placeholder="Adres Dostawy" />
-                      <Input placeholder="Kod Pocztowy" />
-                      <Input placeholder="Miasto" />
-                      <Input placeholder="Numer Telefonu" />
-                      <Input placeholder="Adres E-mail" />
-                    </Form>
-                  </FormWrapper>
-                </FormContainer>
+                <>
+                  <FormContainer>
+                    <FormWrapper>
+                      <Form>
+                        <Input placeholder="Imię i Nazwisko" />
+                        <Input placeholder="Adres Dostawy" />
+                        <Input placeholder="Kod Pocztowy" />
+                        <Input placeholder="Miasto" />
+                        <Input placeholder="Numer Telefonu" />
+                        <Input placeholder="Adres E-mail" />
+                      </Form>
+                    </FormWrapper>
+                  </FormContainer>
+                  <OrContainer>Lub</OrContainer>
+                  <LoginWraper>
+                    <Link to={"/logowanie"}>
+                      <LoginButton>Zaloguj się</LoginButton>
+                    </Link>
+                  </LoginWraper>
+                </>
               )}
               <SecondTitle>Wybierz rodzaj dostawy</SecondTitle>
               <SubTitle>Darmowa dostawa</SubTitle>
@@ -434,7 +463,9 @@ const Delivery = () => {
             <PriceContainer>
               <PriceWrap>
                 <ProductTitle>Koszt Subskrypcji</ProductTitle>
-                <Price>{cart.total} zł</Price>
+                <Price>
+                  {(Math.round(cart.total * 100) / 100).toFixed(2)} zł
+                </Price>
               </PriceWrap>
               <Line />
 

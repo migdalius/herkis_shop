@@ -4,8 +4,8 @@ import Footer from "../../../components/footer/Footer";
 import AdminSidebar from "../../../components/adminsidebar/AdminSidebar";
 import OrderProduct from "../../../components/orderproduct/OrderProduct";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import TopNav from "../../../components/topNav/TopNav";
+import { userRequest } from "../../requestMethods";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -136,18 +136,17 @@ const ProductContainer = styled.div`
 
 const OrderAdmin = () => {
   const [orders, setOrders] = useState([]);
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const res = await axios.get(
-          "http://localhost:5000/api/orders/find/63c18620cf0c78c4a0cf7ff9"
-        );
-        setOrders(res.data);
-      } catch (err) {}
-    };
-    getProducts();
-  }, []);
 
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const res = await userRequest.get("orders");
+        setOrders(res.data);
+      } catch {}
+    };
+    getUsers();
+  }, []);
+  console.log(orders);
   return (
     <div className="app">
       <BackgroundContainer>

@@ -22,6 +22,7 @@ const userSlice = createSlice({
     },
     logoutSucess: (state) => {
       state.currentUser = false;
+      state.error = false;
     },
   },
 });

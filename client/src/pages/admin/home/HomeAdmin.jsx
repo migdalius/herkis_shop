@@ -150,7 +150,7 @@ const HomeAdmin = () => {
 
   const handleLogout = () => {
     dispatch(logoutSucess());
-    // console.log(dispatch(logoutSucess()));
+
     window.location.href = "/";
   };
   return (

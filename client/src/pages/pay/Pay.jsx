@@ -530,11 +530,11 @@ const Pay = () => {
                   subskrypcje będą automatycznie odnawiane na kolejne warunki
                   subskrypcji, dopóki nie anulujesz. Po każdym odnowieniu Twoja
                   metoda płatności zostanie automatycznie obciążona opłatą w
-                  wysokości 39,99zł. Możesz anulować swoje subskrypcje (zgodnie
-                  z warunkami naszej Polityki anulowania, którą znajdziesz
-                  tutaj), postępując zgodnie z instrukcjami na stronie konta
-                  Herkis lub wysyłając wiadomość e-mail na adres
-                  kontakt@herkis.pl.
+                  wysokości {(Math.round(cart.total * 100) / 100).toFixed(2)}{" "}
+                  zł. Możesz anulować swoje subskrypcje (zgodnie z warunkami
+                  naszej Polityki anulowania, którą znajdziesz tutaj),
+                  postępując zgodnie z instrukcjami na stronie konta Herkis lub
+                  wysyłając wiadomość e-mail na adres kontakt@herkis.pl.
                 </SecondAlertDec>
               </WrapSecondAlert>
               <ButtonWrapper>
@@ -547,7 +547,9 @@ const Pay = () => {
             <PriceContainer>
               <PriceWrap>
                 <ProductTitle>Koszt Subskrypcji</ProductTitle>
-                <Price>{cart.total} zł</Price>
+                <Price>
+                  {(Math.round(cart.total * 100) / 100).toFixed(2)} zł
+                </Price>
               </PriceWrap>
             </PriceContainer>
           </Wrapper>

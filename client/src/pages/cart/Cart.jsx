@@ -296,7 +296,9 @@ const Cart = () => {
             <PriceContainer>
               <PriceWrap>
                 <ProductTitle>Koszt Subskrypcji</ProductTitle>
-                <Price>{cart.total} zł</Price>
+                <Price>
+                  {(Math.round(cart.total * 100) / 100).toFixed(2)} zł
+                </Price>
               </PriceWrap>
               <Line />
 
