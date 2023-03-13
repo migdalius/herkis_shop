@@ -138,13 +138,15 @@ const OrderAdmin = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const getUsers = async () => {
+    const getOrders = async () => {
       try {
-        const res = await userRequest.get("orders");
+        const res = await userRequest.get(
+          "orders/find/63c18620cf0c78c4a0cf7ff9"
+        );
         setOrders(res.data);
       } catch {}
     };
-    getUsers();
+    getOrders();
   }, []);
   console.log(orders);
   return (
