@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
 import AdminSidebar from "../../../components/adminsidebar/AdminSidebar";
 import Footer from "../../../components/footer/Footer";
@@ -48,6 +49,8 @@ const LeftContainer = styled.div`
 `;
 
 const CenterContainer = styled.div`
+  display: flex;
+
   width: 900px;
   height: 550px;
   background-color: #fff;
@@ -79,7 +82,26 @@ const CenterContainer = styled.div`
   }
 `;
 
-const AdminCenterContainer = styled.div``;
+const AdminCenterContainer = styled.div`
+  width: 50%;
+`;
+const AdminRightContainer = styled.div`
+  width: 50%;
+  margin: 20px;
+`;
+
+const AdminRightWrap = styled.div`
+  width: 300px;
+  height: 230px;
+  background-color: #e2e8f0;
+`;
+
+const AdminRightText = styled.div`
+  font-size: 16px;
+  color: #222;
+  padding: 10px;
+  padding-left: 15px;
+`;
 
 const AdminTextContainer = styled.div`
   margin: 20px;
@@ -122,6 +144,8 @@ const InputSubmit = styled.input`
 
 const LabelContainer = styled.label``;
 const AdressAdmin = () => {
+  const user = useSelector((state) => state.user);
+  console.log(user.currentUser);
   return (
     <div className="app">
       <BackgroundContainer>
@@ -159,6 +183,24 @@ const AdressAdmin = () => {
                 </FormContainer>
               </AdminTextContainer>
             </AdminCenterContainer>
+            <AdminRightContainer>
+              <AdminTextTitle>Obecny Adres dostawy</AdminTextTitle>
+              <AdminRightWrap>
+                <AdminRightText>
+                  Imię i nazwisko: {user.currentUser.name}
+                </AdminRightText>
+                <AdminRightText>
+                  Adres Dostawy: {user.currentUser.delivery}
+                </AdminRightText>
+                <AdminRightText>
+                  Kod pocztowy: {user.currentUser.zip}
+                </AdminRightText>
+                <AdminRightText>Miasto: {user.currentUser.city}</AdminRightText>
+                <AdminRightText>
+                  Tel. dla kuriera: {user.currentUser.phone}
+                </AdminRightText>
+              </AdminRightWrap>
+            </AdminRightContainer>
           </CenterContainer>
         </MainContainer>
       </BackgroundContainer>
