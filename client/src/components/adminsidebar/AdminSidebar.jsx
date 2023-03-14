@@ -1,4 +1,8 @@
 import styled, { keyframes } from "styled-components";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutSucess } from "../../redux/userRedux";
+
 const SideBar = styled.div``;
 const UserDataContainer = styled.div`
   display: flex;
@@ -36,19 +40,61 @@ const UserDashboardItem = styled.div`
   font-size: 14px;
 `;
 const AdminSidebar = () => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logoutSucess());
+
+    window.location.href = "/";
+  };
+
   return (
     <SideBar>
       <UserDataContainer>
-        <UserTitle>Hej "Name"!</UserTitle>
-        <UserEmail>nyjepl@gmail.com</UserEmail>
+        <UserTitle>
+          Rodzaj konta: {user.currentUser.isAdmin ? "Admin" : "Zwykłe"}
+        </UserTitle>
+        <UserEmail>{user.currentUser.email}</UserEmail>
       </UserDataContainer>
       <Hr />
       <UserDashboard>
-        <UserDashboardItem>Moje zamówienia</UserDashboardItem>
-        <UserDashboardItem>Adres dostawy</UserDashboardItem>
-        <UserDashboardItem>Koszyk</UserDashboardItem>
-        <UserDashboardItem>Kontakt</UserDashboardItem>
-        <UserDashboardItem>Wyloguj</UserDashboardItem>
+        <Link
+          to={"/moje-konto/moje-zamowienia"}
+          style={{
+            textDecoration: "none",
+            color: "#222",
+          }}
+        >
+          <UserDashboardItem>Moje zamówienia</UserDashboardItem>
+        </Link>
+        <Link
+          to={"/moje-konto/adres-dostawy"}
+          style={{
+            textDecoration: "none",
+            color: "#222",
+          }}
+        >
+          <UserDashboardItem>Adres dostawy</UserDashboardItem>
+        </Link>
+        <Link
+          to={"/koszyk"}
+          style={{
+            textDecoration: "none",
+            color: "#222",
+          }}
+        >
+          <UserDashboardItem>Koszyk</UserDashboardItem>
+        </Link>
+        <Link
+          to={"/kontakt"}
+          style={{
+            textDecoration: "none",
+            color: "#222",
+          }}
+        >
+          <UserDashboardItem>Kontakt</UserDashboardItem>
+        </Link>
+        <UserDashboardItem onClick={handleLogout}>Wyloguj</UserDashboardItem>
       </UserDashboard>
     </SideBar>
   );

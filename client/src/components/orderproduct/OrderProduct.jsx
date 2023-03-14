@@ -65,7 +65,10 @@ const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
 `;
-const OrderProduct = () => {
+const OrderProduct = (item) => {
+  const product = item.item;
+  const items = product.products;
+  console.log(items);
   return (
     <Container>
       <DContainer>
@@ -73,19 +76,22 @@ const OrderProduct = () => {
           <DeliveryTitle>Subskrypcja aktywna</DeliveryTitle>
           <BoxSeam color="#222" size={20} />
         </DeliveryStage>
-        <DeliverTime>15 sie 2022, 14:20</DeliverTime>
+        <DeliverTime>{product.createdAt.substring(0, 10)}</DeliverTime>
       </DContainer>
-      <ProductDesc>
-        <ProductImage src="../img/testproduct/bazylia_cytrynowa.jpg" />
-        <ProductTitle>
-          PAPIER KSERO A4 500 KARTEK DO DRUKARKI BIAŁY 80g
-        </ProductTitle>
-        <SingleProductPrice>2 × 24,99 zł</SingleProductPrice>
-        <SingleProductSum>49,98 zł</SingleProductSum>
-      </ProductDesc>
+      {items.map((item) => {
+        return (
+          <ProductDesc>
+            <ProductImage src="../img/testproduct/bazylia_cytrynowa.jpg" />
+            <ProductTitle>{item.productId}</ProductTitle>
+            <SingleProductPrice>{item.quantity} × 24,99 zł</SingleProductPrice>
+            <SingleProductSum>49,98 zł</SingleProductSum>
+          </ProductDesc>
+        );
+      })}
+
       <ProductSum>
         <AllProductTitle>Razem z darmową dostawą</AllProductTitle>
-        <AllProductSum>49,98 zł</AllProductSum>
+        <AllProductSum>{product.amount} zł</AllProductSum>
       </ProductSum>
       <WrapButton>
         <Button>Anuluj Subskrypcje</Button>

@@ -17,7 +17,7 @@ const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 50px;
@@ -43,7 +43,7 @@ const LeftContainer = styled.div`
 
 const CenterContainer = styled.div`
   width: 900px;
-  height: 500px;
+  height: auto;
   background-color: #fff;
   @media (max-width: 1375px) {
     width: 800px;
@@ -148,7 +148,7 @@ const OrderAdmin = () => {
     };
     getOrders();
   }, []);
-  console.log(orders);
+
   return (
     <div className="app">
       <BackgroundContainer>
@@ -162,9 +162,13 @@ const OrderAdmin = () => {
               <AdminTextContainer>
                 <AdminTextTitle>Moje Subskrypcje</AdminTextTitle>
               </AdminTextContainer>
-              <ProductContainer>
-                <OrderProduct />
-              </ProductContainer>
+              {orders.map((item) => {
+                return (
+                  <ProductContainer>
+                    <OrderProduct item={item} />
+                  </ProductContainer>
+                );
+              })}
             </AdminCenterContainer>
           </CenterContainer>
         </MainContainer>
