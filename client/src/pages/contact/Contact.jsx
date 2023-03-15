@@ -5,6 +5,9 @@ import TopNav from "../../components/topNav/TopNav";
 import { Link } from "react-router-dom";
 
 import { Basket, Clock } from "react-bootstrap-icons";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -224,6 +227,29 @@ const Button = styled.button`
   }
 `;
 const Contact = () => {
+  const formRef = useRef();
+  const [done, setDone] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_soj5n8q",
+        "template_f7z69ch",
+        formRef.current,
+        "im328tf-Z4Clcib4P"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setDone(true);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
+  console.log(done);
   return (
     <>
       <TopNav />
@@ -240,12 +266,18 @@ const Contact = () => {
                   Masz problem z uprawą lub subskrypcją, napisz do nas chętnie
                   pomożemy
                 </Desc>
-                <Form>
-                  <Label>Twoj Adres Email</Label>
+                <Form ref={formRef} onSubmit={handleSubmit}>
+                  <Label type="text" name="user_name">
+                    Twoj Adres Email
+                  </Label>
                   <Input />
-                  <Label>Jaki masz problem?</Label>
+                  <Label type="text" name="user_subject">
+                    Jaki masz problem?
+                  </Label>
                   <Input />
-                  <Label>Szczegóły problemu</Label>
+                  <Label type="text" name="message">
+                    Szczegóły problemu
+                  </Label>
                   <Textarea />
                   <Button>Wyślij Zapytanie</Button>
                 </Form>
