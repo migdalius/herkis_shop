@@ -5,9 +5,8 @@ import TopNav from "../../components/topNav/TopNav";
 import { Link } from "react-router-dom";
 
 import { Basket, Clock } from "react-bootstrap-icons";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { useState } from "react";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -226,6 +225,50 @@ const Button = styled.button`
     width: 270px;
   }
 `;
+
+const AlertWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 550px;
+  gap: 10px;
+`;
+const textAnimate = keyframes`
+0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+`;
+
+const Alert = styled.h2`
+  animation-name: ${textAnimate};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+`;
+const SubAlert = styled.p`
+  animation-name: ${textAnimate};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+`;
+const Check = styled.img`
+  width: 65px;
+  height: 65px;
+  animation-name: ${textAnimate};
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+`;
 const Contact = () => {
   const formRef = useRef();
   const [done, setDone] = useState(false);
@@ -234,7 +277,7 @@ const Contact = () => {
     emailjs
       .sendForm(
         "service_soj5n8q",
-        "template_f7z69ch",
+        "template_w498omr",
         formRef.current,
         "im328tf-Z4Clcib4P"
       )
@@ -249,7 +292,8 @@ const Contact = () => {
       );
   };
 
-  console.log(done);
+  const pending = () => {};
+
   return (
     <>
       <TopNav />
@@ -261,26 +305,34 @@ const Contact = () => {
             </Wrap>
             <Wrap>
               <FormText>
-                <Title>Napisz do nas</Title>
-                <Desc>
-                  Masz problem z uprawą lub subskrypcją, napisz do nas chętnie
-                  pomożemy
-                </Desc>
-                <Form ref={formRef} onSubmit={handleSubmit}>
-                  <Label type="text" name="user_name">
-                    Twoj Adres Email
-                  </Label>
-                  <Input />
-                  <Label type="text" name="user_subject">
-                    Jaki masz problem?
-                  </Label>
-                  <Input />
-                  <Label type="text" name="message">
-                    Szczegóły problemu
-                  </Label>
-                  <Textarea />
-                  <Button>Wyślij Zapytanie</Button>
-                </Form>
+                {!done ? (
+                  <>
+                    <Title>Napisz do nas</Title>
+                    <Desc>
+                      Masz problem z uprawą lub subskrypcją, napisz do nas
+                      chętnie pomożemy
+                    </Desc>
+                    <Form ref={formRef} onSubmit={handleSubmit}>
+                      <Label>Twoj Adres Email</Label>
+                      <Input type="email" name="user_email" />
+                      <Label>Jaki masz problem?</Label>
+                      <Input type="text" name="user_subject" />
+                      <Label>Szczegóły problemu</Label>
+                      <Textarea name="message" />
+                      <Button type="submit" onClick={pending}>
+                        Wyślij Zapytanie
+                      </Button>
+                    </Form>
+                  </>
+                ) : (
+                  <AlertWrap>
+                    <Alert>Dziękujemy za wiadomość</Alert>
+                    <SubAlert>
+                      Na wszystkie wiadomości odpowiadamy do 12h od otrzymania
+                    </SubAlert>
+                    <Check src="../img/check.png" />
+                  </AlertWrap>
+                )}
               </FormText>
             </Wrap>
           </FormContainer>
