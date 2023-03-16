@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Basket, Clock } from "react-bootstrap-icons";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { Audio, RotatingSquare } from "react-loader-spinner";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -196,8 +197,15 @@ const Label = styled.label`
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
 const Button = styled.button`
   height: 50px;
+  width: 300px;
   background-color: #22c55e;
   border: none;
   color: #fff;
@@ -269,6 +277,7 @@ const Check = styled.img`
   animation-duration: 3s;
   animation-fill-mode: forwards;
 `;
+
 const Contact = () => {
   const formRef = useRef();
   const [done, setDone] = useState(false);
@@ -292,7 +301,7 @@ const Contact = () => {
       );
   };
 
-  const pending = () => {};
+  const pending = (e) => {};
 
   return (
     <>
@@ -319,9 +328,21 @@ const Contact = () => {
                       <Input type="text" name="user_subject" />
                       <Label>Szczegóły problemu</Label>
                       <Textarea name="message" />
-                      <Button type="submit" onClick={pending}>
-                        Wyślij Zapytanie
-                      </Button>
+                      <ButtonContainer>
+                        <Button type="submit" onClick={pending}>
+                          Wyślij Zapytanie
+                        </Button>
+                        <RotatingSquare
+                          height="50"
+                          width="50"
+                          color="#22c55e"
+                          ariaLabel="rotating-square-loading"
+                          strokeWidth="4"
+                          wrapperStyle={{}}
+                          wrapperClass=""
+                          visible={false}
+                        />
+                      </ButtonContainer>
                     </Form>
                   </>
                 ) : (
