@@ -128,12 +128,24 @@ const Form = styled.form`
     width: 270px;
   }
 `;
+
+const ErrorMgs = styled.span`
+  display: none;
+  color: red;
+  margin: 5px;
+  font-size: 10px;
+`;
+
 const Input = styled.input`
   width: 350px;
   height: 40px;
   border-radius: 5px;
   border: 1px solid #ddd;
   padding: 10px;
+
+  &:invalid[focused="true"] ~ ${ErrorMgs} {
+    display: block;
+  }
   @media (max-width: 815px) {
     width: 300px;
     margin-left: 10px;
@@ -281,6 +293,7 @@ const Check = styled.img`
 const Contact = () => {
   const formRef = useRef();
   const [done, setDone] = useState(false);
+  const [focused, setFocused] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     emailjs
@@ -301,7 +314,9 @@ const Contact = () => {
       );
   };
 
-  const pending = (e) => {};
+  const handleFocus = (e) => {
+    setFocused(true);
+  };
 
   return (
     <>
@@ -323,16 +338,44 @@ const Contact = () => {
                     </Desc>
                     <Form ref={formRef} onSubmit={handleSubmit}>
                       <Label>Twoj Adres Email</Label>
-                      <Input type="email" name="user_email" />
+                      <Input
+                        type="email"
+                        name="user_email"
+                        required={true}
+                        // onChange={onChange}
+                        onBlur={handleFocus}
+                        focused={focused.toString()}
+                      />
+                      <ErrorMgs>Proszę wprowadź poprawny adres email!</ErrorMgs>
                       <Label>Jaki masz problem?</Label>
-                      <Input type="text" name="user_subject" />
+                      <Input
+                        type="text"
+                        name="user_subject"
+                        required={true}
+                        pattern="^[A-Za-z0-9]{5,60}$"
+                        onBlur={handleFocus}
+                        focused={focused.toString()}
+                      />
+                      <ErrorMgs>
+                        Temat musi zawierać od 5 do 60 znaków, nie może zawierać
+                        znaków specjalnych.
+                      </ErrorMgs>
                       <Label>Szczegóły problemu</Label>
-                      <Textarea name="message" />
+                      <Textarea
+                        name="message"
+                        required={true}
+                        pattern="^[A-Za-z0-9]{12,500}$"
+                        onBlur={handleFocus}
+                        focused={focused.toString()}
+                      />
+                      <ErrorMgs>
+                        Opis musi zawierać od 12 do 500 znaków, nie może
+                        zawierać znaków specjalnych.
+                      </ErrorMgs>
                       <ButtonContainer>
-                        <Button type="submit" onClick={pending}>
-                          Wyślij Zapytanie
-                        </Button>
-                        <RotatingSquare
+                        <Button type="submit">Wyślij Zapytanie</Button>
+
+                        {/* <RotatingSquare
                           height="50"
                           width="50"
                           color="#22c55e"
@@ -340,8 +383,8 @@ const Contact = () => {
                           strokeWidth="4"
                           wrapperStyle={{}}
                           wrapperClass=""
-                          visible={false}
-                        />
+                          visible={true}
+                        /> */}
                       </ButtonContainer>
                     </Form>
                   </>
