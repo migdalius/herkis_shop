@@ -101,6 +101,12 @@ const Login = () => {
     login(dispatch, { username, password });
   };
 
+  const handleEnter = (e) => {
+    if (e.keyCode === 13) {
+      handleClick();
+    }
+  };
+
   return (
     <>
       <TopNav />
@@ -120,11 +126,17 @@ const Login = () => {
                   placeholder="Hasło"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <Button
+                  type="submit"
+                  onClick={handleClick}
+                  disabled={isFetching}
+                  onKeyPress={handleEnter}
+                >
+                  Zaloguj się
+                </Button>
               </Form>
             </FormWraper>
-            <Button onClick={handleClick} disabled={isFetching}>
-              Zaloguj się
-            </Button>
+
             <RegisterContainer>
               <AgreeTerms>Nie masz jeszcze konta?</AgreeTerms>
               <Link to={"/rejestracja"}>Rejestracja</Link>

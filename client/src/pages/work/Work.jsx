@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 import { Basket, Clock } from "react-bootstrap-icons";
 
+import React, { useState, useEffect } from "react";
+
 const MainContainer = styled.div`
   height: auto;
   background-color: #f2f2f2;
