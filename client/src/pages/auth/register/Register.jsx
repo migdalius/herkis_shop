@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { login } from "../../../redux/apiCalls";
 import TopNav from "../../../components/topNav/TopNav";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+
 const MainContainer = styled.div`
   height: 100vh;
   background-color: #f2f2f2;
@@ -82,19 +83,34 @@ const RegisterContainer = styled.div`
 `;
 
 const Register = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [adress, setAdress] = useState("");
-  const [zip, setZip] = useState("");
-  const [city, setCity] = useState("");
-  const [phone, setPhone] = useState("");
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+    isAdmin: false,
+  });
+  console.log(user);
 
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
 
-  const handleClick = (e) => {
+  const handleRegister = (e) => {
+    setUser((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
+  const handleClick = async (e) => {
     e.preventDefault();
+
+    // try {
+    //   await router.post("/auth/register", {
+    //     ...user,
+    //   });
+    //   Navigate("/logowanie");
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   // change reducer to register, changes user model in api!!!
@@ -109,39 +125,46 @@ const Register = () => {
             <FormWraper>
               <Form>
                 <Input
+                  name="email"
                   placeholder="Email"
                   type="text"
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={handleRegister}
                 />
                 <Input
+                  name="password"
                   placeholder="Hasło"
                   type="password"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={handleRegister}
                 />
                 <Input
+                  name="name"
                   placeholder="Imię i Nazwisko"
                   type="text"
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={handleRegister}
                 />
                 <Input
+                  name="adress"
                   placeholder="Adres Dostawy"
                   type="text"
-                  onChange={(e) => setAdress(e.target.value)}
+                  onChange={handleRegister}
                 />
                 <Input
+                  name="zip"
                   placeholder="Kod pocztowy"
                   type="text"
-                  onChange={(e) => setZip(e.target.value)}
+                  onChange={handleRegister}
                 />
                 <Input
+                  name="city"
                   placeholder="Miasto"
                   type="text"
-                  onChange={(e) => setCity(e.target.value)}
+                  onChange={handleRegister}
                 />
                 <Input
+                  name="phone"
                   placeholder="Numer Telefonu"
                   type="number"
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={handleRegister}
                 />
               </Form>
             </FormWraper>
