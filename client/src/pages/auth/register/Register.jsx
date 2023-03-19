@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/apiCalls";
 import TopNav from "../../../components/topNav/TopNav";
 import { Link, Navigate } from "react-router-dom";
+import { userRequest } from "../../requestMethods";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -89,7 +90,6 @@ const Register = () => {
     password: "",
     isAdmin: false,
   });
-  console.log(user);
 
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
@@ -103,14 +103,12 @@ const Register = () => {
   const handleClick = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   await router.post("/auth/register", {
-    //     ...user,
-    //   });
-    //   Navigate("/logowanie");
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      const res = await userRequest.post("auth/register", user);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   // change reducer to register, changes user model in api!!!
