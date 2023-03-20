@@ -97,6 +97,11 @@ const AdminCart = styled.div`
   background-color: #ddd;
   border-radius: 5px;
   cursor: pointer;
+  &:hover {
+    background-color: #94a3b8;
+    color: #fff;
+    transition: 0.3s;
+  }
   @media (max-width: 430px) {
     width: 250px;
     height: 250px;
