@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/apiCalls";
 import TopNav from "../../../components/topNav/TopNav";
 import { Link, Navigate } from "react-router-dom";
-import { userRequest } from "../../requestMethods";
+import { publicRequest, userRequest } from "../../requestMethods";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -85,13 +85,17 @@ const RegisterContainer = styled.div`
 
 const Register = () => {
   const [user, setUser] = useState({
-    username: "",
     email: "",
     password: "",
+    name: "",
+    adress: "",
+    zip: "",
+    city: "",
+    phone: "",
     isAdmin: false,
   });
 
-  const dispatch = useDispatch();
+  console.log(user);
   const { isFetching, error } = useSelector((state) => state.user);
 
   const handleRegister = (e) => {
@@ -104,7 +108,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await userRequest.post("auth/register", user);
+      const res = await publicRequest.post("auth/register", user);
       console.log(res);
     } catch (err) {
       console.log(err);
