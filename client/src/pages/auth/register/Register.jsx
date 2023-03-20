@@ -108,14 +108,23 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await publicRequest.post("auth/register", user);
-      console.log(res);
+      const res = await publicRequest.post(
+        "auth/register",
+        {
+          email: "test@gmail.com",
+          password: "wojtek1991",
+          name: "wojtek",
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
     } catch (err) {
       console.log(err);
     }
   };
-
-  // change reducer to register, changes user model in api!!!
 
   return (
     <>
