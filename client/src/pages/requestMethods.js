@@ -8,7 +8,6 @@ const currentUser = user && JSON.parse(user).currentUser;
 
 const TOKEN = currentUser?.accessToken;
 
-console.log(TOKEN);
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
 });

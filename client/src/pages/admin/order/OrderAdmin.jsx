@@ -143,12 +143,15 @@ const OrderAdmin = () => {
         const res = await userRequest.get(
           "orders/find/63c18620cf0c78c4a0cf7ff9"
         );
-        setOrders(res.data);
-      } catch {}
+        const data = await res.data;
+        setOrders(data);
+      } catch (error) {
+        console.error(error);
+      }
     };
     getOrders();
   }, []);
-
+  console.log(orders);
   return (
     <div className="app">
       <BackgroundContainer>
@@ -164,7 +167,7 @@ const OrderAdmin = () => {
               </AdminTextContainer>
               {orders.map((item) => {
                 return (
-                  <ProductContainer>
+                  <ProductContainer key={item._id}>
                     <OrderProduct item={item} />
                   </ProductContainer>
                 );

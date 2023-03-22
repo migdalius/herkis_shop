@@ -2,7 +2,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
-
 import HomeAdmin from "./pages/admin/home/HomeAdmin";
 import AdressAdmin from "./pages/admin/adress/AdressAdmin";
 import OrderAdmin from "./pages/admin/order/OrderAdmin";
@@ -11,7 +10,6 @@ import Register from "./pages/auth/register/Register";
 import Err404 from "./pages/Err404";
 import Cart from "./pages/cart/Cart";
 import Delivery from "./pages/delivery/Delivery";
-
 import { useSelector } from "react-redux";
 import Pay from "./pages/pay/Pay";
 import Sub from "./pages/sub/Sub";
@@ -42,17 +40,6 @@ function App() {
         <Route path="/moje-konto" element={<HomeAdmin />} />
         <Route path="/moje-konto/adres-dostawy" element={<AdressAdmin />} />
         <Route path="/moje-konto/moje-zamowienia" element={<OrderAdmin />} />
-
-        {/* 
-
-
-          -just page-
-          contact form
-
-          -order-
-          Deliver (page with form for delivery)
-          Payment (page with payment methods)
-        */}
       </Routes>
     </BrowserRouter>
   );

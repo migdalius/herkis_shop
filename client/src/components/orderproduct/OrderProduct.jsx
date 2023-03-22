@@ -80,7 +80,7 @@ const OrderProduct = (item) => {
       </DContainer>
       {items.map((item) => {
         return (
-          <ProductDesc>
+          <ProductDesc key={item._id}>
             <ProductImage src="../img/testproduct/bazylia_cytrynowa.jpg" />
             <ProductTitle>{item.productId}</ProductTitle>
             <SingleProductPrice>{item.quantity} × 24,99 zł</SingleProductPrice>
