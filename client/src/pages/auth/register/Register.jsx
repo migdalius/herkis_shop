@@ -108,19 +108,8 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await publicRequest.post(
-        "auth/register",
-        {
-          email: "test@gmail.com",
-          password: "wojtek1991",
-          name: "wojtek",
-        },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const res = await publicRequest.post("auth/register", user);
+      console.log(res.user);
     } catch (err) {
       console.log(err);
     }
