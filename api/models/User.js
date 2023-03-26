@@ -9,7 +9,11 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    img: { type: String },
+    city: { type: String },
+    delivery: { type: String },
+    name: { type: String },
+    phone: { type: Number },
+    zip: { type: String },
   },
   { timestamps: true }
 );

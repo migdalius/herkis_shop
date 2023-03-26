@@ -13,6 +13,11 @@ router.post("/register", async (req, res) => {
       req.body.password,
       process.env.PASS_SEC
     ).toString(),
+    city: req.body.city,
+    delivery: req.body.delivery,
+    name: req.body.name,
+    phone: req.body.phone,
+    zip: req.body.zip,
   });
 
   try {

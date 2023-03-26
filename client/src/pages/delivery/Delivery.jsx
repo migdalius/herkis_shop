@@ -396,9 +396,19 @@ const ContentText = styled.p`
   font-size: 20px;
   font-weight: 500;
 `;
+
+const Warning = styled.span`
+  color: red;
+  font-size: 12px;
+`;
 const Delivery = () => {
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
+  const [active, setActive] = useState(false);
+
+  const handleClick = () => {
+    setActive(true);
+  };
 
   return (
     <MainContainer>
@@ -457,9 +467,18 @@ const Delivery = () => {
               <SecondTitle>Wybierz rodzaj dostawy</SecondTitle>
               <SubTitle>Darmowa dostawa</SubTitle>
               <WrapperButton>
-                <DeliveryButton>
-                  <DeliveryImg src="../img/inpost_logo.png" />
-                </DeliveryButton>
+                {active ? (
+                  <DeliveryButton
+                    onClick={handleClick}
+                    style={{ border: "2px solid #22c55e" }}
+                  >
+                    <DeliveryImg src="../img/inpost_logo.png" />
+                  </DeliveryButton>
+                ) : (
+                  <DeliveryButton onClick={handleClick}>
+                    <DeliveryImg src="../img/inpost_logo.png" />
+                  </DeliveryButton>
+                )}
               </WrapperButton>
             </CartContainer>
           </Wrapper>
@@ -503,17 +522,30 @@ const Delivery = () => {
                 </Wrapper>
               </DeliveryOptions>
               <ButtonWrapper>
-                <Link
-                  to={"/platnosc"}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    textDecoration: "none",
-                  }}
-                >
-                  <NextButton>Przejdz do płatności</NextButton>
-                </Link>
+                {user !== null ? (
+                  <Link
+                    to={"/platnosc"}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <NextButton>Przejdz do płatności</NextButton>
+                  </Link>
+                ) : (
+                  <>
+                    <Warning>
+                      *Prosimy o zalogowanie się, aby dokonać płatności.
+                    </Warning>
+                    <NextButton
+                      style={{ backgroundColor: "#ddd", cursor: "not-allowed" }}
+                    >
+                      Przejdz do płatności
+                    </NextButton>
+                  </>
+                )}
               </ButtonWrapper>
             </PriceContainer>
           </Wrapper>

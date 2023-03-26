@@ -1,14 +1,9 @@
 import styled, { keyframes } from "styled-components";
 import {
   Basket,
-  BoxArrowRight,
-  BoxSeam,
-  Cash,
   CreditCard,
   CreditCard2Back,
   LockFill,
-  ShieldCheck,
-  TrashFill,
   Truck,
 } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
