@@ -137,20 +137,18 @@ const ProductContainer = styled.div`
 const OrderAdmin = () => {
   const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    const getOrders = async () => {
-      try {
-        const res = await userRequest.get(
-          "orders/find/63c18620cf0c78c4a0cf7ff9"
-        );
-        const data = await res.data;
-        setOrders(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getOrders();
-  }, []);
+  // useEffect(() => {
+  const getOrders = async () => {
+    try {
+      const res = await userRequest.get("orders/find/63c18620cf0c78c4a0cf7ff9");
+      const data = await res.data;
+      setOrders(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  getOrders();
+  // }, []);
   console.log(orders);
   return (
     <div className="app">

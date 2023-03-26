@@ -383,6 +383,19 @@ const LoginButton = styled.button`
     background-color: #222;
   }
 `;
+
+const ContentWraper = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const ContentText = styled.p`
+  font-size: 20px;
+  font-weight: 500;
+`;
 const Delivery = () => {
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
@@ -422,31 +435,23 @@ const Delivery = () => {
                       <DCity>Miasto: {user.city}</DCity>
                       <DPhone>Telefon: {user.phone}</DPhone>
                     </DevAdress>
-                    <Link to={"/moje-konto"}>
+                    <Link to={"/moje-konto/adres-dostawy"}>
                       <DevButton>Zmień Adres</DevButton>
                     </Link>
                   </DevMain>
                 </DevContainer>
               ) : (
                 <>
-                  <FormContainer>
-                    <FormWrapper>
-                      <Form>
-                        <Input placeholder="Imię i Nazwisko" />
-                        <Input placeholder="Adres Dostawy" />
-                        <Input placeholder="Kod Pocztowy" />
-                        <Input placeholder="Miasto" />
-                        <Input placeholder="Numer Telefonu" />
-                        <Input placeholder="Adres E-mail" />
-                      </Form>
-                    </FormWrapper>
-                  </FormContainer>
-                  <OrContainer>Lub</OrContainer>
-                  <LoginWraper>
-                    <Link to={"/logowanie"}>
-                      <LoginButton>Zaloguj się</LoginButton>
-                    </Link>
-                  </LoginWraper>
+                  <ContentWraper>
+                    <ContentText>
+                      Obecnie obsługujemy tylko zalogowanych użytkowników
+                    </ContentText>
+                    <LoginWraper>
+                      <Link to={"/logowanie"}>
+                        <LoginButton>Zaloguj się</LoginButton>
+                      </Link>
+                    </LoginWraper>
+                  </ContentWraper>
                 </>
               )}
               <SecondTitle>Wybierz rodzaj dostawy</SecondTitle>

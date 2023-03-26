@@ -232,11 +232,20 @@ const CounterProduct = styled.div`
   width: 25px;
   height: 25px;
 `;
+
+const EmptyCart = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 290px;
+  font-size: 28px;
+`;
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
-
+  console.log(cart.quantity);
   return (
     <MainContainer>
       <Container>
@@ -261,30 +270,35 @@ const Cart = () => {
           <Wrapper>
             <Title>Wszystkie Subskrypcje</Title>
             <CartContainer>
-              {cart.products.map((product) => (
-                <Product>
-                  <ProductImg src={product.img} />
-                  <ProductBody>
-                    <ProductTitle>{product.title}</ProductTitle>
+              {cart.quantity > 0 ? (
+                cart.products.map((product) => (
+                  <Product>
+                    <ProductImg src={product.img} />
+                    <ProductBody>
+                      <ProductTitle>{product.title}</ProductTitle>
 
-                    <ProductDesc>Waga: 550g</ProductDesc>
-                    <CounterWrapper>
-                      <Button>+</Button>
-                      <CounterProduct>{product.quantity}</CounterProduct>
-                      <Button>-</Button>
-                    </CounterWrapper>
-                  </ProductBody>
-                  <PriceWrapper>
-                    <TrashFill
-                      color="#222"
-                      size={20}
-                      style={{ cursor: "pointer" }}
-                      onClick={() => dispatch(removeProduct(product))}
-                    />
-                    <Price>{product.price} zł</Price>
-                  </PriceWrapper>
-                </Product>
-              ))}
+                      <ProductDesc>Waga: 550g</ProductDesc>
+                      <CounterWrapper>
+                        <Button>+</Button>
+                        <CounterProduct>{product.quantity}</CounterProduct>
+                        <Button>-</Button>
+                      </CounterWrapper>
+                    </ProductBody>
+                    <PriceWrapper>
+                      <TrashFill
+                        color="#222"
+                        size={20}
+                        style={{ cursor: "pointer" }}
+                        onClick={() => dispatch(removeProduct(product))}
+                      />
+                      <Price>{product.price} zł</Price>
+                    </PriceWrapper>
+                  </Product>
+                ))
+              ) : (
+                <EmptyCart>Twój koszyk jest pusty, niestety...</EmptyCart>
+              )}
+
               <ProductFooter>
                 <ProductTitle>Dostawa Darmowa</ProductTitle>
                 <ProductDesc>Bez względu na ilość subskrypcji</ProductDesc>
@@ -331,17 +345,26 @@ const Cart = () => {
                 </Wrapper>
               </DeliveryOptions>
               <ButtonWrapper>
-                <Link
-                  to={"/dostawa"}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    textDecoration: "none",
-                  }}
-                >
-                  <NextButton>Przejdz do dostawy</NextButton>
-                </Link>
+                {cart.quantity > 0 ? (
+                  <Link
+                    to={"/dostawa"}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <NextButton>Przejdz do dostawy</NextButton>
+                  </Link>
+                ) : (
+                  <NextButton
+                    style={{ backgroundColor: "#ddd", cursor: "not-allowed" }}
+                  >
+                    Przejdz do dostawy
+                  </NextButton>
+                )}
+
                 <Link
                   to={"/"}
                   style={{
