@@ -7,6 +7,10 @@ import {
   Truck,
 } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
+import { userRequest } from "../requestMethods";
+import { useState } from "react";
+
+import { Link, redirect } from "react-router-dom";
 
 const MainContainer = styled.div`
   background-color: #f4f6f9;
@@ -458,97 +462,160 @@ const SecondAlertDec = styled.p`
   }
 `;
 
+const ThanksWraper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: #f4f6f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+`;
+
+const TButton = styled.button`
+  width: 220px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  background-color: #22c55e;
+  color: #fff;
+`;
+
+const Thanks = styled.h3``;
 const Pay = () => {
+  const [done, setDone] = useState(false);
   const cart = useSelector((state) => state.cart);
+  const user = useSelector((state) => state.user.currentUser);
+  const product = cart.products;
+  console.log(product);
+  console.log(user._id);
+
+  const handleOrder = async () => {
+    try {
+      const res = await userRequest.post(`/orders`, {
+        userId: user._id,
+        products: cart.products.map((item) => {
+          return {
+            productId: item._id,
+            quantity: item.quantity,
+          };
+        }),
+
+        amount: 50,
+        address: "USA",
+      });
+
+      setDone(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <MainContainer>
       <Container>
-        <Logo src="../img/herkis_logo.png" />
-        <NavigationContainer>
-          <NavItem>
-            <Basket color="#222" size={30} />
-            <CategoryTitle>Koszyk</CategoryTitle>
-          </NavItem>
-          <Line />
-          <NavItem>
-            <Truck color="#222" size={30} />
-            <CategoryTitle>Dostawa</CategoryTitle>
-          </NavItem>
-          <Line />
-          <NavItem>
-            <CreditCard2Back color="#22c55e" size={30} />
-            <CategoryTitle>Płatności</CategoryTitle>
-          </NavItem>
-        </NavigationContainer>
-        <BodyContainer>
-          <Wrapper>
-            <Title>Rodzaj płatności</Title>
-            <CartContainer>
-              <WrapButton>
-                <PayButton>
-                  <ImgPay src="../img/dotpay.png" />
-                </PayButton>
-                <DescWrap>
-                  <Desc>Lub</Desc>
-                </DescWrap>
-              </WrapButton>
-              <PayTitleWrapper>
-                <LockFill color="#22c55e" size={20} />
-                <PayTitle>Zapłać kartą</PayTitle>
-              </PayTitleWrapper>
-              <FormContainer>
-                <FormWrapper>
-                  <Form>
-                    <InputHolder>
-                      <Input placeholder="1234 5678 9012 3456" />
-                      <CreditCard color="#22c55e" size={26} />
-                    </InputHolder>
-                    <InputWrapper>
-                      <SingleInput placeholder="MM/YY" />
-                      <Wrap>
-                        <SecondInput placeholder="123" />
-                        <CreditCard2Back color="#22c55e" size={26} />
-                      </Wrap>
-                    </InputWrapper>
-                  </Form>
-                </FormWrapper>
-              </FormContainer>
-              <WrapAlert>
-                <AlertDesc>
-                  Klikając „Złóż zamówienie”, wyrażasz zgodę na nasze Warunki i
-                  Politykę prywatności.
-                </AlertDesc>
-              </WrapAlert>
-              <WrapSecondAlert>
-                <SecondAlertDec>
-                  Klikając „Złóż zamówienie”, zgadzasz się, że wybrane
-                  subskrypcje będą automatycznie odnawiane na kolejne warunki
-                  subskrypcji, dopóki nie anulujesz. Po każdym odnowieniu Twoja
-                  metoda płatności zostanie automatycznie obciążona opłatą w
-                  wysokości {(Math.round(cart.total * 100) / 100).toFixed(2)}{" "}
-                  zł. Możesz anulować swoje subskrypcje (zgodnie z warunkami
-                  naszej Polityki anulowania, którą znajdziesz tutaj),
-                  postępując zgodnie z instrukcjami na stronie konta Herkis lub
-                  wysyłając wiadomość e-mail na adres kontakt@herkis.pl.
-                </SecondAlertDec>
-              </WrapSecondAlert>
-              <ButtonWrapper>
-                <NextButton>Złóż Zamówienie</NextButton>
-              </ButtonWrapper>
-            </CartContainer>
-          </Wrapper>
-          <Wrapper>
-            <Title>Podsumowanie</Title>
-            <PriceContainer>
-              <PriceWrap>
-                <ProductTitle>Koszt Subskrypcji</ProductTitle>
-                <Price>
-                  {(Math.round(cart.total * 100) / 100).toFixed(2)} zł
-                </Price>
-              </PriceWrap>
-            </PriceContainer>
-          </Wrapper>
-        </BodyContainer>
+        {done ? (
+          <ThanksWraper>
+            <Thanks>Dziękuje za zamówienie</Thanks>
+            <Link to={"/"}>
+              <TButton>Sprawdź swoje zamówienie</TButton>
+            </Link>
+          </ThanksWraper>
+        ) : (
+          <>
+            <Logo src="../img/herkis_logo.png" />
+            <NavigationContainer>
+              <NavItem>
+                <Basket color="#222" size={30} />
+                <CategoryTitle>Koszyk</CategoryTitle>
+              </NavItem>
+              <Line />
+              <NavItem>
+                <Truck color="#222" size={30} />
+                <CategoryTitle>Dostawa</CategoryTitle>
+              </NavItem>
+              <Line />
+              <NavItem>
+                <CreditCard2Back color="#22c55e" size={30} />
+                <CategoryTitle>Płatności</CategoryTitle>
+              </NavItem>
+            </NavigationContainer>
+            <BodyContainer>
+              <Wrapper>
+                <Title>Rodzaj płatności</Title>
+                <CartContainer>
+                  <WrapButton>
+                    <PayButton>
+                      <ImgPay src="../img/dotpay.png" />
+                    </PayButton>
+                    <DescWrap>
+                      <Desc>Lub</Desc>
+                    </DescWrap>
+                  </WrapButton>
+                  <PayTitleWrapper>
+                    <LockFill color="#22c55e" size={20} />
+                    <PayTitle>Zapłać kartą</PayTitle>
+                  </PayTitleWrapper>
+                  <FormContainer>
+                    <FormWrapper>
+                      <Form>
+                        <InputHolder>
+                          <Input placeholder="1234 5678 9012 3456" />
+                          <CreditCard color="#22c55e" size={26} />
+                        </InputHolder>
+                        <InputWrapper>
+                          <SingleInput placeholder="MM/YY" />
+                          <Wrap>
+                            <SecondInput placeholder="123" />
+                            <CreditCard2Back color="#22c55e" size={26} />
+                          </Wrap>
+                        </InputWrapper>
+                      </Form>
+                    </FormWrapper>
+                  </FormContainer>
+                  <WrapAlert>
+                    <AlertDesc>
+                      Klikając „Złóż zamówienie”, wyrażasz zgodę na nasze
+                      Warunki i Politykę prywatności.
+                    </AlertDesc>
+                  </WrapAlert>
+                  <WrapSecondAlert>
+                    <SecondAlertDec>
+                      Klikając „Złóż zamówienie”, zgadzasz się, że wybrane
+                      subskrypcje będą automatycznie odnawiane na kolejne
+                      warunki subskrypcji, dopóki nie anulujesz. Po każdym
+                      odnowieniu Twoja metoda płatności zostanie automatycznie
+                      obciążona opłatą w wysokości{" "}
+                      {(Math.round(cart.total * 100) / 100).toFixed(2)} zł.
+                      Możesz anulować swoje subskrypcje (zgodnie z warunkami
+                      naszej Polityki anulowania, którą znajdziesz tutaj),
+                      postępując zgodnie z instrukcjami na stronie konta Herkis
+                      lub wysyłając wiadomość e-mail na adres kontakt@herkis.pl.
+                    </SecondAlertDec>
+                  </WrapSecondAlert>
+                  <ButtonWrapper>
+                    <NextButton onClick={handleOrder}>
+                      Złóż Zamówienie
+                    </NextButton>
+                  </ButtonWrapper>
+                </CartContainer>
+              </Wrapper>
+
+              <Wrapper>
+                <Title>Podsumowanie</Title>
+                <PriceContainer>
+                  <PriceWrap>
+                    <ProductTitle>Koszt Subskrypcji</ProductTitle>
+                    <Price>
+                      {(Math.round(cart.total * 100) / 100).toFixed(2)} zł
+                    </Price>
+                  </PriceWrap>
+                </PriceContainer>
+              </Wrapper>
+            </BodyContainer>
+          </>
+        )}
       </Container>
     </MainContainer>
   );
