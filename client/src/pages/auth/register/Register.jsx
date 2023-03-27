@@ -92,10 +92,8 @@ const Register = () => {
     zip: "",
     city: "",
     phone: "",
-    isAdmin: false,
   });
 
-  console.log(user);
   const { isFetching, error } = useSelector((state) => state.user);
 
   const handleRegister = (e) => {
@@ -104,12 +102,19 @@ const Register = () => {
     });
   };
 
-  const handleClick = async (e) => {
-    e.preventDefault();
-
+  const handleClick = async () => {
     try {
-      const res = await publicRequest.post("auth/register", user);
-      console.log(res.user);
+      const res = await publicRequest.post("auth/register", {
+        username: user.username,
+        email: user.email,
+        password: user.password,
+        city: user.city,
+        delivery: user.adress,
+        name: user.name,
+        phone: user.phone,
+        zip: user.zip,
+      });
+      console.log(res.status);
     } catch (err) {
       console.log(err);
     }
@@ -124,6 +129,12 @@ const Register = () => {
             <Title>Rejestracja</Title>
             <FormWraper>
               <Form>
+                <Input
+                  name="username"
+                  placeholder="Nazwa użytkownika"
+                  type="text"
+                  onChange={handleRegister}
+                />
                 <Input
                   name="email"
                   placeholder="Email"
