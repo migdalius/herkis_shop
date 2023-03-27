@@ -480,6 +480,7 @@ const TButton = styled.button`
   border: none;
   background-color: #22c55e;
   color: #fff;
+  cursor: pointer;
 `;
 
 const Thanks = styled.h3``;
@@ -488,8 +489,6 @@ const Pay = () => {
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
   const product = cart.products;
-  console.log(product);
-  console.log(user._id);
 
   const handleOrder = async () => {
     try {
@@ -502,8 +501,15 @@ const Pay = () => {
           };
         }),
 
-        amount: 50,
-        address: "USA",
+        amount: (Math.round(cart.total * 100) / 100).toFixed(2),
+        address: {
+          name: user.name,
+          city: user.city,
+          delivery: user.delivery,
+          email: user.email,
+          zip: user.zip,
+          username: user.username,
+        },
       });
 
       setDone(true);
@@ -518,7 +524,7 @@ const Pay = () => {
         {done ? (
           <ThanksWraper>
             <Thanks>Dziękuje za zamówienie</Thanks>
-            <Link to={"/"}>
+            <Link to={"/moje-konto/moje-zamowienia"}>
               <TButton>Sprawdź swoje zamówienie</TButton>
             </Link>
           </ThanksWraper>

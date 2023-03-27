@@ -6,6 +6,7 @@ import OrderProduct from "../../../components/orderproduct/OrderProduct";
 import { useEffect, useState } from "react";
 import TopNav from "../../../components/topNav/TopNav";
 import { userRequest } from "../../requestMethods";
+import { useSelector } from "react-redux";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -136,20 +137,22 @@ const ProductContainer = styled.div`
 
 const OrderAdmin = () => {
   const [orders, setOrders] = useState([]);
+  const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
 
-  // useEffect(() => {
-  const getOrders = async () => {
-    try {
-      const res = await userRequest.get("orders/find/63c18620cf0c78c4a0cf7ff9");
-      const data = await res.data;
-      setOrders(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  getOrders();
-  // }, []);
-  console.log(orders);
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await userRequest.get(`orders/find/${user._id}`);
+        const data = await res.data;
+        setOrders(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getOrders();
+  }, []);
+
   return (
     <div className="app">
       <BackgroundContainer>

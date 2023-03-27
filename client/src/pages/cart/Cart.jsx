@@ -245,7 +245,7 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
-  console.log(cart.quantity);
+
   return (
     <MainContainer>
       <Container>
@@ -277,7 +277,7 @@ const Cart = () => {
                     <ProductBody>
                       <ProductTitle>{product.title}</ProductTitle>
 
-                      <ProductDesc>Waga: 550g</ProductDesc>
+                      <ProductDesc>Zestaw do uprawy domowej</ProductDesc>
                       <CounterWrapper>
                         <Button>+</Button>
                         <CounterProduct>{product.quantity}</CounterProduct>
@@ -291,7 +291,13 @@ const Cart = () => {
                         style={{ cursor: "pointer" }}
                         onClick={() => dispatch(removeProduct(product))}
                       />
-                      <Price>{product.price * product.quantity} zł</Price>
+                      <Price>
+                        {(
+                          Math.round(product.price * product.quantity * 100) /
+                          100
+                        ).toFixed(2)}{" "}
+                        zł
+                      </Price>
                     </PriceWrapper>
                   </Product>
                 ))
@@ -366,7 +372,7 @@ const Cart = () => {
                 )}
 
                 <Link
-                  to={"/"}
+                  to={"/subskrypcja"}
                   style={{
                     display: "flex",
                     alignItems: "center",
