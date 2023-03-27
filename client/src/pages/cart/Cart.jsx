@@ -291,7 +291,7 @@ const Cart = () => {
                         style={{ cursor: "pointer" }}
                         onClick={() => dispatch(removeProduct(product))}
                       />
-                      <Price>{product.price} zł</Price>
+                      <Price>{product.price * product.quantity} zł</Price>
                     </PriceWrapper>
                   </Product>
                 ))

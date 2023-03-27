@@ -4,10 +4,8 @@ import Footer from "../../components/footer/Footer";
 import TopNav from "../../components/topNav/TopNav";
 import { Link } from "react-router-dom";
 
-import { Basket, Clock } from "react-bootstrap-icons";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { Audio, RotatingSquare } from "react-loader-spinner";
 
 const MainContainer = styled.div`
   height: 100vh;
@@ -374,17 +372,6 @@ const Contact = () => {
                       </ErrorMgs>
                       <ButtonContainer>
                         <Button type="submit">Wyślij Zapytanie</Button>
-
-                        {/* <RotatingSquare
-                          height="50"
-                          width="50"
-                          color="#22c55e"
-                          ariaLabel="rotating-square-loading"
-                          strokeWidth="4"
-                          wrapperStyle={{}}
-                          wrapperClass=""
-                          visible={true}
-                        /> */}
                       </ButtonContainer>
                     </Form>
                   </>

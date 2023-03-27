@@ -5,15 +5,12 @@ import {
   BoxSeam,
   Cash,
   CreditCard2Back,
-  ShieldCheck,
-  TrashFill,
   Truck,
 } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 
 const MainContainer = styled.div`
   background-color: #f4f6f9;

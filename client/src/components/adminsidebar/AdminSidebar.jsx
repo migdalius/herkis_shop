@@ -41,6 +41,7 @@ const UserDashboardItem = styled.div`
 `;
 const AdminSidebar = () => {
   const user = useSelector((state) => state.user);
+  console.log(user.currentUser.isAdmin);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logoutSucess());

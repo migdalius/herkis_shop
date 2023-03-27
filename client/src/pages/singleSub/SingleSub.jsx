@@ -151,6 +151,7 @@ const SingleSub = () => {
 
   const handleClick = () => {
     //update cart
+
     dispatch(
       addProduct({
         ...product,

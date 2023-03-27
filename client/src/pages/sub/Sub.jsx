@@ -355,42 +355,6 @@ const Sub = () => {
                     </SubContainer>
                   );
                 })}
-                {/* <SubContainer>
-                  <LeftContainer>
-                    <TitleContainer>3 Miesiące</TitleContainer>
-                    <TitleContainerPrice>
-                      46,99 zł / miesięcznie
-                    </TitleContainerPrice>
-                    <SubTitlePrice>Oszczędzasz 9 zł</SubTitlePrice>
-                  </LeftContainer>
-                  <RightContainer>
-                    <Button>Subskrybuj</Button>
-                  </RightContainer>
-                </SubContainer> */}
-                {/* <SubContainer>
-                  <LeftContainer>
-                    <TitleContainer>6 Miesięcy</TitleContainer>
-                    <TitleContainerPrice>
-                      45,99 zł / miesięcznie
-                    </TitleContainerPrice>
-                    <SubTitlePrice>Oszczędzasz 24 zł</SubTitlePrice>
-                  </LeftContainer>
-                  <RightContainer>
-                    <Button>Subskrybuj</Button>
-                  </RightContainer>
-                </SubContainer> */}
-                {/* <SubContainer>
-                  <LeftContainer>
-                    <TitleContainer>12 Miesięcy</TitleContainer>
-                    <TitleContainerPrice>
-                      40,99 zł / miesięcznie
-                    </TitleContainerPrice>
-                    <SubTitlePrice>Oszczędzasz 108 zł</SubTitlePrice>
-                  </LeftContainer>
-                  <RightContainer>
-                    <Button>Subskrybuj</Button>
-                  </RightContainer>
-                </SubContainer> */}
               </PriceWrap>
             </PriceContainer>
           </Wrap>
