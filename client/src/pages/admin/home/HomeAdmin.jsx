@@ -32,7 +32,7 @@ const MainContainer = styled.div`
 
 const LeftContainer = styled.div`
   width: 300px;
-  height: 350px;
+  height: 400px;
   background-color: #fff;
   @media (max-width: 1370px) {
     width: 250px;

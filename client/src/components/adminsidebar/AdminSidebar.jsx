@@ -41,6 +41,7 @@ const UserDashboardItem = styled.div`
 `;
 const AdminSidebar = () => {
   const user = useSelector((state) => state.user);
+  console.log(user.currentUser.isAdmin);
 
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -96,6 +97,39 @@ const AdminSidebar = () => {
           <UserDashboardItem>Kontakt</UserDashboardItem>
         </Link>
         <UserDashboardItem onClick={handleLogout}>Wyloguj</UserDashboardItem>
+      </UserDashboard>
+      <Hr />
+      <UserDataContainer>
+        <UserTitle>Admin Panel</UserTitle>
+      </UserDataContainer>
+      <UserDashboard>
+        <Link
+          to={"/"}
+          style={{
+            textDecoration: "none",
+            color: "#222",
+          }}
+        >
+          <UserDashboardItem>Lista użytkowników</UserDashboardItem>
+        </Link>
+        <Link
+          to={"/"}
+          style={{
+            textDecoration: "none",
+            color: "#222",
+          }}
+        >
+          <UserDashboardItem>Zamówienia</UserDashboardItem>
+        </Link>
+        <Link
+          to={"/"}
+          style={{
+            textDecoration: "none",
+            color: "#222",
+          }}
+        >
+          <UserDashboardItem>Produkty</UserDashboardItem>
+        </Link>
       </UserDashboard>
     </SideBar>
   );
