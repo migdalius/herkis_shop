@@ -114,7 +114,6 @@ const Register = () => {
         phone: user.phone,
         zip: user.zip,
       });
-      console.log(res.status);
     } catch (err) {
       console.log(err);
     }

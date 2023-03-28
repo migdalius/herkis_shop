@@ -141,6 +141,7 @@ const OrderAdmin = () => {
   console.log(user);
 
   useEffect(() => {
+    console.log(user._id);
     const getOrders = async () => {
       try {
         const res = await userRequest.get(`orders/find/${user._id}`);
