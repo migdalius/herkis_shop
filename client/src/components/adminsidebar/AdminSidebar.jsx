@@ -98,39 +98,44 @@ const AdminSidebar = () => {
         </Link>
         <UserDashboardItem onClick={handleLogout}>Wyloguj</UserDashboardItem>
       </UserDashboard>
-      <Hr />
-      <UserDataContainer>
-        <UserTitle>Admin Panel</UserTitle>
-      </UserDataContainer>
-      <UserDashboard>
-        <Link
-          to={"/"}
-          style={{
-            textDecoration: "none",
-            color: "#222",
-          }}
-        >
-          <UserDashboardItem>Lista użytkowników</UserDashboardItem>
-        </Link>
-        <Link
-          to={"/"}
-          style={{
-            textDecoration: "none",
-            color: "#222",
-          }}
-        >
-          <UserDashboardItem>Zamówienia</UserDashboardItem>
-        </Link>
-        <Link
-          to={"/"}
-          style={{
-            textDecoration: "none",
-            color: "#222",
-          }}
-        >
-          <UserDashboardItem>Produkty</UserDashboardItem>
-        </Link>
-      </UserDashboard>
+
+      {user.currentUser.isAdmin && (
+        <>
+          <Hr />
+          <UserDataContainer>
+            <UserTitle>Admin Panel</UserTitle>
+          </UserDataContainer>
+          <UserDashboard>
+            <Link
+              to={"/"}
+              style={{
+                textDecoration: "none",
+                color: "#222",
+              }}
+            >
+              <UserDashboardItem>Lista użytkowników</UserDashboardItem>
+            </Link>
+            <Link
+              to={"/"}
+              style={{
+                textDecoration: "none",
+                color: "#222",
+              }}
+            >
+              <UserDashboardItem>Zamówienia</UserDashboardItem>
+            </Link>
+            <Link
+              to={"/"}
+              style={{
+                textDecoration: "none",
+                color: "#222",
+              }}
+            >
+              <UserDashboardItem>Produkty</UserDashboardItem>
+            </Link>
+          </UserDashboard>
+        </>
+      )}
     </SideBar>
   );
 };
