@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { login } from "../../../redux/apiCalls";
 import TopNav from "../../../components/topNav/TopNav";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, redirect } from "react-router-dom";
 import { publicRequest, userRequest } from "../../requestMethods";
 
 const MainContainer = styled.div`
@@ -83,6 +83,32 @@ const RegisterContainer = styled.div`
   align-items: center;
 `;
 
+const RegWraper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+`;
+
+const RegText = styled.h3``;
+
+const RegDesc = styled.p``;
+
+const RegButton = styled.button`
+  width: 350px;
+  height: 50px;
+  border: none;
+  background-color: #22c55e;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  &:hover {
+    background-color: #222;
+  }
+`;
+
 const Register = () => {
   const [user, setUser] = useState({
     email: "",
@@ -95,7 +121,8 @@ const Register = () => {
   });
 
   const { isFetching, error } = useSelector((state) => state.user);
-
+  const [status, setStatus] = useState(false);
+  console.log(status);
   const handleRegister = (e) => {
     setUser((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
@@ -114,6 +141,9 @@ const Register = () => {
         phone: user.phone,
         zip: user.zip,
       });
+      if (res.status === 201) {
+        setStatus(true);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -125,70 +155,82 @@ const Register = () => {
       <MainContainer>
         <Container>
           <Wrap>
-            <Title>Rejestracja</Title>
-            <FormWraper>
-              <Form>
-                <Input
-                  name="username"
-                  placeholder="Nazwa użytkownika"
-                  type="text"
-                  onChange={handleRegister}
-                />
-                <Input
-                  name="email"
-                  placeholder="Email"
-                  type="text"
-                  onChange={handleRegister}
-                />
-                <Input
-                  name="password"
-                  placeholder="Hasło"
-                  type="password"
-                  onChange={handleRegister}
-                />
-                <Input
-                  name="name"
-                  placeholder="Imię i Nazwisko"
-                  type="text"
-                  onChange={handleRegister}
-                />
-                <Input
-                  name="adress"
-                  placeholder="Adres Dostawy"
-                  type="text"
-                  onChange={handleRegister}
-                />
-                <Input
-                  name="zip"
-                  placeholder="Kod pocztowy"
-                  type="text"
-                  onChange={handleRegister}
-                />
-                <Input
-                  name="city"
-                  placeholder="Miasto"
-                  type="text"
-                  onChange={handleRegister}
-                />
-                <Input
-                  name="phone"
-                  placeholder="Numer Telefonu"
-                  type="number"
-                  onChange={handleRegister}
-                />
-              </Form>
-            </FormWraper>
-            <AgreeTerms>
-              Klikając „Zarejestruj się”, wyrażasz zgodę na nasze Warunki i
-              Politykę prywatności.
-            </AgreeTerms>
-            <Button onClick={handleClick} disabled={isFetching}>
-              Zarejestruj się
-            </Button>
-            <RegisterContainer>
-              <AgreeTerms>Masz już konto?</AgreeTerms>
-              <Link to={"/logowanie"}>Logowanie</Link>
-            </RegisterContainer>
+            {!status ? (
+              <>
+                <Title>Rejestracja</Title>
+                <FormWraper>
+                  <Form>
+                    <Input
+                      name="username"
+                      placeholder="Nazwa użytkownika"
+                      type="text"
+                      onChange={handleRegister}
+                    />
+                    <Input
+                      name="email"
+                      placeholder="Email"
+                      type="text"
+                      onChange={handleRegister}
+                    />
+                    <Input
+                      name="password"
+                      placeholder="Hasło"
+                      type="password"
+                      onChange={handleRegister}
+                    />
+                    <Input
+                      name="name"
+                      placeholder="Imię i Nazwisko"
+                      type="text"
+                      onChange={handleRegister}
+                    />
+                    <Input
+                      name="adress"
+                      placeholder="Adres Dostawy"
+                      type="text"
+                      onChange={handleRegister}
+                    />
+                    <Input
+                      name="zip"
+                      placeholder="Kod pocztowy"
+                      type="text"
+                      onChange={handleRegister}
+                    />
+                    <Input
+                      name="city"
+                      placeholder="Miasto"
+                      type="text"
+                      onChange={handleRegister}
+                    />
+                    <Input
+                      name="phone"
+                      placeholder="Numer Telefonu"
+                      type="number"
+                      onChange={handleRegister}
+                    />
+                  </Form>
+                </FormWraper>
+                <AgreeTerms>
+                  Klikając „Zarejestruj się”, wyrażasz zgodę na nasze Warunki i
+                  Politykę prywatności.
+                </AgreeTerms>
+                <Button onClick={handleClick} disabled={isFetching}>
+                  Zarejestruj się
+                </Button>
+                <RegisterContainer>
+                  <AgreeTerms>Masz już konto?</AgreeTerms>
+                  <Link to={"/logowanie"}>Logowanie</Link>
+                </RegisterContainer>
+              </>
+            ) : (
+              <RegWraper>
+                <RegText>Dziękujemy za rejestracje</RegText>
+                <RegDesc>Teraz możesz się zalogować do swojego konta</RegDesc>
+                <Link to={"/logowanie"}>
+                  <RegButton>Logowanie</RegButton>
+                </Link>
+              </RegWraper>
+            )}
           </Wrap>
         </Container>
       </MainContainer>
