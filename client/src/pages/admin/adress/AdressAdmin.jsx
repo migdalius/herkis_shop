@@ -145,7 +145,7 @@ const InputSubmit = styled.input`
 const LabelContainer = styled.label``;
 const AdressAdmin = () => {
   const user = useSelector((state) => state.user);
-  console.log(user.currentUser);
+
   return (
     <div className="app">
       <BackgroundContainer>

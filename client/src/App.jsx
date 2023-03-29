@@ -16,6 +16,8 @@ import Sub from "./pages/sub/Sub";
 import Work from "./pages/work/Work";
 import Contact from "./pages/contact/Contact";
 import SingleSub from "./pages/singleSub/SingleSub";
+import UserList from "./pages/admin/userList/UserList";
+import UserDetail from "./pages/admin/userList/UserDetail";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -40,6 +42,12 @@ function App() {
         <Route path="/moje-konto" element={<HomeAdmin />} />
         <Route path="/moje-konto/adres-dostawy" element={<AdressAdmin />} />
         <Route path="/moje-konto/moje-zamowienia" element={<OrderAdmin />} />
+
+        <Route path="/moje-konto/lista-uzytkownikow" element={<UserList />} />
+        <Route
+          path="/moje-konto/lista-uzytkownikow/:id"
+          element={<UserDetail />}
+        />
       </Routes>
     </BrowserRouter>
   );
