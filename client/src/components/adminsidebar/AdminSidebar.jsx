@@ -107,7 +107,7 @@ const AdminSidebar = () => {
           </UserDataContainer>
           <UserDashboard>
             <Link
-              to={"/"}
+              to={"/moje-konto/lista-uzytkownikow"}
               style={{
                 textDecoration: "none",
                 color: "#222",
