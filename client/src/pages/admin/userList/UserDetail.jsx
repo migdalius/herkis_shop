@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import Footer from "../../../components/footer/Footer";
 
@@ -60,14 +60,59 @@ const TextWrap = styled.div`
 
 const ProductContainer = styled.div`
   display: flex;
-  width: 600px;
+  width: 700px;
   height: 200px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 5px;
 `;
 const ProductLeft = styled.div`
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 `;
 const ProductRight = styled.div`
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const SingleProductContainer = styled.div`
+  display: flex;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 5px;
+`;
+
+const Title = styled.h3`
+  font-size: 16px;
+  font-weight: 600;
+  color: #8f8f8f;
+`;
+
+const ButtonWraper = styled.button`
+  background-color: transparent;
+  border: 1px solid #222;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 5px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #22c55e;
+    color: #fff;
+    cursor: pointer;
+    border: 1px solid #ddd;
+  }
 `;
 const UserDetail = () => {
   const location = useLocation();
@@ -129,7 +174,7 @@ const UserDetail = () => {
                   return (
                     <ProductContainer>
                       <ProductLeft>
-                        <AdminTextDesc>Adres dostawy zamówienia:</AdminTextDesc>
+                        <Title>Adres dostawy zamówienia:</Title>
                         <AdminTextDesc>
                           Imię i nazwisko: {product.address.name}
                         </AdminTextDesc>
@@ -147,7 +192,7 @@ const UserDetail = () => {
                         </AdminTextDesc>
                       </ProductLeft>
                       <ProductRight>
-                        <AdminTextDesc>Produkty z zamówienia:</AdminTextDesc>
+                        <Title>Produkty z zamówienia:</Title>
                         <AdminTextDesc>
                           Suma zamówienia: {product.amount} zł
                         </AdminTextDesc>
@@ -156,8 +201,30 @@ const UserDetail = () => {
                         </AdminTextDesc>
                         <AdminTextDesc>
                           {product.products.map((product) => {
-                            <div>{product.productId}</div>;
+                            return (
+                              <Container>
+                                <AdminTextDesc>
+                                  Numer zamówienia: {product.productId}
+                                </AdminTextDesc>
+                                <Link
+                                  style={{ textDecoration: "none" }}
+                                  to={`../subskrypcja/${product.productId}`}
+                                >
+                                  <ButtonWraper>
+                                    <AdminTextDesc>
+                                      Numer Produktu: {product.productId}
+                                    </AdminTextDesc>
+                                    <AdminTextDesc>
+                                      Ilość: {product.quantity}
+                                    </AdminTextDesc>
+                                  </ButtonWraper>
+                                </Link>
+                              </Container>
+                            );
                           })}
+                          <AdminTextDesc>
+                            Suma zamówienia: {product.amount} zł
+                          </AdminTextDesc>
                         </AdminTextDesc>
                       </ProductRight>
                     </ProductContainer>
