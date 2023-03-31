@@ -19,6 +19,7 @@ import SingleSub from "./pages/singleSub/SingleSub";
 import UserList from "./pages/admin/userList/UserList";
 import UserDetail from "./pages/admin/userList/UserDetail";
 import UserOrders from "./pages/admin/userOrders/UserOrders";
+import Products from "./pages/admin/products/Products";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -50,6 +51,7 @@ function App() {
           element={<UserDetail />}
         />
         <Route path="/moje-konto/zamowienia" element={<UserOrders />} />
+        <Route path="/moje-konto/produkty" element={<Products />} />
       </Routes>
     </BrowserRouter>
   );
