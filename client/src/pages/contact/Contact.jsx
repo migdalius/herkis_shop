@@ -350,7 +350,7 @@ const Contact = () => {
                         type="text"
                         name="user_subject"
                         required={true}
-                        pattern="^[A-Za-z0-9]{5,60}$"
+                        // pattern="^[A-Za-z0-9]{5,60}$"
                         onBlur={handleFocus}
                         focused={focused.toString()}
                       />

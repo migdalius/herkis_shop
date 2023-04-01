@@ -116,7 +116,7 @@ const AdminSidebar = () => {
               <UserDashboardItem>Lista użytkowników</UserDashboardItem>
             </Link>
             <Link
-              to={"/"}
+              to={"/moje-konto/zamowienia"}
               style={{
                 textDecoration: "none",
                 color: "#222",
@@ -125,7 +125,7 @@ const AdminSidebar = () => {
               <UserDashboardItem>Zamówienia</UserDashboardItem>
             </Link>
             <Link
-              to={"/"}
+              to={"/moje-konto/produkty"}
               style={{
                 textDecoration: "none",
                 color: "#222",
