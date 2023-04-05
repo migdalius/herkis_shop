@@ -509,10 +509,10 @@ const Pay = () => {
     const makeRequest = async () => {
       try {
         const res = await userRequest.post("/checkout/payment", {
-          tokenId: stripeToken,
+          tokenId: stripeToken.id,
           amount: cart.total * 100,
         });
-        navigate("/success", { data: res.data });
+        navigate("/zamowienie-przyjete", { data: res.data });
       } catch {}
     };
     stripeToken && makeRequest();

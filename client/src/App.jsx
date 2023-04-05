@@ -20,6 +20,7 @@ import UserList from "./pages/admin/userList/UserList";
 import UserDetail from "./pages/admin/userList/UserDetail";
 import UserOrders from "./pages/admin/userOrders/UserOrders";
 import Products from "./pages/admin/products/Products";
+import Success from "./pages/pay/Success";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -44,6 +45,7 @@ function App() {
         <Route path="/moje-konto" element={<HomeAdmin />} />
         <Route path="/moje-konto/adres-dostawy" element={<AdressAdmin />} />
         <Route path="/moje-konto/moje-zamowienia" element={<OrderAdmin />} />
+        <Route path="/zamowienie-przyjete" element={<Success />} />
 
         <Route path="/moje-konto/lista-uzytkownikow" element={<UserList />} />
         <Route
