@@ -10,8 +10,16 @@ import { useSelector } from "react-redux";
 import { userRequest } from "../requestMethods";
 import { useState } from "react";
 
-import { Link, redirect } from "react-router-dom";
+import {
+  Link,
+  redirect,
+  unstable_HistoryRouter,
+  useNavigate,
+} from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
+import { useEffect } from "react";
+
+const KEY = process.env.REACT_APP_STRIPE;
 
 const MainContainer = styled.div`
   background-color: #f4f6f9;
@@ -486,9 +494,9 @@ const TButton = styled.button`
 
 const Thanks = styled.h3``;
 const Pay = () => {
-  const KEY = process.env.REACT_APP_STRIPE;
   const [done, setDone] = useState(false);
   const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
   const product = cart.products;
@@ -496,7 +504,20 @@ const Pay = () => {
   const onToken = (token) => {
     setStripeToken(token);
   };
-  console.log(onToken);
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken,
+          amount: cart.total * 100,
+        });
+        navigate("/success", { data: res.data });
+      } catch {}
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.total, navigate]);
+
   const handleOrder = async () => {
     try {
       const res = await userRequest.post(`/orders`, {
@@ -613,7 +634,7 @@ const Pay = () => {
                     </NextButton> */}
                     <StripeCheckout
                       name="Herkis"
-                      image="https://logos-world.net/wp-content/uploads/2021/03/Stripe-Logo.png"
+                      image="https://www.szybkauprawa.pl/img/ziola.png"
                       billingAddress
                       shippingAddress
                       description={`Your total is $${cart.total}`}
