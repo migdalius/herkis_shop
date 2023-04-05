@@ -11,6 +11,7 @@ import { userRequest } from "../requestMethods";
 import { useState } from "react";
 
 import { Link, redirect } from "react-router-dom";
+import StripeCheckout from "react-stripe-checkout";
 
 const MainContainer = styled.div`
   background-color: #f4f6f9;
@@ -485,11 +486,17 @@ const TButton = styled.button`
 
 const Thanks = styled.h3``;
 const Pay = () => {
+  const KEY = process.env.REACT_APP_STRIPE;
   const [done, setDone] = useState(false);
+  const [stripeToken, setStripeToken] = useState(null);
   const cart = useSelector((state) => state.cart);
   const user = useSelector((state) => state.user.currentUser);
   const product = cart.products;
 
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+  console.log(onToken);
   const handleOrder = async () => {
     try {
       const res = await userRequest.post(`/orders`, {
@@ -601,9 +608,21 @@ const Pay = () => {
                     </SecondAlertDec>
                   </WrapSecondAlert>
                   <ButtonWrapper>
-                    <NextButton onClick={handleOrder}>
+                    {/* <NextButton onClick={handleOrder}>
                       Złóż Zamówienie
-                    </NextButton>
+                    </NextButton> */}
+                    <StripeCheckout
+                      name="Herkis"
+                      image="https://logos-world.net/wp-content/uploads/2021/03/Stripe-Logo.png"
+                      billingAddress
+                      shippingAddress
+                      description={`Your total is $${cart.total}`}
+                      amount={cart.total * 100}
+                      token={onToken}
+                      stripeKey={KEY}
+                    >
+                      <Button>CHECKOUT NOW</Button>
+                    </StripeCheckout>
                   </ButtonWrapper>
                 </CartContainer>
               </Wrapper>
