@@ -512,10 +512,10 @@ const Pay = () => {
           tokenId: stripeToken.id,
           amount: cart.total * 100,
         });
-        navigate("/zamowienie-przyjete", { data: res.data });
+        navigate("/zamowienie-przyjete", { state: res.data });
       } catch {}
     };
-    stripeToken && makeRequest();
+    stripeToken && cart.total >= 1 && makeRequest();
   }, [stripeToken, cart.total, navigate]);
 
   const handleOrder = async () => {
@@ -580,19 +580,33 @@ const Pay = () => {
                 <Title>Rodzaj płatności</Title>
                 <CartContainer>
                   <WrapButton>
-                    <PayButton>
-                      <ImgPay src="../img/dotpay.png" />
-                    </PayButton>
+                    <StripeCheckout
+                      name="Herkis"
+                      image="https://www.szybkauprawa.pl/img/ziola.png"
+                      billingAddress
+                      shippingAddress
+                      description={`Całkowita kwota do zapłaty ${cart.total} zł`}
+                      amount={cart.total * 100}
+                      token={onToken}
+                      stripeKey={KEY}
+                    >
+                      <PayButton>
+                        <ImgPay src="../img/stripe.png" />
+                      </PayButton>
+                    </StripeCheckout>
                     <DescWrap>
                       <Desc>Lub</Desc>
                     </DescWrap>
+                    <PayButton>
+                      <ImgPay src="../img/dotpay.png" />
+                    </PayButton>
                   </WrapButton>
-                  <PayTitleWrapper>
+                  {/* <PayTitleWrapper>
                     <LockFill color="#22c55e" size={20} />
                     <PayTitle>Zapłać kartą</PayTitle>
                   </PayTitleWrapper>
-                  <FormContainer>
-                    <FormWrapper>
+                  <FormContainer> */}
+                  {/* <FormWrapper>
                       <Form>
                         <InputHolder>
                           <Input placeholder="1234 5678 9012 3456" />
@@ -607,7 +621,7 @@ const Pay = () => {
                         </InputWrapper>
                       </Form>
                     </FormWrapper>
-                  </FormContainer>
+                  </FormContainer> */}
                   <WrapAlert>
                     <AlertDesc>
                       Klikając „Złóż zamówienie”, wyrażasz zgodę na nasze
@@ -632,18 +646,6 @@ const Pay = () => {
                     {/* <NextButton onClick={handleOrder}>
                       Złóż Zamówienie
                     </NextButton> */}
-                    <StripeCheckout
-                      name="Herkis"
-                      image="https://www.szybkauprawa.pl/img/ziola.png"
-                      billingAddress
-                      shippingAddress
-                      description={`Your total is $${cart.total}`}
-                      amount={cart.total * 100}
-                      token={onToken}
-                      stripeKey={KEY}
-                    >
-                      <Button>CHECKOUT NOW</Button>
-                    </StripeCheckout>
                   </ButtonWrapper>
                 </CartContainer>
               </Wrapper>
