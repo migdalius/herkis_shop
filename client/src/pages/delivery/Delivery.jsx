@@ -519,7 +519,7 @@ const Delivery = () => {
                 </Wrapper>
               </DeliveryOptions>
               <ButtonWrapper>
-                {user !== null ? (
+                {user !== null && active === true ? (
                   <Link
                     to={"/platnosc"}
                     style={{

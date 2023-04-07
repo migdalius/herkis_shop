@@ -518,34 +518,6 @@ const Pay = () => {
     stripeToken && cart.total >= 1 && makeRequest();
   }, [stripeToken, cart.total, navigate]);
 
-  const handleOrder = async () => {
-    try {
-      const res = await userRequest.post(`/orders`, {
-        userId: user._id,
-        products: cart.products.map((item) => {
-          return {
-            productId: item._id,
-            quantity: item.quantity,
-          };
-        }),
-
-        amount: (Math.round(cart.total * 100) / 100).toFixed(2),
-        address: {
-          name: user.name,
-          city: user.city,
-          delivery: user.delivery,
-          email: user.email,
-          zip: user.zip,
-          username: user.username,
-        },
-      });
-
-      setDone(true);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <MainContainer>
       <Container>
@@ -581,14 +553,16 @@ const Pay = () => {
                 <CartContainer>
                   <WrapButton>
                     <StripeCheckout
-                      name="Herkis"
+                      name="Zapłać kartą"
                       image="https://www.szybkauprawa.pl/img/ziola.png"
-                      billingAddress
-                      shippingAddress
+                      billingAddress={false}
                       description={`Całkowita kwota do zapłaty ${cart.total} zł`}
                       amount={cart.total * 100}
                       token={onToken}
                       stripeKey={KEY}
+                      currency="PLN"
+                      panelLabel="Zapłać"
+                      shippingAddress={false}
                     >
                       <PayButton>
                         <ImgPay src="../img/stripe.png" />

@@ -18,7 +18,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  height: 100%;
+  height: auto;
   margin-left: 5%;
   margin-right: 5%;
 
@@ -61,7 +61,7 @@ const TextWrap = styled.div`
 const ProductContainer = styled.div`
   display: flex;
   width: 700px;
-  height: 200px;
+  height: auto;
   border: 1px solid #ddd;
   margin-bottom: 20px;
   padding: 15px;
