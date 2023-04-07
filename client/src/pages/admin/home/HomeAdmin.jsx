@@ -158,6 +158,7 @@ const HomeAdmin = () => {
 
     window.location.href = "/";
   };
+
   return (
     <div className="app">
       <BackgroundContainer>

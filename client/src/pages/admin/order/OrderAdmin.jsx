@@ -138,7 +138,6 @@ const ProductContainer = styled.div`
 const OrderAdmin = () => {
   const [orders, setOrders] = useState([]);
   const user = useSelector((state) => state.user.currentUser);
-  console.log(user);
 
   useEffect(() => {
     console.log(user._id);

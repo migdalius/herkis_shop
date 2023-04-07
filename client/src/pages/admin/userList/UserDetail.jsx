@@ -147,7 +147,7 @@ const UserDetail = () => {
     };
     getProduct();
   }, [userId]);
-  console.log(products);
+
   return (
     <div className="app">
       <BackgroundContainer>
