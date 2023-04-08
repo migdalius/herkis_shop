@@ -13,7 +13,8 @@ import {
 import { userRequest } from "../../pages/requestMethods";
 import { Link } from "react-router-dom";
 
-const OrderTable = () => {
+const OrderTable = ({ orders }) => {
+  console.log(orders);
   return (
     <>
       <table className="styled-table">
@@ -29,60 +30,69 @@ const OrderTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>6666666666666</td>
-            <td>User</td>
-            <td>
-              <div className="container">
-                <div>
-                  <img className="thumbnail" src="../img/product.png" alt="" />
-                </div>
-                <div className="product-container">
-                  <div>2x Zestaw do Uprawy BONSAI sosna japońska X</div>
-                  <div>26.99 zł</div>
-                </div>
-              </div>
-              <div className="container">
-                <div>
-                  <img className="thumbnail" src="../img/product.png" alt="" />
-                </div>
-                <div className="product-container">
-                  <div>2x Zestaw do Uprawy BONSAI sosna japońska X</div>
-                  <div>26.99 zł</div>
-                </div>
-              </div>
-            </td>
+          {orders.map((order) => {
+            return (
+              <>
+                <tr>
+                  <td>{order._id}</td>
+                  <td>{order.address.name}</td>
+                  <td>
+                    {order.products.map((product) => {
+                      return (
+                        <>
+                          <div className="container">
+                            <div>
+                              <img
+                                className="thumbnail"
+                                src="../img/product.png"
+                                alt=""
+                              />
+                            </div>
+                            <div className="product-container">
+                              <div>
+                                {product.quantity} x {product.productId}
+                              </div>
+                              <div>26.99 zł</div>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </td>
 
-            <td>300 zł</td>
-            <td>
-              <div className="delivery-icons">
-                <BoxSeamFill size={20} color={"green"} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-                <BoxSeamFill size={20} />
-              </div>
-            </td>
-            <th>Aktywny</th>
-            <th>
-              <div className="icons"></div>
-            </th>
-          </tr>
+                  <td>300 zł</td>
+                  <td>
+                    <div className="delivery-icons">
+                      <BoxSeamFill size={20} color={"green"} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                      <BoxSeamFill size={20} />
+                    </div>
+                  </td>
+                  <th>Aktywny</th>
+                  <th>
+                    <div className="icons"></div>
+                  </th>
+                </tr>
+              </>
+            );
+          })}
         </tbody>
       </table>
     </>

@@ -6,6 +6,7 @@ import OrderTable from "../../../components/orderTable/OrderTable";
 
 import TopNav from "../../../components/topNav/TopNav";
 import { userRequest } from "../../requestMethods";
+import { useEffect } from "react";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -45,6 +46,21 @@ const AdminTextContainer = styled.div`
 `;
 
 const UserOrders = () => {
+  const [orders, setOrders] = React.useState([]);
+
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await userRequest.get("orders");
+        const data = await res.data;
+        setOrders(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getOrders();
+  }, []);
+
   return (
     <div className="app">
       <BackgroundContainer>
@@ -53,7 +69,7 @@ const UserOrders = () => {
           <CenterContainer>
             <AdminCenterContainer>
               <AdminTextContainer>
-                <OrderTable />
+                <OrderTable orders={orders} />
               </AdminTextContainer>
             </AdminCenterContainer>
           </CenterContainer>

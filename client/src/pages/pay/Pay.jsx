@@ -562,7 +562,7 @@ const Pay = () => {
                       stripeKey={KEY}
                       currency="PLN"
                       panelLabel="Zapłać"
-                      shippingAddress={false}
+                      shippingAddress={true}
                     >
                       <PayButton>
                         <ImgPay src="../img/stripe.png" />
