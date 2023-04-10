@@ -6,6 +6,9 @@ import OrderTable from "../../../components/orderTable/OrderTable";
 
 import TopNav from "../../../components/topNav/TopNav";
 import { userRequest } from "../../requestMethods";
+import ProductTable from "../../../components/table/ProductTable";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -44,7 +47,26 @@ const AdminTextContainer = styled.div`
   margin: 20px;
 `;
 
+const AdminTextTitle = styled.h2``;
+
 const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await userRequest.get("products");
+        const data = await res.data;
+        setProducts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getOrders();
+  }, []);
+
+  console.log(products);
+
   return (
     <div className="app">
       <BackgroundContainer>
@@ -53,7 +75,8 @@ const Products = () => {
           <CenterContainer>
             <AdminCenterContainer>
               <AdminTextContainer>
-                <OrderTable />
+                <AdminTextTitle>Wszystkie produkty</AdminTextTitle>
+                <ProductTable products={products} />
               </AdminTextContainer>
             </AdminCenterContainer>
           </CenterContainer>
