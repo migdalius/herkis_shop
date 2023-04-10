@@ -73,6 +73,7 @@ const ImgWrap = styled.div`
 
 const Img = styled.img`
   width: 100%;
+  height: auto;
 `;
 const DescWrap = styled.div`
   margin: 10px;
