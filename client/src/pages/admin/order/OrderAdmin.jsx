@@ -143,14 +143,13 @@ const OrderAdmin = () => {
     const getOrders = async () => {
       try {
         const res = await userRequest.get(`orders/find/${user._id}`);
-        const data = await res.data;
-        setOrders(data);
+        setOrders(res.data);
       } catch (error) {
         console.error(error);
       }
     };
     getOrders();
-  }, [user]);
+  }, []);
 
   return (
     <div className="app">
