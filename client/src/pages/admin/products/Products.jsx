@@ -65,8 +65,6 @@ const Products = () => {
     getOrders();
   }, []);
 
-  console.log(products);
-
   return (
     <div className="app">
       <BackgroundContainer>

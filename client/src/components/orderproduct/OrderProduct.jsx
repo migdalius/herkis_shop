@@ -68,7 +68,7 @@ const Button = styled.button`
 const OrderProduct = (item) => {
   const product = item.item;
   const items = product.products;
-  console.log(items);
+
   return (
     <Container>
       <DContainer>

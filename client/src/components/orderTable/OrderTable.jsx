@@ -14,7 +14,6 @@ import { userRequest } from "../../pages/requestMethods";
 import { Link } from "react-router-dom";
 
 const OrderTable = ({ orders }) => {
-  console.log(orders);
   return (
     <>
       <table className="styled-table">

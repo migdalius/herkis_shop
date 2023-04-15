@@ -2,7 +2,6 @@ import "../dropdown/dropDown.css";
 import { House, QuestionCircle, Cart } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 const DropDown = (active) => {
-  console.log(active.active);
   return (
     <>
       {active.active === null ? (

@@ -122,7 +122,7 @@ const Register = () => {
 
   const { isFetching, error } = useSelector((state) => state.user);
   const [status, setStatus] = useState(false);
-  console.log(status);
+
   const handleRegister = (e) => {
     setUser((prev) => {
       return { ...prev, [e.target.name]: e.target.value };

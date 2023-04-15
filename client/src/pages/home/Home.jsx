@@ -7,8 +7,6 @@ const Home = () => {
     <div>
       <Navigation />
       <Hero />
-      {/* <Kit />
-      <SetKit /> */}
     </div>
   );
 };
