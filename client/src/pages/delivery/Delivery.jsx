@@ -534,7 +534,8 @@ const Delivery = () => {
                 ) : (
                   <>
                     <Warning>
-                      *Prosimy o zalogowanie się, aby dokonać płatności.
+                      *Prosimy o zalogowanie się i wybranie formy dostawy, aby
+                      dokonać płatności.
                     </Warning>
                     <NextButton
                       style={{ backgroundColor: "#ddd", cursor: "not-allowed" }}

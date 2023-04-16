@@ -24,7 +24,7 @@ const KEY = process.env.REACT_APP_STRIPE;
 const MainContainer = styled.div`
   background-color: #f4f6f9;
   width: 100vw;
-  height: auto;
+  height: 100vh;
   padding-bottom: 20px;
 `;
 
@@ -562,7 +562,7 @@ const Pay = () => {
                       stripeKey={KEY}
                       currency="PLN"
                       panelLabel="Zapłać"
-                      shippingAddress={true}
+                      shippingAddress={false}
                     >
                       <PayButton>
                         <ImgPay src="../img/stripe.png" />

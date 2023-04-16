@@ -337,12 +337,13 @@ const Contact = () => {
                     <Form ref={formRef} onSubmit={handleSubmit}>
                       <Label>Twoj Adres Email</Label>
                       <Input
+                        focused={focused.toString()}
                         type="email"
                         name="user_email"
                         required={true}
+                        pattern="^[A-Za-z0-9]{5,60}$"
                         // onChange={onChange}
                         onBlur={handleFocus}
-                        focused={focused.toString()}
                       />
                       <ErrorMgs>Proszę wprowadź poprawny adres email!</ErrorMgs>
                       <Label>Jaki masz problem?</Label>

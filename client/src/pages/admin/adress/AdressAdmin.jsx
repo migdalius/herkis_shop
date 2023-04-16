@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import AdminSidebar from "../../../components/adminsidebar/AdminSidebar";
 import Footer from "../../../components/footer/Footer";
 import TopNav from "../../../components/topNav/TopNav";
+import { useState } from "react";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -145,6 +146,16 @@ const InputSubmit = styled.input`
 const LabelContainer = styled.label``;
 const AdressAdmin = () => {
   const user = useSelector((state) => state.user);
+  console.log(user);
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+    name: "",
+    adress: "",
+    zip: "",
+    city: "",
+    phone: "",
+  });
 
   return (
     <div className="app">

@@ -165,48 +165,56 @@ const Register = () => {
                       placeholder="Nazwa użytkownika"
                       type="text"
                       onChange={handleRegister}
+                      required={true}
                     />
                     <Input
                       name="email"
                       placeholder="Email"
                       type="text"
                       onChange={handleRegister}
+                      required={true}
                     />
                     <Input
                       name="password"
                       placeholder="Hasło"
                       type="password"
                       onChange={handleRegister}
+                      required={true}
                     />
                     <Input
                       name="name"
                       placeholder="Imię i Nazwisko"
                       type="text"
                       onChange={handleRegister}
+                      required={true}
                     />
                     <Input
                       name="adress"
                       placeholder="Adres Dostawy"
                       type="text"
                       onChange={handleRegister}
+                      required={true}
                     />
                     <Input
                       name="zip"
                       placeholder="Kod pocztowy"
                       type="text"
                       onChange={handleRegister}
+                      required={true}
                     />
                     <Input
                       name="city"
                       placeholder="Miasto"
                       type="text"
                       onChange={handleRegister}
+                      required={true}
                     />
                     <Input
                       name="phone"
                       placeholder="Numer Telefonu"
                       type="number"
                       onChange={handleRegister}
+                      required={true}
                     />
                   </Form>
                 </FormWraper>

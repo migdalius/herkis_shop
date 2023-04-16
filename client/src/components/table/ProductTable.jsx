@@ -24,7 +24,7 @@ const ProductTable = ({ products }) => {
                 <tr>
                   <td>{product._id}</td>
                   <td>
-                    <img src={product.img} />
+                    <img class="product-img" src={product.img} />
                   </td>
                   <td>{product.title}</td>
 
