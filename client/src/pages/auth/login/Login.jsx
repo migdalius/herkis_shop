@@ -113,7 +113,7 @@ const Login = () => {
     }
   };
   const loginError = useSelector((state) => state.user.error);
-  console.log(loginError);
+
   return (
     <>
       <TopNav />

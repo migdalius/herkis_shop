@@ -135,22 +135,37 @@ const ProductContainer = styled.div`
   }
 `;
 
+const LoaderButton = styled.button`
+  background-color: #b805ff;
+  border: none;
+  width: 200px;
+  height: 30px;
+  margin-left: 20px;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+`;
+
 const OrderAdmin = () => {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
   const user = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
     const getOrders = async () => {
-      try {
-        const res = await userRequest.get(`orders/find/${user._id}`);
-        setOrders(res.data);
-      } catch (error) {
-        console.error(error);
+      if (user) {
+        try {
+          const res = await userRequest.get(`orders/find/${user._id}`);
+          setOrders(res.data);
+          setLoading(false);
+        } catch (error) {
+          console.error(error);
+        }
       }
     };
     getOrders();
-  }, []);
-
+  }, [user]);
+  const refresh = () => window.location.reload(true);
   return (
     <div className="app">
       <BackgroundContainer>
@@ -164,13 +179,19 @@ const OrderAdmin = () => {
               <AdminTextContainer>
                 <AdminTextTitle>Moje Subskrypcje</AdminTextTitle>
               </AdminTextContainer>
-              {orders.map((item) => {
-                return (
-                  <ProductContainer key={item._id}>
-                    <OrderProduct item={item} />
-                  </ProductContainer>
-                );
-              })}
+              {loading ? (
+                <LoaderButton onClick={refresh}>
+                  Pokaż wszystkie zamówienia
+                </LoaderButton>
+              ) : (
+                orders.map((item) => {
+                  return (
+                    <ProductContainer key={item._id}>
+                      <OrderProduct item={item} />
+                    </ProductContainer>
+                  );
+                })
+              )}
             </AdminCenterContainer>
           </CenterContainer>
         </MainContainer>
