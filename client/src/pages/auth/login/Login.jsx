@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../../redux/apiCalls";
 import TopNav from "../../../components/topNav/TopNav";
 import { Link } from "react-router-dom";
+import { loginFailure } from "../../../redux/userRedux";
 
 const MainContainer = styled.div`
   height: calc(100vh - 150px);
@@ -90,6 +91,11 @@ const RegisterContainer = styled.div`
   align-items: center;
 `;
 
+const ErrorText = styled.p`
+  color: red;
+  margin-top: 30px;
+`;
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -97,6 +103,7 @@ const Login = () => {
   const { isFetching, error } = useSelector((state) => state.user);
   const handleClick = (e) => {
     e.preventDefault();
+
     login(dispatch, { username, password });
   };
 
@@ -105,7 +112,8 @@ const Login = () => {
       handleClick();
     }
   };
-
+  const loginError = useSelector((state) => state.user.error);
+  console.log(loginError);
   return (
     <>
       <TopNav />
@@ -135,7 +143,7 @@ const Login = () => {
                 </Button>
               </Form>
             </FormWraper>
-
+            {loginError && <ErrorText>Błędny login lub hasło</ErrorText>}
             <RegisterContainer>
               <AgreeTerms>Nie masz jeszcze konta?</AgreeTerms>
               <Link to={"/rejestracja"}>Rejestracja</Link>
