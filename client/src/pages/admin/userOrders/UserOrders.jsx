@@ -60,7 +60,7 @@ const UserOrders = () => {
     };
     getOrders();
   }, []);
-
+  console.log(orders);
   return (
     <div className="app">
       <BackgroundContainer>
