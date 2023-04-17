@@ -37,7 +37,7 @@ const ProductTable = ({ products }) => {
                   </td>
                   <th>
                     <div className="icons">
-                      <Link to={`../moje-konto/lista-uzytkownikow/`}>
+                      <Link to={`../moje-konto/produkty/${product._id}`}>
                         <PencilSquare
                           size={24}
                           color={"#064e3b"}

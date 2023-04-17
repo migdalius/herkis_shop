@@ -166,6 +166,8 @@ const OrderAdmin = () => {
     getOrders();
   }, [user]);
   const refresh = () => window.location.reload(true);
+
+  console.log(orders);
   return (
     <div className="app">
       <BackgroundContainer>
