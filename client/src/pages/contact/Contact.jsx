@@ -291,9 +291,10 @@ const Check = styled.img`
 const Contact = () => {
   const formRef = useRef();
   const [done, setDone] = useState(false);
-  const [focused, setFocused] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     emailjs
       .sendForm(
         "service_soj5n8q",
@@ -310,10 +311,6 @@ const Contact = () => {
           console.log(error.text);
         }
       );
-  };
-
-  const handleFocus = (e) => {
-    setFocused(true);
   };
 
   return (
@@ -336,41 +333,17 @@ const Contact = () => {
                     </Desc>
                     <Form ref={formRef} onSubmit={handleSubmit}>
                       <Label>Twoj Adres Email</Label>
-                      <Input
-                        focused={focused.toString()}
-                        type="email"
-                        name="user_email"
-                        required={true}
-                        pattern="^[A-Za-z0-9]{5,60}$"
-                        // onChange={onChange}
-                        onBlur={handleFocus}
-                      />
-                      <ErrorMgs>Proszę wprowadź poprawny adres email!</ErrorMgs>
+                      <Input type="email" name="user_email" required />
+
                       <Label>Jaki masz problem?</Label>
-                      <Input
-                        type="text"
-                        name="user_subject"
-                        required={true}
-                        // pattern="^[A-Za-z0-9]{5,60}$"
-                        onBlur={handleFocus}
-                        focused={focused.toString()}
-                      />
+                      <Input type="text" name="user_subject" />
                       <ErrorMgs>
                         Temat musi zawierać od 5 do 60 znaków, nie może zawierać
                         znaków specjalnych.
                       </ErrorMgs>
                       <Label>Szczegóły problemu</Label>
-                      <Textarea
-                        name="message"
-                        required={true}
-                        pattern="^[A-Za-z0-9]{12,500}$"
-                        onBlur={handleFocus}
-                        focused={focused.toString()}
-                      />
-                      <ErrorMgs>
-                        Opis musi zawierać od 12 do 500 znaków, nie może
-                        zawierać znaków specjalnych.
-                      </ErrorMgs>
+                      <Textarea name="message" required />
+
                       <ButtonContainer>
                         <Button type="submit">Wyślij Zapytanie</Button>
                       </ButtonContainer>
