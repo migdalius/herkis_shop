@@ -9,6 +9,8 @@ import { userRequest } from "../../requestMethods";
 import ProductTable from "../../../components/table/ProductTable";
 import { useState } from "react";
 import { useEffect } from "react";
+import Editor from "../../../components/editor/Editors";
+import Editors from "../../../components/editor/Editors";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -124,7 +126,6 @@ const ProductDetail = () => {
     img: "",
   });
 
-  console.log(item);
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -184,12 +185,13 @@ const ProductDetail = () => {
                   </InputContainer>
                   <InputContainer>
                     <Label>Opis produktu:</Label>
-                    <Textarea
+                    {/* <Textarea
                       name="desc"
                       type="text"
                       defaultValue="test100"
                       onChange={handleProductChange}
-                    />
+                    /> */}
+                    <Editors />
                   </InputContainer>
                   <InputContainer>
                     <Label>Kategoria:</Label>
