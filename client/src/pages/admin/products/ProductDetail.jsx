@@ -124,6 +124,7 @@ const ProductDetail = () => {
     img: "",
   });
 
+  console.log(item);
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -135,8 +136,6 @@ const ProductDetail = () => {
     };
     getUser();
   }, [id]);
-
-  console.log(product);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -156,6 +155,7 @@ const ProductDetail = () => {
         price: product.price,
         img: product.img,
       });
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -178,13 +178,18 @@ const ProductDetail = () => {
                     <Input
                       name="title"
                       type="text"
-                      value={product.title}
+                      defaultValue={product.title}
                       onChange={handleProductChange}
                     />
                   </InputContainer>
                   <InputContainer>
                     <Label>Opis produktu:</Label>
-                    <Textarea name="desc" type="text" value="test1" />
+                    <Textarea
+                      name="desc"
+                      type="text"
+                      defaultValue="test100"
+                      onChange={handleProductChange}
+                    />
                   </InputContainer>
                   <InputContainer>
                     <Label>Kategoria:</Label>
@@ -199,11 +204,15 @@ const ProductDetail = () => {
                   </InputContainer>
                   <InputContainer>
                     <Label>Cena zetawu</Label>
-                    <Input name="price" type="number" value={product.price} />
+                    <Input
+                      name="price"
+                      type="number"
+                      defaultValue={product.price}
+                    />
                   </InputContainer>
                   <InputContainer>
                     <Label>Miniatura</Label>
-                    <Input name="img" type="text" value={product.img} />
+                    <Input name="img" type="text" defaultValue={product.img} />
                   </InputContainer>
                   <InputContainer>
                     <InputButton onClick={handleClick} type="submit">
