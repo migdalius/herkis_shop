@@ -21,6 +21,8 @@ const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const categoryRoute = require("./routes/category");
 const stripeRoute = require("./routes/stripe");
+const dotpayRoute = require("./routes/dotpay");
+const baselinkerRoute = require("./routes/baselinker");
 
 // mongo db connection
 mongoose
@@ -38,6 +40,9 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/api/checkout", stripeRoute);
+
+app.use("/api/pay", dotpayRoute);
+app.use("/api/baselinker", dotpayRoute);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running!");

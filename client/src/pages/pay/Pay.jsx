@@ -19,6 +19,8 @@ import {
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect } from "react";
 
+import axios from "axios";
+
 const KEY = process.env.REACT_APP_STRIPE;
 
 const MainContainer = styled.div`
@@ -495,6 +497,7 @@ const TButton = styled.button`
 `;
 
 const Thanks = styled.h3``;
+
 const Pay = () => {
   const [done, setDone] = useState(false);
   const [stripeToken, setStripeToken] = useState(null);
@@ -519,6 +522,27 @@ const Pay = () => {
     };
     stripeToken && cart.total >= 1 && makeRequest();
   }, [stripeToken, cart.total, navigate]);
+
+  const handlePaymentClick = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/pay/payment",
+        {
+          amount: 10, // your payment amount
+          description: "Test payment", // your payment description
+          control: "1234", // your payment control parameter
+        }
+      );
+
+      if (response.data.url) {
+        window.location.href = response.data.url;
+      } else {
+        console.error("Error: Payment URL is undefined");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <MainContainer>
@@ -573,13 +597,16 @@ const Pay = () => {
                         <ImgPay src="../img/stripe.png" />
                       </PayButton>
                     </StripeCheckout>
-                    {/* <DescWrap>
+                    <DescWrap>
                       <Desc>Lub</Desc>
                     </DescWrap>
                     <PayButton>
                       <ImgPay src="../img/dotpay.png" />
-                    </PayButton> */}
+                    </PayButton>
                   </WrapButton>
+                  <div>
+                    <button onClick={handlePaymentClick}>Make payment</button>
+                  </div>
                   {/* <PayTitleWrapper>
                     <LockFill color="#22c55e" size={20} />
                     <PayTitle>Zapłać kartą</PayTitle>

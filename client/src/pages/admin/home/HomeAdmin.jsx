@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import TopNav from "../../../components/topNav/TopNav";
 import { logoutSucess } from "../../../redux/userRedux";
+import { useState } from "react";
+import axios from "axios";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -159,6 +161,21 @@ const HomeAdmin = () => {
     window.location.href = "/";
   };
 
+  /////
+  const [orderData, setOrderData] = useState(null);
+
+  const handleGetOrder = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/api/baselinker/orders/105911626"
+      );
+      setOrderData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  console.log(orderData);
   return (
     <div className="app">
       <BackgroundContainer>
@@ -228,6 +245,9 @@ const HomeAdmin = () => {
                     <DoorClosed color="#22c55e" size={35} />
                   </Ring>
                   <AdminCartTitle>Wyloguj</AdminCartTitle>
+                </AdminCart>
+                <AdminCart>
+                  <button onClick={handleGetOrder}>Zamówienia</button>
                 </AdminCart>
               </AdminCartContener>
             </AdminCenterContainer>
