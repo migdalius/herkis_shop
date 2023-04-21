@@ -212,8 +212,9 @@ const ButtonWrapper = styled.div`
 const CounterWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #f3f3f3;
-  width: 80px;
+  width: 50px;
   height: 35px;
   border-radius: 5px;
 `;
@@ -279,9 +280,7 @@ const Cart = () => {
 
                       <ProductDesc>Zestaw do uprawy domowej</ProductDesc>
                       <CounterWrapper>
-                        <Button>+</Button>
                         <CounterProduct>{product.quantity}</CounterProduct>
-                        <Button>-</Button>
                       </CounterWrapper>
                     </ProductBody>
                     <PriceWrapper>

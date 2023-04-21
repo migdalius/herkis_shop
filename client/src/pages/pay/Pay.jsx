@@ -24,7 +24,7 @@ const KEY = process.env.REACT_APP_STRIPE;
 const MainContainer = styled.div`
   background-color: #f4f6f9;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   padding-bottom: 20px;
 `;
 
@@ -440,13 +440,15 @@ const SecondInput = styled.input`
 const WrapAlert = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 const AlertDesc = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  width: 600px;
+  font-size: 16px;
+  width: 400px;
   height: 60px;
   background-color: #fffdef;
   margin: 20px;
@@ -552,6 +554,9 @@ const Pay = () => {
                 <Title>Rodzaj płatności</Title>
                 <CartContainer>
                   <WrapButton>
+                    <DescWrap>
+                      <Desc>Zapłać swoją kartą za pomocą stripe</Desc>
+                    </DescWrap>
                     <StripeCheckout
                       name="Zapłać kartą"
                       image="https://www.szybkauprawa.pl/img/ziola.png"
@@ -568,12 +573,12 @@ const Pay = () => {
                         <ImgPay src="../img/stripe.png" />
                       </PayButton>
                     </StripeCheckout>
-                    <DescWrap>
+                    {/* <DescWrap>
                       <Desc>Lub</Desc>
                     </DescWrap>
                     <PayButton>
                       <ImgPay src="../img/dotpay.png" />
-                    </PayButton>
+                    </PayButton> */}
                   </WrapButton>
                   {/* <PayTitleWrapper>
                     <LockFill color="#22c55e" size={20} />
@@ -596,11 +601,13 @@ const Pay = () => {
                       </Form>
                     </FormWrapper>
                   </FormContainer> */}
+                  <DescWrap>
+                    <Desc>Testowe dane do płatności stripe</Desc>
+                  </DescWrap>
                   <WrapAlert>
-                    <AlertDesc>
-                      Klikając „Złóż zamówienie”, wyrażasz zgodę na nasze
-                      Warunki i Politykę prywatności.
-                    </AlertDesc>
+                    <AlertDesc>Nr.karty: 4242 4242 4242 4242</AlertDesc>
+                    <AlertDesc>Data: 08/24</AlertDesc>
+                    <AlertDesc>CVC: 123</AlertDesc>
                   </WrapAlert>
                   <WrapSecondAlert>
                     <SecondAlertDec>

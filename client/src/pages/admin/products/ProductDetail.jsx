@@ -9,12 +9,11 @@ import { userRequest } from "../../requestMethods";
 import ProductTable from "../../../components/table/ProductTable";
 import { useState } from "react";
 import { useEffect } from "react";
-import Editor from "../../../components/editor/Editors";
-import Editors from "../../../components/editor/Editors";
+// import Editors from "../../../components/editor/Editors";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
-  height: auto;
+  height: calc(100vh - 70px);
   background-color: #eceff1;
 `;
 
@@ -162,6 +161,13 @@ const ProductDetail = () => {
     }
   };
 
+  const category = product.categories;
+
+  const translate = {
+    week: "Tygodniowy",
+    month: "Miesięczny",
+  };
+
   return (
     <div className="app">
       <BackgroundContainer>
@@ -185,16 +191,16 @@ const ProductDetail = () => {
                   </InputContainer>
                   <InputContainer>
                     <Label>Opis produktu:</Label>
-                    {/* <Textarea
+                    <Textarea
                       name="desc"
                       type="text"
-                      defaultValue="test100"
+                      defaultValue={product.desc}
                       onChange={handleProductChange}
-                    /> */}
-                    <Editors />
+                    />
+                    {/* <Editors /> */}
                   </InputContainer>
                   <InputContainer>
-                    <Label>Kategoria:</Label>
+                    <Label>Kategoria: obecna - {translate[category]}</Label>
                     <Select
                       value={selectedOption}
                       onChange={handleOptionChange}

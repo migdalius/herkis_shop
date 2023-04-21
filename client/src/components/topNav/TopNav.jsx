@@ -8,7 +8,7 @@ import {
 import img from "../../img/home/mask.jpg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
+import LogoImg from "../../img/herkis_logo.png";
 const Container = styled.div`
   display: flex;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -112,7 +112,7 @@ const TopNav = () => {
                 textDecoration: "none",
               }}
             >
-              <Logo src="../img/herkis_logo.png" />
+              <Logo src={LogoImg} />
             </Link>
             <VerticalHr white />
             <List>
