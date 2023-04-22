@@ -166,16 +166,16 @@ const HomeAdmin = () => {
 
   const handleGetOrder = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/baselinker/orders/105911626"
+      const response = await axios.post(
+        "http://localhost:5000/api/baselinker/orders"
       );
-      setOrderData(response.data);
+      console.log(response.data);
+      // Do something with the response data
     } catch (error) {
       console.error(error);
     }
   };
 
-  console.log(orderData);
   return (
     <div className="app">
       <BackgroundContainer>

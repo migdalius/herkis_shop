@@ -42,7 +42,7 @@ app.use("/api/categories", categoryRoute);
 app.use("/api/checkout", stripeRoute);
 
 app.use("/api/pay", dotpayRoute);
-app.use("/api/baselinker", dotpayRoute);
+app.use("/api/baselinker", baselinkerRoute);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running!");

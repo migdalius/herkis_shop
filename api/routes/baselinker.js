@@ -1,19 +1,29 @@
 const router = require("express").Router();
 const axios = require("axios");
 
-const baseUrl = "https://api.baselinker.com/index.php";
-const token = process.env.BASELINKER_KEY;
+router.post("/orders", async (req, res) => {
+  const baseUrl = "https://api.baselinker.com/connector.php";
+  const blToken = process.env.BASELINKER_KEY;
+  const method = "getOrders";
+  const dateFrom = 1407341754;
 
-router.get("/orders/:orderId", async (req, res) => {
-  const orderId = req.params.orderId;
+  const response = await axios.post(
+    baseUrl,
+    new URLSearchParams({
+      method: method,
+      parameters: JSON.stringify({ date_from: dateFrom }),
+    }),
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-BLToken": blToken,
+      },
+    }
+  );
 
-  const url = `${baseUrl}?method=getOrders&parameters={"order_id":${orderId}}`;
-  const response = await axios.get(url, {
-    headers: { "X-BLToken": token },
-  });
   const data = response.data;
-
-  res.json(data);
+  console.log(data);
+  res.send(data);
 });
 
 module.exports = router;
