@@ -16,6 +16,14 @@ import { userRequest } from "../../pages/requestMethods";
 import { Link } from "react-router-dom";
 
 const OrderTable = ({ orders }) => {
+  const handleGetOrder = async () => {
+    try {
+      const response = await userRequest.post("baselinker/neworder");
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <table className="styled-table">
@@ -26,7 +34,7 @@ const OrderTable = ({ orders }) => {
             <th>Przedmioty</th>
             <th>Kwota</th>
             <th>Przesyłki</th>
-            <th>Abonament</th>
+            <th>Baselinker</th>
 
             <th>Operacje</th>
           </tr>
@@ -87,7 +95,9 @@ const OrderTable = ({ orders }) => {
                       <BoxSeamFill size={20} />
                     </div>
                   </td>
-                  <th>Aktywny</th>
+                  <th>
+                    <button onClick={handleGetOrder}>Baselinker</button>
+                  </th>
 
                   <th>
                     <div className="icons">
