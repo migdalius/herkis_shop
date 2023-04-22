@@ -3,12 +3,14 @@ import "./orderTable.css";
 import {
   Bag,
   BagCheck,
+  BagDash,
   BoxSeamFill,
   Cart,
   DoorClosed,
   PencilSquare,
   Trash3Fill,
   Truck,
+  TruckFlatbed,
 } from "react-bootstrap-icons";
 import { userRequest } from "../../pages/requestMethods";
 import { Link } from "react-router-dom";
@@ -25,6 +27,7 @@ const OrderTable = ({ orders }) => {
             <th>Kwota</th>
             <th>Przesyłki</th>
             <th>Abonament</th>
+
             <th>Operacje</th>
           </tr>
         </thead>
@@ -85,8 +88,23 @@ const OrderTable = ({ orders }) => {
                     </div>
                   </td>
                   <th>Aktywny</th>
+
                   <th>
-                    <div className="icons"></div>
+                    <div className="icons">
+                      <Link to={`../moje-konto/zamowienia/${order._id}`}>
+                        <PencilSquare
+                          size={24}
+                          color={"#064e3b"}
+                          style={{ cursor: "pointer" }}
+                        />
+                      </Link>
+
+                      <Trash3Fill
+                        size={24}
+                        color={"#dc2626"}
+                        style={{ cursor: "pointer" }}
+                      />
+                    </div>
                   </th>
                 </tr>
               </>

@@ -9,6 +9,7 @@ import TopNav from "../../../components/topNav/TopNav";
 import { logoutSucess } from "../../../redux/userRedux";
 import { useState } from "react";
 import axios from "axios";
+import { userRequest } from "../../requestMethods";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -166,9 +167,7 @@ const HomeAdmin = () => {
 
   const handleGetOrder = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/baselinker/orders"
-      );
+      const response = await userRequest.post("baselinker/orders");
       console.log(response.data);
       // Do something with the response data
     } catch (error) {
@@ -247,7 +246,7 @@ const HomeAdmin = () => {
                   <AdminCartTitle>Wyloguj</AdminCartTitle>
                 </AdminCart>
                 <AdminCart>
-                  <button onClick={handleGetOrder}>Zamówienia</button>
+                  <button onClick={handleGetOrder}>Baselinker api test</button>
                 </AdminCart>
               </AdminCartContener>
             </AdminCenterContainer>

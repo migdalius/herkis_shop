@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const axios = require("axios");
+const { verifyTokenAndAdmin } = require("./verifyToken");
 
-router.post("/orders", async (req, res) => {
+router.post("/orders", verifyTokenAndAdmin, async (req, res) => {
   const baseUrl = "https://api.baselinker.com/connector.php";
   const blToken = process.env.BASELINKER_KEY;
   const method = "getOrders";

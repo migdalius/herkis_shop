@@ -56,6 +56,17 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
+//get single order
+
+router.get("/find/order/:id", async (req, res) => {
+  try {
+    const orders = await Order.findById(req.params.id);
+    res.status(200).json(orders);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // //GET ALL
 
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
