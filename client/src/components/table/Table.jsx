@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./table.css";
 import {
   Bag,
@@ -13,16 +13,25 @@ import { userRequest } from "../../pages/requestMethods";
 import { Link } from "react-router-dom";
 
 const Table = ({ users }) => {
-  const userDelete = () => {
+  const [usersList, setUsersList] = useState([]);
+
+  console.log(usersList);
+  useEffect(() => {
+    setUsersList(users);
+  }, [users]);
+
+  const userDelete = (user) => {
     const userDel = async () => {
       try {
-        await userRequest.delete(`users/6422ac80a1c49ba0bc6dc8ee`);
+        await userRequest.delete(`users/${user._id}`);
+        setUsersList(usersList.filter((u) => u._id !== user._id));
       } catch (error) {
         console.error(error);
       }
     };
     userDel();
   };
+
   return (
     <>
       <table className="styled-table">
@@ -38,7 +47,7 @@ const Table = ({ users }) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => {
+          {usersList.map((user) => {
             return (
               <>
                 <tr>
@@ -65,7 +74,8 @@ const Table = ({ users }) => {
                           size={24}
                           color={"#dc2626"}
                           style={{ cursor: "pointer" }}
-                          onClick={userDelete}
+                          // onClick={userDelete}
+                          onClick={() => userDelete(user)}
                         />
                       )}
                     </div>

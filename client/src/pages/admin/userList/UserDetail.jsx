@@ -208,9 +208,6 @@ const UserDetail = () => {
                           {product.products.map((product) => {
                             return (
                               <Container>
-                                <AdminTextDesc>
-                                  Numer zamówienia: {product.productId}
-                                </AdminTextDesc>
                                 <Link
                                   style={{ textDecoration: "none" }}
                                   to={`../subskrypcja/${product.productId}`}

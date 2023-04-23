@@ -9,6 +9,7 @@ const router = require("express").Router();
 //create
 router.post("/", verifyToken, async (req, res) => {
   const newCart = new Cart(req.body);
+  console.log(req.body);
 
   try {
     const savedCart = await newCart.save();

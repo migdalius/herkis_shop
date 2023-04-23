@@ -73,7 +73,7 @@ const OrderProduct = (item) => {
     <Container>
       <DContainer>
         <DeliveryStage>
-          <DeliveryTitle>Subskrypcja aktywna</DeliveryTitle>
+          <DeliveryTitle>Zamówienie opłacone</DeliveryTitle>
           <BoxSeam color="#222" size={20} />
         </DeliveryStage>
         <DeliverTime>{product.createdAt.substring(0, 10)}</DeliverTime>
@@ -81,10 +81,10 @@ const OrderProduct = (item) => {
       {items.map((item) => {
         return (
           <ProductDesc key={item._id}>
-            <ProductImage src="../img/testproduct/bazylia_cytrynowa.jpg" />
-            <ProductTitle>{item.productId}</ProductTitle>
-            <SingleProductPrice>{item.quantity} × 24,99 zł</SingleProductPrice>
-            <SingleProductSum>49,98 zł</SingleProductSum>
+            <ProductImage src="../img/product.png" />
+            <ProductTitle>{item.productName}</ProductTitle>
+            <SingleProductPrice>{item.quantity} szt</SingleProductPrice>
+            <SingleProductSum>{item.productPrice} zł</SingleProductSum>
           </ProductDesc>
         );
       })}
@@ -93,9 +93,6 @@ const OrderProduct = (item) => {
         <AllProductTitle>Razem z darmową dostawą</AllProductTitle>
         <AllProductSum>{product.amount} zł</AllProductSum>
       </ProductSum>
-      <WrapButton>
-        <Button>Anuluj Subskrypcje</Button>
-      </WrapButton>
     </Container>
   );
 };

@@ -167,7 +167,6 @@ const OrderAdmin = () => {
     };
     getOrders();
   }, [user]);
-  const refresh = () => window.location.reload(true);
 
   console.log(orders);
   return (
@@ -183,19 +182,14 @@ const OrderAdmin = () => {
               <AdminTextContainer>
                 <AdminTextTitle>Moje Subskrypcje</AdminTextTitle>
               </AdminTextContainer>
-              {loading ? (
-                <LoaderButton onClick={refresh}>
-                  Pokaż wszystkie zamówienia
-                </LoaderButton>
-              ) : (
-                orders.map((item) => {
-                  return (
-                    <ProductContainer key={item._id}>
-                      <OrderProduct item={item} />
-                    </ProductContainer>
-                  );
-                })
-              )}
+
+              {orders.map((item) => {
+                return (
+                  <ProductContainer key={item._id}>
+                    <OrderProduct item={item} />
+                  </ProductContainer>
+                );
+              })}
             </AdminCenterContainer>
           </CenterContainer>
         </MainContainer>

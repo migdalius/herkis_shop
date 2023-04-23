@@ -77,6 +77,7 @@ const Success = () => {
   const [done, setDone] = useState(false);
   const user = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart);
+  console.log(cart.products);
   const handleOrder = async () => {
     try {
       const res = await userRequest.post(`/orders`, {
@@ -85,6 +86,8 @@ const Success = () => {
           return {
             productId: item._id,
             quantity: item.quantity,
+            productName: item.title,
+            productPrice: item.price,
           };
         }),
 
