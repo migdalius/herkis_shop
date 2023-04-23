@@ -155,7 +155,9 @@ const OrderAdmin = () => {
     const getOrders = async () => {
       if (user) {
         try {
-          const res = await userRequest.get(`orders/find/${user._id}`);
+          const res = await userRequest.get(`orders/find/${user._id}`, {
+            headers: { token: `Bearer ${user.accessToken}` },
+          });
           setOrders(res.data);
           setLoading(false);
         } catch (error) {
