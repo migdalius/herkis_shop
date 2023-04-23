@@ -32,7 +32,7 @@ router.post("/neworder", verifyTokenAndAdmin, async (req, res) => {
   const blToken = process.env.BASELINKER_KEY;
   const method = "addOrder";
   const methodParams = {
-    order_status_id: "11744",
+    order_status_id: "204874",
     date_add: "1682182954",
     user_comments: "User comment",
     admin_comments: "Seller test comments",

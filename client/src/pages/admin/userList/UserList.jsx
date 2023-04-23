@@ -58,15 +58,20 @@ const AdminTextDesc = styled.p`
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+  const user = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
     const getOrders = async () => {
-      try {
-        const res = await userRequest.get("users");
-        const data = await res.data;
-        setUsers(data);
-      } catch (error) {
-        console.error(error);
+      if (user) {
+        try {
+          const res = await userRequest.get("users", {
+            headers: { token: `Bearer ${user.accessToken}` },
+          });
+          const data = await res.data;
+          setUsers(data);
+        } catch (error) {
+          console.error(error);
+        }
       }
     };
     getOrders();

@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import Footer from "../../../components/footer/Footer";
 import TopNav from "../../../components/topNav/TopNav";
 import { userRequest } from "../../requestMethods";
+import { useSelector } from "react-redux";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -68,6 +69,7 @@ const TextTitle = styled.h3``;
 const ProductContainer = styled.div``;
 const ProductBody = styled.div``;
 const UserOrdersDetails = () => {
+  const user = useSelector((state) => state.user.currentUser);
   const location = useLocation();
 
   const id = location.pathname.split("/")[3];
@@ -77,14 +79,16 @@ const UserOrdersDetails = () => {
   useEffect(() => {
     const getSingleOrder = async () => {
       try {
-        const res = await userRequest.get(`/orders/find/order/${id}`);
+        const res = await userRequest.get(`/orders/find/order/${id}`, {
+          headers: { token: `Bearer ${user.accessToken}` },
+        });
         setOrder(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     getSingleOrder();
-  }, [id]);
+  }, [user.accessToken, id]);
 
   console.log(order);
   return (
@@ -96,32 +100,34 @@ const UserOrdersDetails = () => {
             <AdminCenterContainer>
               <AdminTextContainer>
                 <AdminTextTitle>
-                  Szczegóły produktu - Id zamówienia: {order._id} | zamówienie
-                  od: {order.address.username}
+                  Szczegóły produktu - Id zamówienia: {order?._id} | zamówienie
+                  od: {order?.address?.username}
                 </AdminTextTitle>
                 <OrderWraper>
                   <OrderShop>
                     <DataWraper>
                       <TextTitle>Dane do wysyłki</TextTitle>
-                      <TextData>Imię i nazwisko: {order.address.name}</TextData>
                       <TextData>
-                        Ulica i numer: {order.address.delivery}
+                        Imię i nazwisko: {order?.address?.name}
                       </TextData>
-                      <TextData>Kod pocztowy: {order.address.zip}</TextData>
-                      <TextData>Miasto: {order.address.city}</TextData>
-                      <TextData>Adres email: {order.address.email}</TextData>
+                      <TextData>
+                        Ulica i numer: {order?.address?.delivery}
+                      </TextData>
+                      <TextData>Kod pocztowy: {order?.address?.zip}</TextData>
+                      <TextData>Miasto: {order?.address?.city}</TextData>
+                      <TextData>Adres email: {order?.address?.email}</TextData>
                     </DataWraper>
 
                     <DataWraper>
                       <TextTitle>Produkty w zamówieniu</TextTitle>
-                      {/* {orderProduct.map((product) => {
+                      {orderProduct?.map((product) => {
                         return (
-                          <ProductContainer>
-                            <ProductBody>{product.productId}</ProductBody>
-                            <ProductBody>{product.quantity}</ProductBody>
+                          <ProductContainer key={product?.productId}>
+                            <ProductBody>{product?.productId}</ProductBody>
+                            <ProductBody>{product?.quantity}</ProductBody>
                           </ProductContainer>
                         );
-                      })} */}
+                      })}
                     </DataWraper>
                   </OrderShop>
                   <OrderBaselinker>Baselinker</OrderBaselinker>

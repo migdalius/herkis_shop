@@ -5,6 +5,7 @@ import Footer from "../../../components/footer/Footer";
 
 import TopNav from "../../../components/topNav/TopNav";
 import { userRequest } from "../../requestMethods";
+import { useSelector } from "react-redux";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -118,14 +119,16 @@ const UserDetail = () => {
   const location = useLocation();
 
   const id = location.pathname.split("/")[3];
-
+  const currentUser = useSelector((state) => state.user.currentUser);
   const [user, setUser] = useState({});
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await userRequest.get(`/users/find/${id}`);
+        const res = await userRequest.get(`/users/find/${id}`, {
+          headers: { token: `Bearer ${currentUser.accessToken}` },
+        });
         setUser(res.data);
       } catch (err) {
         console.log(err);
@@ -139,7 +142,9 @@ const UserDetail = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await userRequest.get(`/orders/find/${userId}`);
+        const res = await userRequest.get(`/orders/find/${userId}`, {
+          headers: { token: `Bearer ${currentUser.accessToken}` },
+        });
         setProducts(res.data);
       } catch (err) {
         console.log(err);

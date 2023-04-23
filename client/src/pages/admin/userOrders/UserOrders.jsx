@@ -7,6 +7,7 @@ import OrderTable from "../../../components/orderTable/OrderTable";
 import TopNav from "../../../components/topNav/TopNav";
 import { userRequest } from "../../requestMethods";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -47,11 +48,14 @@ const AdminTextContainer = styled.div`
 
 const UserOrders = () => {
   const [orders, setOrders] = React.useState([]);
+  const user = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const res = await userRequest.get("orders");
+        const res = await userRequest.get("orders", {
+          headers: { token: `Bearer ${user.accessToken}` },
+        });
         const data = await res.data;
         setOrders(data);
       } catch (error) {
