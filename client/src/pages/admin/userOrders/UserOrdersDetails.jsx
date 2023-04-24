@@ -66,7 +66,10 @@ const DataWraper = styled.div`
 const TextData = styled.p``;
 const TextTitle = styled.h3``;
 
-const ProductContainer = styled.div``;
+const ProductContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 const ProductBody = styled.div``;
 const UserOrdersDetails = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -123,8 +126,8 @@ const UserOrdersDetails = () => {
                       {orderProduct?.map((product) => {
                         return (
                           <ProductContainer key={product?.productId}>
-                            <ProductBody>{product?.productId}</ProductBody>
-                            <ProductBody>{product?.quantity}</ProductBody>
+                            <ProductBody>{product?.quantity} x </ProductBody>
+                            <ProductBody>{product?.productName}</ProductBody>
                           </ProductContainer>
                         );
                       })}

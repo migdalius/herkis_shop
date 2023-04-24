@@ -90,9 +90,7 @@ const OrderTable = ({ orders }) => {
             <th>Nazwa użytkownika</th>
             <th>Przedmioty</th>
             <th>Kwota</th>
-
             <th>Baselinker</th>
-
             <th>Operacje</th>
           </tr>
         </thead>
@@ -107,7 +105,7 @@ const OrderTable = ({ orders }) => {
                     {order.products.map((product) => {
                       return (
                         <>
-                          <div className="container">
+                          <div className="container" key={product._id}>
                             <div>
                               <img
                                 className="thumbnail"
