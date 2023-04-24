@@ -1,48 +1,41 @@
 const router = require("express").Router();
 const axios = require("axios");
+const crypto = require("crypto");
 
-const DOTPAY_API_ENDPOINT = "https://ssl.dotpay.pl/test_seller/api/v1/";
+// Dotpay API Credentials
+const API_ID = "709400";
+const API_PIN = "200300";
 
-router.post("/payment", async (req, res) => {
-  const { amount, description, control } = req.body;
-
+router.get("/payment", async (req, res) => {
   try {
-    const response = await axios.post(
-      DOTPAY_API_ENDPOINT,
-      {
-        id: process.env.DOTPAY_ID,
-        amount,
-        description,
-        control,
-        lang: "pl",
-        currency: "PLN",
-        url: `${process.env.BASE_URL}/api/pay/success`,
-        urlc: `${process.env.BASE_URL}/api/pay/notify`,
-        type: 4,
-        ch_lock: 1,
-      },
-      { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
-    );
+    // Generate random control parameter
+    const control = crypto.randomBytes(8).toString("hex");
 
-    res.status(200).json({ url: response.data.url });
+    // Calculate checksum
+    const amount = 100.0;
+    const currency = "PLN";
+    const description = "Test payment";
+    const email = "test@example.com";
+    const urlc = "http://example.com/notifications";
+    const URL = `https://ssl.dotpay.pl/test_payment/?id=${API_ID}&amount=${amount}&currency=${currency}&description=${description}&email=${email}&control=${control}&URLC=${urlc}`;
+    const checksum = crypto
+      .createHash("sha256")
+      .update(`${API_PIN}${URL}${API_PIN}`)
+      .digest("hex");
+
+    // Make API request
+    const response = await axios.get(URL, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: `id=${API_ID}&amount=${amount}&currency=${currency}&description=${description}&email=${email}&control=${control}&URLC=${urlc}&checksum=${checksum}`,
+    });
+
+    res.send(response.data);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Something went wrong" });
+    res.status(500).send("Something went wrong");
   }
-});
-
-router.post("/notify", (req, res) => {
-  const { operation_number, operation_status } = req.body;
-
-  // handle payment status update
-
-  res.status(200).send("OK");
-});
-
-router.get("/success", (req, res) => {
-  // handle successful payment
-
-  res.status(200).send("Payment successful");
 });
 
 module.exports = router;

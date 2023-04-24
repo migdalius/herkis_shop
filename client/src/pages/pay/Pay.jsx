@@ -506,6 +506,8 @@ const Pay = () => {
   const user = useSelector((state) => state.user.currentUser);
   const product = cart.products;
 
+  const [paymentUrl, setPaymentUrl] = useState(null);
+
   const onToken = (token) => {
     setStripeToken(token);
   };
@@ -523,25 +525,15 @@ const Pay = () => {
     stripeToken && cart.total >= 1 && makeRequest();
   }, [stripeToken, cart.total, navigate]);
 
-  const handlePaymentClick = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/pay/payment",
-        {
-          amount: 10, // your payment amount
-          description: "Test payment", // your payment description
-          control: "1234", // your payment control parameter
-        }
-      );
-
-      if (response.data.url) {
-        window.location.href = response.data.url;
-      } else {
-        console.error("Error: Payment URL is undefined");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  const makePayment = () => {
+    axios
+      .get("http://localhost:5000/api/pay/payment")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -604,8 +596,9 @@ const Pay = () => {
                       <ImgPay src="../img/dotpay.png" />
                     </PayButton>
                   </WrapButton>
+
                   <div>
-                    <button onClick={handlePaymentClick}>Make payment</button>
+                    <button onClick={makePayment}>Dotpay</button>
                   </div>
                   {/* <PayTitleWrapper>
                     <LockFill color="#22c55e" size={20} />
