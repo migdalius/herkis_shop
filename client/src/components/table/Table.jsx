@@ -74,7 +74,6 @@ const Table = ({ users }) => {
                           size={24}
                           color={"#dc2626"}
                           style={{ cursor: "pointer" }}
-                          // onClick={userDelete}
                           onClick={() => userDelete(user)}
                         />
                       )}

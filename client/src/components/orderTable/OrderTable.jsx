@@ -8,6 +8,7 @@ import {
   Cart,
   DoorClosed,
   PencilSquare,
+  PlusCircle,
   Trash3Fill,
   Truck,
   TruckFlatbed,
@@ -17,6 +18,7 @@ import { Link } from "react-router-dom";
 
 const OrderTable = ({ orders }) => {
   const handleGetOrder = async (order) => {
+    console.log(order);
     const products = order.products.map((product) => {
       return {
         storage: "db",
@@ -24,10 +26,10 @@ const OrderTable = ({ orders }) => {
         product_id: `${product.productId}`,
         variant_id: "",
         location: "",
-        name: "test",
+        name: `${product.productName}`,
         sku: "",
         ean: `${product.productId}`,
-        price_brutto: 20.0,
+        price_brutto: `${product.productPrice}`,
         tax_rate: 23,
         quantity: `${product.quantity}`,
         weight: 1,
@@ -88,7 +90,7 @@ const OrderTable = ({ orders }) => {
             <th>Nazwa użytkownika</th>
             <th>Przedmioty</th>
             <th>Kwota</th>
-            <th>Przesyłki</th>
+
             <th>Baselinker</th>
 
             <th>Operacje</th>
@@ -115,9 +117,9 @@ const OrderTable = ({ orders }) => {
                             </div>
                             <div className="product-container">
                               <div>
-                                {product.quantity} x {product.productId}
+                                {product.quantity} x {product.productName}
                               </div>
-                              <div>26.99 zł</div>
+                              <div>{product.productPrice} zł</div>
                             </div>
                           </div>
                         </>
@@ -125,36 +127,20 @@ const OrderTable = ({ orders }) => {
                     })}
                   </td>
 
-                  <td>300 zł</td>
-                  <td>
-                    <div className="delivery-icons">
-                      <BoxSeamFill size={20} color={"green"} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                      <BoxSeamFill size={20} />
-                    </div>
-                  </td>
+                  <td>{order.amount} zł</td>
+
                   <th>
-                    {/* <button onClick={handleGetOrder}>Baselinker</button> */}
-                    <button onClick={() => handleGetOrder(order)}>
-                      Baselinker
-                    </button>
+                    <div
+                      className="baselinkerWraper"
+                      onClick={() => handleGetOrder(order)}
+                    >
+                      <PlusCircle
+                        size={20}
+                        color={"#e6f2fb"}
+                        style={{ cursor: "pointer" }}
+                      />
+                      <button className="baselinker">Baselinker</button>
+                    </div>
                   </th>
 
                   <th>

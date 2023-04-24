@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
+  min-height: calc(100vh - 70px);
   height: auto;
   background-color: #eceff1;
 `;
