@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Footer from "../../../components/footer/Footer";
 
 import { Bag, Cart, DoorClosed, Truck } from "react-bootstrap-icons";
@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import TopNav from "../../../components/topNav/TopNav";
 import { logoutSucess } from "../../../redux/userRedux";
 import { useState } from "react";
-import axios from "axios";
 import { userRequest } from "../../requestMethods";
 
 const BackgroundContainer = styled.div`
@@ -162,19 +161,6 @@ const HomeAdmin = () => {
     window.location.href = "/";
   };
 
-  /////
-  const [orderData, setOrderData] = useState(null);
-
-  const handleGetOrder = async () => {
-    try {
-      const response = await userRequest.post("baselinker/orders");
-      console.log(response.data);
-      // Do something with the response data
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <div className="app">
       <BackgroundContainer>
@@ -244,9 +230,6 @@ const HomeAdmin = () => {
                     <DoorClosed color="#22c55e" size={35} />
                   </Ring>
                   <AdminCartTitle>Wyloguj</AdminCartTitle>
-                </AdminCart>
-                <AdminCart>
-                  <button onClick={handleGetOrder}>Baselinker api test</button>
                 </AdminCart>
               </AdminCartContener>
             </AdminCenterContainer>
