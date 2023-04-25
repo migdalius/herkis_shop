@@ -85,10 +85,10 @@
 }
 
 .baselinkerWraper.active {
-  background-color: #f9a825;
+  background-color: #22c55e;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .baselinkerWraper.active svg {
-  transform: scale(1.2);
+  transform: scale(1.3);
   transition: transform 0.3s ease;
 }

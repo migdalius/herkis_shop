@@ -99,8 +99,9 @@ const ErrorText = styled.p`
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching, error: loginError } = useSelector((state) => state.user);
   const handleClick = (e) => {
     e.preventDefault();
 
@@ -112,7 +113,6 @@ const Login = () => {
       handleClick();
     }
   };
-  const loginError = useSelector((state) => state.user.error);
 
   return (
     <>

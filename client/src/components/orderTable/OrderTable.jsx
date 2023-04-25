@@ -103,6 +103,7 @@ const OrderTable = ({ orders }) => {
         </thead>
         <tbody>
           {orders.map((order) => {
+            const isActive = activeOrders.includes(order._id);
             return (
               <>
                 <tr>
@@ -110,7 +111,6 @@ const OrderTable = ({ orders }) => {
                   <td>{order.address.name}</td>
                   <td>
                     {order.products.map((product) => {
-                      const isActive = activeOrders.includes(order._id);
                       return (
                         <>
                           <div className="container" key={product._id}>
