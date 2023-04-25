@@ -4,7 +4,7 @@ const crypto = require("crypto");
 
 // Dotpay API Credentials
 const API_ID = "709400";
-const API_PIN = "200300";
+const API_PIN = "jTy7V42Vzen8voKqp3Xmol65tCdaURLE";
 
 router.get("/payment", async (req, res) => {
   try {
@@ -26,10 +26,12 @@ router.get("/payment", async (req, res) => {
     // Make API request
     const response = await axios.get(URL, {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        // "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
       data: `id=${API_ID}&amount=${amount}&currency=${currency}&description=${description}&email=${email}&control=${control}&URLC=${urlc}&checksum=${checksum}`,
     });
+    console.log(response);
 
     res.send(response.data);
   } catch (error) {

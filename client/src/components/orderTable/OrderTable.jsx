@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./orderTable.css";
 import {
   Bag,
@@ -17,8 +17,15 @@ import { userRequest } from "../../pages/requestMethods";
 import { Link } from "react-router-dom";
 
 const OrderTable = ({ orders }) => {
+  const [activeOrders, setActiveOrders] = useState([]);
+
   const handleGetOrder = async (order) => {
-    console.log(order);
+    const index = activeOrders.indexOf(order._id);
+    if (index > -1) {
+      setActiveOrders(activeOrders.filter((id) => id !== order._id));
+    } else {
+      setActiveOrders([...activeOrders, order._id]);
+    }
     const products = order.products.map((product) => {
       return {
         storage: "db",
@@ -75,7 +82,7 @@ const OrderTable = ({ orders }) => {
           products: products,
         },
       });
-      console.log(order);
+
       console.log(response.data);
     } catch (error) {
       console.error(error);
@@ -103,6 +110,7 @@ const OrderTable = ({ orders }) => {
                   <td>{order.address.name}</td>
                   <td>
                     {order.products.map((product) => {
+                      const isActive = activeOrders.includes(order._id);
                       return (
                         <>
                           <div className="container" key={product._id}>
@@ -129,7 +137,7 @@ const OrderTable = ({ orders }) => {
 
                   <th>
                     <div
-                      className="baselinkerWraper"
+                      className={`baselinkerWraper${isActive ? " active" : ""}`}
                       onClick={() => handleGetOrder(order)}
                     >
                       <PlusCircle
