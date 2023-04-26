@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
+  min-height: 100vh;
   height: auto;
   background-color: #eceff1;
 `;
@@ -15,7 +16,9 @@ const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
+
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 50px;
@@ -53,7 +56,8 @@ const CenterContainer = styled.div`
   display: flex;
 
   width: 900px;
-  height: 550px;
+  min-height: 550px;
+  height: auto;
   background-color: #fff;
   @media (max-width: 1380px) {
     width: 700px;
@@ -63,13 +67,14 @@ const CenterContainer = styled.div`
   }
   @media (max-width: 930px) {
     width: 500px;
+    flex-direction: column;
   }
   @media (max-width: 815px) {
     width: 400px;
   }
   @media (max-width: 715px) {
     width: 300px;
-    height: 600px;
+    height: auto;
   }
   @media (max-width: 540px) {
     width: 400px;
@@ -92,9 +97,22 @@ const AdminRightContainer = styled.div`
 `;
 
 const AdminRightWrap = styled.div`
-  width: 300px;
+  min-width: 300px;
   height: 230px;
   background-color: #e2e8f0;
+  @media (max-width: 1150px) {
+    min-width: 200px;
+  }
+
+  @media (max-width: 930px) {
+    width: 400px;
+  }
+  @media (max-width: 930px) {
+    width: 300px;
+  }
+  @media (max-width: 715px) {
+    width: 250px;
+  }
 `;
 
 const AdminRightText = styled.div`
@@ -126,6 +144,15 @@ const InputContainer = styled.input`
   height: 40px;
   width: 250px;
   margin-top: 5px;
+  @media (max-width: 930px) {
+    width: 400px;
+  }
+  @media (max-width: 930px) {
+    width: 300px;
+  }
+  @media (max-width: 715px) {
+    width: 250px;
+  }
 `;
 
 const InputSubmit = styled.input`
@@ -141,6 +168,16 @@ const InputSubmit = styled.input`
   font-size: 16px;
   cursor: pointer;
   margin-top: 20px;
+
+  @media (max-width: 930px) {
+    width: 400px;
+  }
+  @media (max-width: 930px) {
+    width: 300px;
+  }
+  @media (max-width: 715px) {
+    width: 250px;
+  }
 `;
 
 const LabelContainer = styled.label``;

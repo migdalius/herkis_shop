@@ -392,6 +392,7 @@ const ContentWraper = styled.div`
 const ContentText = styled.p`
   font-size: 20px;
   font-weight: 500;
+  margin: 10px;
 `;
 
 const Warning = styled.span`

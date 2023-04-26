@@ -589,17 +589,17 @@ const Pay = () => {
                         <ImgPay src="../img/stripe.png" />
                       </PayButton>
                     </StripeCheckout>
-                    <DescWrap>
+                    {/* <DescWrap>
                       <Desc>Lub</Desc>
                     </DescWrap>
                     <PayButton>
                       <ImgPay src="../img/dotpay.png" />
-                    </PayButton>
+                    </PayButton> */}
                   </WrapButton>
 
-                  <div>
+                  {/* <div>
                     <button onClick={makePayment}>Dotpay</button>
-                  </div>
+                  </div> */}
                   {/* <PayTitleWrapper>
                     <LockFill color="#22c55e" size={20} />
                     <PayTitle>Zapłać kartą</PayTitle>
