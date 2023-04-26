@@ -13,16 +13,26 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const LeftNav = styled.div`
-  width: 50%;
+  width: 100%;
+  max-width: 50%;
   background-color: #22c55e;
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+  }
 `;
+
 const RightNav = styled.div`
-  width: 50%;
+  width: 100%;
+  max-width: 50%;
   background-color: #fff;
-  @media (max-width: 940px) {
+
+  @media (max-width: 767px) {
+    max-width: 100%;
     background-color: #22c55e;
   }
 `;
@@ -31,9 +41,15 @@ const MainNavContainer = styled.div`
   margin: 20px;
   display: flex;
   justify-content: center;
+
   @media (max-width: 1105px) {
     margin: 20px;
     margin-bottom: 40px;
+  }
+
+  @media (max-width: 767px) {
+    margin: 10px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -42,8 +58,10 @@ const VerticalHr = styled.div`
     props.white ? "1px solid #fff" : "1px solid #222"};
   width: 10px;
   height: 35px;
-  @media (max-width: 940px) {
+
+  @media (max-width: 767px) {
     border-left: 1px solid #fff;
+    height: 20px;
   }
 `;
 
@@ -61,9 +79,15 @@ const List = styled.ul`
   animation-name: ${breatheAnimation};
   animation-duration: 3s;
   animation-fill-mode: forwards;
+
   @media (max-width: 1105px) {
     margin-left: 15px;
     gap: 15px;
+  }
+
+  @media (max-width: 767px) {
+    margin-left: 10px;
+    gap: 10px;
   }
 `;
 
@@ -73,16 +97,28 @@ const Logo = styled.img`
   animation-name: ${breatheAnimation};
   animation-duration: 3s;
   animation-fill-mode: forwards;
+
   @media (max-width: 960px) {
     width: 110px;
     margin-right: 15px;
   }
+
+  @media (max-width: 767px) {
+    width: 90px;
+    margin-right: 10px;
+  }
 `;
+
 const ListItem = styled.li`
   color: #fff;
   cursor: pointer;
+
   @media (max-width: 1115px) {
     font-size: 16px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 14px;
   }
 `;
 
@@ -92,6 +128,7 @@ const ContentWrapper = styled.div`
   gap: 10px;
   position: relative;
 `;
+
 const NavContainer = styled.div`
   display: flex;
   gap: 20px;

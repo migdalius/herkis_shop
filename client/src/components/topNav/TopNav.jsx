@@ -4,35 +4,60 @@ import {
   Basket3,
   BoxArrowInRight,
   PersonCircle,
+  AspectRatio,
+  ListNested,
 } from "react-bootstrap-icons";
 import img from "../../img/home/mask.jpg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import LogoImg from "../../img/herkis_logo.png";
+import { useState } from "react";
 const Container = styled.div`
   display: flex;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const LeftNav = styled.div`
   width: 50%;
   background-color: #fff;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
+
 const RightNav = styled.div`
   width: 50%;
   background-color: #fff;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const MainNavContainer = styled.div`
   margin: 20px;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const VerticalHr = styled.div`
   border-left: 1px solid #707070;
   width: 10px;
   height: 35px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const breatheAnimation = keyframes`
@@ -49,16 +74,28 @@ const List = styled.ul`
   animation-name: ${breatheAnimation};
   animation-duration: 3s;
   animation-fill-mode: forwards;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px 0;
+    gap: 15px;
+    display: ${({ showMenu }) => (showMenu ? "flex" : "none")};
+  }
 `;
 
 const Logo = styled.img`
   width: 140px;
-
   margin-right: 30px;
   animation-name: ${breatheAnimation};
   animation-duration: 3s;
   animation-fill-mode: forwards;
+
+  @media (max-width: 768px) {
+    margin: 10px 0;
+  }
 `;
+
 const ListItem = styled.li`
   color: #222;
   cursor: pointer;
@@ -70,17 +107,27 @@ const ContentWrapper = styled.div`
   gap: 10px;
   position: relative;
 `;
+
 const NavContainer = styled.div`
   display: flex;
   gap: 20px;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+    width: 30%;
+  }
 `;
 
 const NavText = styled.p`
   color: #222;
-  @media (max-width: 905px) {
+  display: block;
+
+  @media (max-width: 768px) {
     display: none;
   }
 `;
+
 const Circle = styled.div`
   display: flex;
   justify-content: center;
@@ -95,7 +142,20 @@ const Circle = styled.div`
 `;
 const CircleNumber = styled.p``;
 
+const BurgerMenu = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
 const TopNav = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  const handleToggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   const quantity = useSelector((state) => state.cart.quantity);
   const user = useSelector((state) => state.user.currentUser);
   return (
@@ -115,7 +175,8 @@ const TopNav = () => {
               <Logo src={LogoImg} />
             </Link>
             <VerticalHr white />
-            <List>
+
+            <List showMenu={showMenu}>
               <Link
                 to={"/jak-dziala-zestaw-do-uprawy"}
                 style={{
@@ -155,6 +216,13 @@ const TopNav = () => {
         <RightNav>
           <MainNavContainer>
             <NavContainer>
+              <ContentWrapper>
+                <ListNested
+                  style={{ cursor: "pointer" }}
+                  size={25}
+                  onClick={handleToggleMenu}
+                />
+              </ContentWrapper>
               {user ? (
                 <ContentWrapper>
                   <Link
