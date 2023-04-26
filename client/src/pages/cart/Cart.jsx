@@ -241,6 +241,7 @@ const EmptyCart = styled.div`
   width: 100%;
   height: 290px;
   font-size: 28px;
+  margin: 20px;
 `;
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
