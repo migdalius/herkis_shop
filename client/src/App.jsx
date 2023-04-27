@@ -27,14 +27,22 @@ import UserOrdersDetails from "./pages/admin/userOrders/UserOrdersDetails";
 function App() {
   const user = useSelector((state) => state.user.currentUser);
 
+  const admin = user.isAdmin;
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<Err404 />} />
+        {/* RWD Done */}
         <Route path="/" element={<Home />} />
+        {/* RWD - problem with white nav space */}
+
         <Route path="/koszyk" element={<Cart />} />
+        {/* RWD Done */}
         <Route path="/dostawa" element={<Delivery />} />
+        {/* RWD Done */}
         <Route path="/platnosc" element={<Pay />} />
+        {/* RWD Done */}
         <Route
           path="/logowanie"
           element={user ? <Navigate to="/moje-konto" /> : <Login />}
@@ -44,24 +52,48 @@ function App() {
         <Route path="/subskrypcja/:id" element={<SingleSub />} />
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
         <Route path="/kontakt" element={<Contact />} />
-        <Route path="/moje-konto" element={<HomeAdmin />} />
-        <Route path="/moje-konto/adres-dostawy" element={<AdressAdmin />} />
-        <Route path="/moje-konto/moje-zamowienia" element={<OrderAdmin />} />
-        <Route path="/zamowienie-przyjete" element={<Success />} />
 
-        <Route path="/moje-konto/lista-uzytkownikow" element={<UserList />} />
+        {/* Login user panel */}
+        <Route path="/moje-konto" element={user ? <HomeAdmin /> : <Login />} />
+        <Route
+          path="/moje-konto/adres-dostawy"
+          element={user ? <AdressAdmin /> : <Login />}
+        />
+        <Route
+          path="/moje-konto/moje-zamowienia"
+          element={user ? <OrderAdmin /> : <Login />}
+        />
+        <Route
+          path="/zamowienie-przyjete"
+          element={user ? <Success /> : <Login />}
+        />
+
+        {/* Admin panel */}
+
+        <Route
+          path="/moje-konto/lista-uzytkownikow"
+          element={admin ? <UserList /> : <Login />}
+        />
         <Route
           path="/moje-konto/lista-uzytkownikow/:id"
-          element={<UserDetail />}
+          element={admin ? <UserDetail /> : <Login />}
         />
-        <Route path="/moje-konto/zamowienia" element={<UserOrders />} />
+        <Route
+          path="/moje-konto/zamowienia"
+          element={admin ? <UserOrders /> : <Login />}
+        />
         <Route
           path="/moje-konto/zamowienia/:id"
-          element={<UserOrdersDetails />}
+          element={admin ? <UserOrdersDetails /> : <Login />}
         />
-
-        <Route path="/moje-konto/produkty" element={<Products />} />
-        <Route path="/moje-konto/produkty/:id" element={<ProductDetail />} />
+        <Route
+          path="/moje-konto/produkty"
+          element={admin ? <Products /> : <Login />}
+        />
+        <Route
+          path="/moje-konto/produkty/:id"
+          element={admin ? <ProductDetail /> : <Login />}
+        />
       </Routes>
     </BrowserRouter>
   );

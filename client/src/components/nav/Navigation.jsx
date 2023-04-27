@@ -30,6 +30,9 @@ const RightNav = styled.div`
   width: 100%;
   max-width: 50%;
   background-color: #fff;
+  @media (max-width: 940px) {
+    background-color: #22c55e;
+  }
 
   @media (max-width: 767px) {
     max-width: 100%;
@@ -58,6 +61,10 @@ const VerticalHr = styled.div`
     props.white ? "1px solid #fff" : "1px solid #222"};
   width: 10px;
   height: 35px;
+
+  @media (max-width: 940px) {
+    border-left: 1px solid #fff;
+  }
 
   @media (max-width: 767px) {
     border-left: 1px solid #fff;
@@ -164,6 +171,22 @@ const Circle = styled.div`
 `;
 const CircleNumber = styled.p``;
 
+const PersonCircleWrapper = styled(PersonCircle)`
+  color: #064e3b;
+
+  @media (max-width: 940px) {
+    color: #fff;
+  }
+`;
+
+const Basket3Wrapper = styled(Basket3)`
+  color: #064e3b;
+
+  @media (max-width: 940px) {
+    color: #fff;
+  }
+`;
+
 const Navigation = () => {
   const user = useSelector((state) => state.user.currentUser);
   const quantity = useSelector((state) => state.cart.quantity);
@@ -237,7 +260,7 @@ const Navigation = () => {
                       textDecoration: "none",
                     }}
                   >
-                    <PersonCircle size={25} color={"#064e3b"} />
+                    <PersonCircleWrapper size={25} />
                     <NavText>Moje Konto</NavText>
                   </Link>
                 </ContentWrapper>
@@ -269,7 +292,7 @@ const Navigation = () => {
                     textDecoration: "none",
                   }}
                 >
-                  <Basket3 size={25} color={"#064e3b"} />
+                  <Basket3Wrapper size={25} />
                   <NavText>Koszyk</NavText>
                   <Circle>
                     <CircleNumber>{quantity}</CircleNumber>
