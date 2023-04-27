@@ -233,6 +233,10 @@ const BigDescTitle = styled.p`
   font-weight: 600;
   margin: 10px;
 `;
+
+const ProductName = styled.p`
+  font-size: 10px;
+`;
 const Sub = () => {
   const [product, setProduct] = useState({});
 
@@ -316,7 +320,7 @@ const Sub = () => {
                   return (
                     <SubContainer>
                       <LeftContainer>
-                        <TitleContainer>Miesięczny</TitleContainer>
+                        <ProductName>{item.title}</ProductName>
                         <TitleContainerPrice>
                           {item.price} zł / miesięcznie
                         </TitleContainerPrice>
@@ -339,7 +343,7 @@ const Sub = () => {
                   return (
                     <SubContainer>
                       <LeftContainer>
-                        <TitleContainer>Miesięczny</TitleContainer>
+                        <ProductName>{item.title}</ProductName>
                         <TitleContainerPrice>
                           {item.price} zł / miesięcznie
                         </TitleContainerPrice>

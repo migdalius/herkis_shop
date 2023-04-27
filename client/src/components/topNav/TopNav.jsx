@@ -216,13 +216,13 @@ const TopNav = () => {
         <RightNav>
           <MainNavContainer>
             <NavContainer>
-              <ContentWrapper>
+              <BurgerMenu>
                 <ListNested
                   style={{ cursor: "pointer" }}
                   size={25}
                   onClick={handleToggleMenu}
                 />
-              </ContentWrapper>
+              </BurgerMenu>
               {user ? (
                 <ContentWrapper>
                   <Link

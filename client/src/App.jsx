@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
@@ -47,7 +46,9 @@ function App() {
           path="/logowanie"
           element={user ? <Navigate to="/moje-konto" /> : <Login />}
         />
+        {/* RWD Done */}
         <Route path="/rejestracja" element={<Register />} />
+        {/* RWD done */}
         <Route path="/subskrypcja" element={<Sub />} />
         <Route path="/subskrypcja/:id" element={<SingleSub />} />
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
