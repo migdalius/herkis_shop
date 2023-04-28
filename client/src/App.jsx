@@ -26,8 +26,6 @@ import UserOrdersDetails from "./pages/admin/userOrders/UserOrdersDetails";
 function App() {
   const user = useSelector((state) => state.user.currentUser);
 
-  const admin = user.isAdmin;
-
   return (
     <BrowserRouter>
       <Routes>
@@ -73,27 +71,28 @@ function App() {
 
         <Route
           path="/moje-konto/lista-uzytkownikow"
-          element={admin ? <UserList /> : <Login />}
+          element={user && user.isAdmin ? <UserList /> : <Home />}
         />
+
         <Route
           path="/moje-konto/lista-uzytkownikow/:id"
-          element={admin ? <UserDetail /> : <Login />}
+          element={user && user.isAdmin ? <UserDetail /> : <Home />}
         />
         <Route
           path="/moje-konto/zamowienia"
-          element={admin ? <UserOrders /> : <Login />}
+          element={user && user.isAdmin ? <UserOrders /> : <Home />}
         />
         <Route
           path="/moje-konto/zamowienia/:id"
-          element={admin ? <UserOrdersDetails /> : <Login />}
+          element={user && user.isAdmin ? <UserOrdersDetails /> : <Home />}
         />
         <Route
           path="/moje-konto/produkty"
-          element={admin ? <Products /> : <Login />}
+          element={user && user.isAdmin ? <Products /> : <Home />}
         />
         <Route
           path="/moje-konto/produkty/:id"
-          element={admin ? <ProductDetail /> : <Login />}
+          element={user && user.isAdmin ? <ProductDetail /> : <Home />}
         />
       </Routes>
     </BrowserRouter>
