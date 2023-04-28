@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutSucess } from "../../redux/userRedux";
 
-const SideBar = styled.div``;
+const SideBar = styled.div`
+  height: auto;
+`;
 const UserDataContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -34,6 +36,9 @@ const UserDashboard = styled.div`
   margin: 30px;
   gap: 5px;
   cursor: pointer;
+  @media (max-width: 815px) {
+    padding-bottom: 20px;
+  }
 `;
 
 const UserDashboardItem = styled.div`

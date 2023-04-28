@@ -54,13 +54,16 @@ function App() {
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
         {/* RWD done */}
         <Route path="/kontakt" element={<Contact />} />
+        {/* RWD done */}
 
         {/* Login user panel */}
         <Route path="/moje-konto" element={user ? <HomeAdmin /> : <Login />} />
+        {/* RWD done */}
         <Route
           path="/moje-konto/adres-dostawy"
           element={user ? <AdressAdmin /> : <Login />}
         />
+        {/* RWD done */}
         <Route
           path="/moje-konto/moje-zamowienia"
           element={user ? <OrderAdmin /> : <Login />}

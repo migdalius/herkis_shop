@@ -46,6 +46,9 @@ const Container = styled.div`
 const FormContainer = styled.div`
   display: flex;
   width: 1000px;
+  @media (max-width: 715px) {
+    margin-right: 10px;
+  }
   @media (max-width: 615px) {
     width: 600px;
   }
@@ -121,6 +124,8 @@ const FormText = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 20px;
   @media (max-width: 415px) {
     width: 270px;
@@ -201,9 +206,16 @@ const Label = styled.label`
   width: 350px;
   height: 40px;
   border-radius: 5px;
+
   @media (max-width: 815px) {
     width: 300px;
     margin-left: 10px;
+  }
+
+  @media (max-width: 715px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

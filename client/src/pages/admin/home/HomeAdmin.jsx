@@ -44,6 +44,7 @@ const LeftContainer = styled.div`
   }
   @media (max-width: 815px) {
     width: 150px;
+    height: 450px;
   }
   @media (max-width: 640px) {
     width: 500px;

@@ -40,6 +40,7 @@ const LeftContainer = styled.div`
   }
   @media (max-width: 600px) {
     width: 150px;
+    height: 450px;
   }
   @media (max-width: 540px) {
     width: 400px;
@@ -56,18 +57,20 @@ const CenterContainer = styled.div`
   display: flex;
 
   width: 900px;
-  min-height: 550px;
-  height: auto;
+  height: 550px;
+
   background-color: #fff;
   @media (max-width: 1380px) {
     width: 700px;
   }
   @media (max-width: 1150px) {
     width: 600px;
+    height: 600px;
   }
   @media (max-width: 930px) {
     width: 500px;
     flex-direction: column;
+    height: auto;
   }
   @media (max-width: 815px) {
     width: 400px;
