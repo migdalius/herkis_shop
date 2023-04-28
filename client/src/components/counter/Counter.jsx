@@ -22,8 +22,9 @@ const Counters = styled.p`
 const Days = styled.p``;
 
 const Counter = () => {
-  const [time, setTime] = useState(7 * 24 * 60 * 60 * 1000);
-  // Timer
+  const startTime = new Date("2023-04-28T00:00:00Z");
+  const endTime = new Date("2023-05-05T00:00:00Z");
+  const [time, setTime] = useState(endTime - Date.now());
 
   let totalSeconds = parseInt(Math.floor(time / 1000));
   let totalMinutes = parseInt(Math.floor(totalSeconds / 60));
@@ -35,10 +36,11 @@ const Counter = () => {
   let hours = parseInt(totalHours % 24);
 
   useEffect(() => {
-    setTimeout(() => {
-      setTime(time - 1000);
+    const interval = setInterval(() => {
+      setTime(endTime - Date.now());
     }, 1000);
-  }, [time]);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <ClockContainer>
       <TimeWrap>

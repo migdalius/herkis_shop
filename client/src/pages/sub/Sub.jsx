@@ -24,7 +24,7 @@ const MainContainer = styled.div`
 
 const Container = styled.div`
   display: flex;
-  width: 1200px;
+  width: 1400px;
   height: auto;
   background-color: #fff;
 
@@ -107,7 +107,7 @@ const PriceContainer = styled.div`
   display: flex;
   margin-top: 20px;
   gap: 10px;
-  width: 530px;
+  width: 600px;
   @media (max-width: 1215px) {
     flex-direction: column;
     width: 400px;
@@ -133,7 +133,7 @@ const PriceWrap = styled.div`
   align-items: center;
   flex: 1;
   border: 1px solid #ddd;
-  height: 400px;
+  height: 440px;
   border-radius: 5px;
 `;
 
@@ -146,8 +146,9 @@ const PriceTitle = styled.p`
 
 const SubContainer = styled.div`
   display: flex;
-  width: 240px;
-  height: 75px;
+  width: 270px;
+  height: 85px;
+
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border: 1px solid #ddd;
   @media (max-width: 1215px) {
@@ -172,14 +173,14 @@ const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  width: 50%;
-  margin: 3px;
+  width: 60%;
+  margin: 8px;
   @media (max-width: 1215px) {
     width: 70%;
   }
 `;
 const RightContainer = styled.div`
-  width: 50%;
+  width: 40%;
   @media (max-width: 1215px) {
     width: 30%;
   }
@@ -204,6 +205,7 @@ const Button = styled.button`
   width: 100%;
   border: none;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
   &:hover {
     background-color: #fbbf24;
   }
@@ -235,7 +237,7 @@ const BigDescTitle = styled.p`
 `;
 
 const ProductName = styled.p`
-  font-size: 10px;
+  font-size: 14px;
 `;
 const Sub = () => {
   const [product, setProduct] = useState({});
