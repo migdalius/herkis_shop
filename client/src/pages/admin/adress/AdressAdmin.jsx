@@ -3,7 +3,8 @@ import styled, { keyframes } from "styled-components";
 import AdminSidebar from "../../../components/adminsidebar/AdminSidebar";
 import Footer from "../../../components/footer/Footer";
 import TopNav from "../../../components/topNav/TopNav";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { userRequest } from "../../requestMethods";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -147,6 +148,7 @@ const InputContainer = styled.input`
   height: 40px;
   width: 250px;
   margin-top: 5px;
+  padding: 10px;
   @media (max-width: 930px) {
     width: 400px;
   }
@@ -186,16 +188,35 @@ const InputSubmit = styled.input`
 const LabelContainer = styled.label``;
 const AdressAdmin = () => {
   const user = useSelector((state) => state.user);
-  console.log(user);
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-    name: "",
-    adress: "",
-    zip: "",
-    city: "",
-    phone: "",
+  const [person, setPerson] = useState("");
+  console.log(person);
+  const [formData, setFormData] = useState({
+    name: user.currentUser.name,
+    delivery: user.currentUser.delivery,
+    zip: user.currentUser.zip,
+    city: user.currentUser.city,
+    phone: user.currentUser.phone,
   });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const res = await userRequest.put(
+        `/users/${user.currentUser._id}`,
+        formData
+      );
+      const updatedUser = await res.data;
+      setPerson(updatedUser);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  };
 
   return (
     <div className="app">
@@ -209,49 +230,74 @@ const AdressAdmin = () => {
             <AdminCenterContainer>
               <AdminTextContainer>
                 <AdminTextTitle>Adres Dostawy</AdminTextTitle>
-                <FormContainer>
+                <FormContainer onSubmit={handleSubmit}>
                   <LabelContainer>
                     Imię i Nazwisko:
-                    <InputContainer type="text" name="name" />
+                    <InputContainer
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
                   </LabelContainer>
                   <LabelContainer>
                     Adres Dostawy:
-                    <InputContainer type="text" name="lastName" />
+                    <InputContainer
+                      type="text"
+                      name="delivery"
+                      onChange={handleChange}
+                      value={formData.delivery}
+                    />
                   </LabelContainer>
                   <LabelContainer>
                     Kod Pocztowy:
-                    <InputContainer type="text" name="phone" />
+                    <InputContainer
+                      type="text"
+                      name="zip"
+                      value={formData.zip}
+                      onChange={handleChange}
+                    />
                   </LabelContainer>
                   <LabelContainer>
                     Miasto:
-                    <InputContainer type="text" name="company" />
+                    <InputContainer
+                      type="text"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                    />
                   </LabelContainer>
                   <LabelContainer>
                     Numer Telefonu:
-                    <InputContainer type="text" name="nip" />
+                    <InputContainer
+                      type="text"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
                   </LabelContainer>
                   <InputSubmit type="submit" value="Zapisz" />
                 </FormContainer>
               </AdminTextContainer>
             </AdminCenterContainer>
-            <AdminRightContainer>
-              <AdminTextTitle>Obecny Adres dostawy</AdminTextTitle>
-              <AdminRightWrap>
-                <AdminRightText>
-                  Imię i nazwisko: {user.currentUser.name}
-                </AdminRightText>
-                <AdminRightText>
-                  Adres Dostawy: {user.currentUser.delivery}
-                </AdminRightText>
-                <AdminRightText>
-                  Kod pocztowy: {user.currentUser.zip}
-                </AdminRightText>
-                <AdminRightText>Miasto: {user.currentUser.city}</AdminRightText>
-                <AdminRightText>
-                  Tel. dla kuriera: {user.currentUser.phone}
-                </AdminRightText>
-              </AdminRightWrap>
-            </AdminRightContainer>
+            {person && (
+              <AdminRightContainer>
+                <AdminTextTitle>Twoje nowe dane</AdminTextTitle>
+                <AdminRightWrap>
+                  <AdminRightText>
+                    Imię i nazwisko: {person.name}
+                  </AdminRightText>
+                  <AdminRightText>
+                    Adres Dostawy:{person.delivery}
+                  </AdminRightText>
+                  <AdminRightText>Kod pocztowy: {person.zip}</AdminRightText>
+                  <AdminRightText>Miasto: {person.city} </AdminRightText>
+                  <AdminRightText>
+                    Tel. dla kuriera: {person.phone}
+                  </AdminRightText>
+                </AdminRightWrap>
+              </AdminRightContainer>
+            )}
           </CenterContainer>
         </MainContainer>
       </BackgroundContainer>
