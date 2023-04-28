@@ -288,13 +288,42 @@ const Check = styled.img`
   animation-fill-mode: forwards;
 `;
 
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: 11px;
+  margin-top: 5px;
+`;
+
 const Contact = () => {
   const formRef = useRef();
   const [done, setDone] = useState(false);
 
+  const [userEmail, setUserEmail] = useState("");
+  const [userEmailError, setUserEmailError] = useState("");
+  const [userSubject, setUserSubject] = useState("");
+  const [userSubjectError, setUserSubjectError] = useState("");
+  const [message, setMessage] = useState("");
+  const [messageError, setMessageError] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!userEmail.includes("@")) {
+      setUserEmailError("Proszę wprowadź prawidłowy adress email");
+      return;
+    }
+
+    if (userSubject.length < 8) {
+      setUserSubjectError(
+        "Tytuł wiadomości musi zawierać przynajmniej 8 znaków"
+      );
+      return;
+    }
+
+    if (message.length < 12 || message.length > 500) {
+      setMessageError("Wiadomość musi zawierać od 12 do 500 znaków");
+      return;
+    }
     emailjs
       .sendForm(
         "service_soj5n8q",
@@ -312,7 +341,20 @@ const Contact = () => {
         }
       );
   };
+  const handleUserEmailChange = (e) => {
+    setUserEmail(e.target.value);
+    setUserEmailError("");
+  };
 
+  const handleUserSubjectChange = (e) => {
+    setUserSubject(e.target.value);
+    setUserSubjectError("");
+  };
+
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value);
+    setMessageError("");
+  };
   return (
     <>
       <TopNav />
@@ -333,17 +375,37 @@ const Contact = () => {
                     </Desc>
                     <Form ref={formRef} onSubmit={handleSubmit}>
                       <Label>Twoj Adres Email</Label>
-                      <Input type="email" name="user_email" required />
-
+                      <Input
+                        type="email"
+                        name="user_email"
+                        required
+                        value={userEmail}
+                        onChange={handleUserEmailChange}
+                      />
+                      {userEmailError && (
+                        <ErrorMessage>{userEmailError}</ErrorMessage>
+                      )}
                       <Label>Jaki masz problem?</Label>
-                      <Input type="text" name="user_subject" />
-                      <ErrorMgs>
-                        Temat musi zawierać od 5 do 60 znaków, nie może zawierać
-                        znaków specjalnych.
-                      </ErrorMgs>
+                      <Input
+                        type="text"
+                        name="user_subject"
+                        required
+                        value={userSubject}
+                        onChange={handleUserSubjectChange}
+                      />
+                      {userSubjectError && (
+                        <ErrorMessage>{userSubjectError}</ErrorMessage>
+                      )}
                       <Label>Szczegóły problemu</Label>
-                      <Textarea name="message" required />
-
+                      <Textarea
+                        name="message"
+                        required
+                        value={message}
+                        onChange={handleMessageChange}
+                      />
+                      {messageError && (
+                        <ErrorMessage>{messageError}</ErrorMessage>
+                      )}
                       <ButtonContainer>
                         <Button type="submit">Wyślij Zapytanie</Button>
                       </ButtonContainer>

@@ -53,11 +53,11 @@ const Counter = () => {
       </TimeWrap>
       <TimeWrap>
         <Counters>{minutes}</Counters>
-        <Days>Minut</Days>
+        <Days>Minuty</Days>
       </TimeWrap>
       <TimeWrap>
         <Counters>{seconds}</Counters>
-        <Days>Sekund</Days>
+        <Days>Sekundy</Days>
       </TimeWrap>
     </ClockContainer>
   );

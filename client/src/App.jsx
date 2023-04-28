@@ -48,8 +48,11 @@ function App() {
         <Route path="/rejestracja" element={<Register />} />
         {/* RWD done */}
         <Route path="/subskrypcja" element={<Sub />} />
+        {/* RWD done */}
         <Route path="/subskrypcja/:id" element={<SingleSub />} />
+        {/* RWD done */}
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
+        {/* RWD done */}
         <Route path="/kontakt" element={<Contact />} />
 
         {/* Login user panel */}
