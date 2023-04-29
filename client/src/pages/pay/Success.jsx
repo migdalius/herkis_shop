@@ -4,7 +4,8 @@ import styled, { keyframes } from "styled-components";
 import TopNav from "../../components/topNav/TopNav";
 import Footer from "../../components/footer/Footer";
 import { userRequest } from "../requestMethods";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { emptyBasket } from "../../redux/cartRedux";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -96,7 +97,7 @@ const Success = () => {
   const [done, setDone] = useState(false);
   const user = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart);
-  console.log(cart.products);
+  const dispatch = useDispatch();
   const handleOrder = async () => {
     try {
       const res = await userRequest.post(`/orders`, {
@@ -122,6 +123,7 @@ const Success = () => {
       });
 
       setDone(true);
+      dispatch(emptyBasket());
     } catch (err) {
       console.log(err);
     }

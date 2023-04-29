@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 const Table = ({ users }) => {
   const [usersList, setUsersList] = useState([]);
 
-  console.log(usersList);
   useEffect(() => {
     setUsersList(users);
   }, [users]);
