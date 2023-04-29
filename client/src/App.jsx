@@ -68,10 +68,13 @@ function App() {
           path="/moje-konto/moje-zamowienia"
           element={user ? <OrderAdmin /> : <Login />}
         />
+        {/* RWD done */}
         <Route
           path="/zamowienie-przyjete"
           element={user ? <Success /> : <Login />}
         />
+
+        {/* RWD done */}
 
         {/* Admin panel */}
 

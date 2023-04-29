@@ -74,6 +74,14 @@ const CenterContainer = styled.div`
     width: 370px;
     height: auto;
   }
+  @media (max-width: 380px) {
+    width: 340px;
+    height: auto;
+  }
+  @media (max-width: 365px) {
+    width: 320px;
+    height: auto;
+  }
 `;
 
 const AdminCenterContainer = styled.div``;
@@ -127,6 +135,7 @@ const ProductContainer = styled.div`
   margin: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
+
   @media (max-width: 535px) {
     width: 370px;
   }
@@ -166,9 +175,8 @@ const OrderAdmin = () => {
       }
     };
     getOrders();
-  }, [user]);
+  }, [user, orders]);
 
-  console.log(orders);
   return (
     <div className="app">
       <BackgroundContainer>

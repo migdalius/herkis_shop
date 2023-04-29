@@ -26,6 +26,11 @@ const ProductSum = styled.div`
   justify-content: space-between;
   padding-bottom: 20px;
   margin: 20px;
+
+  @media (max-width: 430px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 const DeliveryTitle = styled.p`
   font-size: 14px;
@@ -35,6 +40,10 @@ const DeliveryTitle = styled.p`
 
 const ProductImage = styled.img`
   width: 60px;
+
+  @media (max-width: 430px) {
+    display: none;
+  }
 `;
 const ProductTitle = styled.p``;
 const SingleProductPrice = styled.p``;
@@ -48,6 +57,10 @@ const DContainer = styled.div`
 `;
 const DeliverTime = styled.p`
   font-size: 14px;
+
+  @media (max-width: 750px) {
+    margin-right: 20px;
+  }
 `;
 
 const WrapButton = styled.div`
@@ -65,6 +78,15 @@ const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
 `;
+
+const IconsBoxSeam = styled(BoxSeam)`
+  size: 20px;
+  color: #222;
+
+  @media (max-width: 535px) {
+    display: none;
+  }
+`;
 const OrderProduct = (item) => {
   const product = item.item;
   const items = product.products;
@@ -74,7 +96,7 @@ const OrderProduct = (item) => {
       <DContainer>
         <DeliveryStage>
           <DeliveryTitle>Zamówienie opłacone</DeliveryTitle>
-          <BoxSeam color="#222" size={20} />
+          <IconsBoxSeam />
         </DeliveryStage>
         <DeliverTime>{product.createdAt.substring(0, 10)}</DeliverTime>
       </DContainer>

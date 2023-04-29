@@ -30,16 +30,29 @@ const Center = styled.div`
   background-color: #fff;
   display: flex;
   flex-direction: column;
-
   align-items: center;
-
   padding-top: 40px;
+
+  @media (max-width: 530px) {
+    width: 400px;
+    height: 450px;
+  }
+  @media (max-width: 420px) {
+    width: 300px;
+    height: 480px;
+  }
 `;
 
 const Wrap = styled.div`
   display: flex;
   gap: 20px;
   width: 400px;
+  @media (max-width: 530px) {
+    width: 300px;
+  }
+  @media (max-width: 420px) {
+    width: 250px;
+  }
 `;
 const Icon = styled.img`
   width: 50px;
@@ -70,6 +83,12 @@ const Wraps = styled.div`
   flex-direction: column;
   gap: 20px;
   width: 400px;
+  @media (max-width: 530px) {
+    width: 300px;
+  }
+  @media (max-width: 420px) {
+    width: 250px;
+  }
 `;
 
 const Success = () => {
