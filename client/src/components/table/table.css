@@ -39,3 +39,13 @@
   display: flex;
   gap: 5px;
 }
+
+@media (max-width: 1055px) {
+  .user-id-title {
+    display: none;
+  }
+
+  .user-id {
+    display: none;
+  }
+}

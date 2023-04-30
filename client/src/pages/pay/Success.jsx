@@ -98,6 +98,7 @@ const Success = () => {
   const user = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
   const handleOrder = async () => {
     try {
       const res = await userRequest.post(`/orders`, {

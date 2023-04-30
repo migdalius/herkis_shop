@@ -13,32 +13,20 @@ import { userRequest } from "../../requestMethods";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
-  height: auto;
+  min-height: 100vh;
   background-color: #eceff1;
 `;
 
 const MainContainer = styled.div`
   display: flex;
-  margin-top: 50px;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  margin-left: 5%;
-  margin-right: 5%;
-
-  gap: 10px;
-  padding-bottom: 60px;
-  @media (max-width: 640px) {
-    flex-direction: column-reverse;
-    height: auto;
-  }
+  padding: 50px 5% 60px 5%;
 `;
 
 const CenterContainer = styled.div`
-  width: 1600px;
-  height: auto;
-
+  width: 100%;
+  max-width: 1600px;
   background-color: #fff;
 `;
 
@@ -56,7 +44,17 @@ const AdminTextDesc = styled.p`
   color: red;
 `;
 
+const Message = () => {
+  return (
+    <div>
+      Dla ekranów poniżej 815px szerokości kontant na tej stronie będzie
+      nieczytelny, prosimy użyć innego urządzenia.
+    </div>
+  );
+};
+
 const UserList = () => {
+  const [showMessage, setShowMessage] = useState(false);
   const [users, setUsers] = useState([]);
   const user = useSelector((state) => state.user.currentUser);
 

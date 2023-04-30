@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./table.css";
-import {
-  Bag,
-  BagCheck,
-  Cart,
-  DoorClosed,
-  PencilSquare,
-  Trash3Fill,
-  Truck,
-} from "react-bootstrap-icons";
+import { PencilSquare, Trash3Fill } from "react-bootstrap-icons";
 import { userRequest } from "../../pages/requestMethods";
 import { Link } from "react-router-dom";
 
@@ -36,7 +28,7 @@ const Table = ({ users }) => {
       <table className="styled-table">
         <thead>
           <tr>
-            <th>ID</th>
+            <th class="user-id-title">ID</th>
             <th>Nazwa użytkownika</th>
             <th>Adres Dostawy</th>
             <th>Email</th>
@@ -50,7 +42,7 @@ const Table = ({ users }) => {
             return (
               <>
                 <tr>
-                  <td>{user._id}</td>
+                  <td class="user-id">{user._id}</td>
                   <td>{user.username}</td>
                   <td>
                     {user.delivery}, {user.zip} {user.city}
