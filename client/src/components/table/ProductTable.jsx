@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./productTable.css";
 import { PencilSquare, Trash3Fill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { userRequest } from "../../pages/requestMethods";
+
 const ProductTable = ({ products }) => {
+  const [productList, setProductList] = useState([]);
+
+  useEffect(() => {
+    setProductList(products);
+  }, [products]);
+
+  const productDelete = async (product) => {
+    try {
+      await userRequest.delete(`products/${product._id}`);
+      setProductList(productList.filter((p) => p._id !== product._id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <>
       <table className="styled-table">
@@ -48,6 +64,7 @@ const ProductTable = ({ products }) => {
                         size={24}
                         color={"#dc2626"}
                         style={{ cursor: "pointer" }}
+                        onClick={() => productDelete(product)}
                       />
                     </div>
                   </th>

@@ -53,6 +53,24 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
+//get user name
+
+router.get("/find/username/:username", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const { password, ...others } = user._doc;
+
+    res.status(200).json(others);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 //get all users
 
 router.get("/", verifyTokenAndAdmin, async (req, res) => {

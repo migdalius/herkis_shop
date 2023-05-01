@@ -64,7 +64,7 @@ const TitleSpan = styled.div`
   color: #22c55e;
 `;
 
-const Desc = styled.p`
+const Desc = styled.div`
   margin-top: 20px;
 `;
 
@@ -91,6 +91,8 @@ const Wraps = styled.div`
     width: 250px;
   }
 `;
+
+const DescInfo = styled.p``;
 
 const Success = () => {
   const location = useLocation();
@@ -146,12 +148,14 @@ const Success = () => {
                 </Wrap>
                 <Wraps>
                   <Desc>
-                    Informujemy, że płatność powiodła się. Rachunek został
-                    obciążony kwotą płatności{" "}
-                    {location.state.amount
-                      .toString()
-                      .replace(/(?!^)(?=(?:\d{3})*\d{2}(?:\.|$))/g, ",")}{" "}
-                    PLN.
+                    <DescInfo> Informujemy, że płatność powiodła się.</DescInfo>
+                    <DescInfo>
+                      Rachunek został obciążony kwotą płatności{" "}
+                      {location.state.amount
+                        .toString()
+                        .replace(/(?!^)(?=(?:\d{3})*\d{2}(?:\.|$))/g, ",")}{" "}
+                      PLN.
+                    </DescInfo>
                   </Desc>
                   <Desc>
                     W celu skontaktowania się ze sprzedawcą prosimy o wysłanie

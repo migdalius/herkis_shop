@@ -30,86 +30,60 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<Err404 />} />
-        {/* RWD Done */}
         <Route path="/" element={<Home />} />
-        {/* RWD - problem with white nav space */}
-
         <Route path="/koszyk" element={<Cart />} />
-        {/* RWD Done */}
         <Route path="/dostawa" element={<Delivery />} />
-        {/* RWD Done */}
         <Route path="/platnosc" element={<Pay />} />
-        {/* RWD Done */}
         <Route
           path="/logowanie"
           element={user ? <Navigate to="/moje-konto" /> : <Login />}
         />
-        {/* RWD Done */}
         <Route path="/rejestracja" element={<Register />} />
-        {/* RWD done */}
         <Route path="/subskrypcja" element={<Sub />} />
-        {/* RWD done */}
         <Route path="/subskrypcja/:id" element={<SingleSub />} />
-        {/* RWD done */}
         <Route path="/jak-dziala-zestaw-do-uprawy" element={<Work />} />
-        {/* RWD done */}
         <Route path="/kontakt" element={<Contact />} />
-        {/* RWD done */}
 
         {/* Login user panel */}
         <Route path="/moje-konto" element={user ? <HomeAdmin /> : <Login />} />
-        {/* RWD done */}
         <Route
           path="/moje-konto/adres-dostawy"
           element={user ? <AdressAdmin /> : <Login />}
         />
-        {/* RWD done */}
         <Route
           path="/moje-konto/moje-zamowienia"
           element={user ? <OrderAdmin /> : <Login />}
         />
-        {/* RWD done */}
         <Route
           path="/zamowienie-przyjete"
           element={user ? <Success /> : <Login />}
         />
 
-        {/* RWD done */}
-
         {/* Admin panel */}
-
         <Route
           path="/moje-konto/lista-uzytkownikow"
           element={user && user.isAdmin ? <UserList /> : <Home />}
         />
-        {/* RWD done */}
-
         <Route
           path="/moje-konto/lista-uzytkownikow/:id"
           element={user && user.isAdmin ? <UserDetail /> : <Home />}
         />
-
-        {/* RWD done */}
         <Route
           path="/moje-konto/zamowienia"
           element={user && user.isAdmin ? <UserOrders /> : <Home />}
         />
-        {/* RWD done */}
         <Route
           path="/moje-konto/zamowienia/:id"
           element={user && user.isAdmin ? <UserOrdersDetails /> : <Home />}
         />
-        {/* RWD done */}
         <Route
           path="/moje-konto/produkty"
           element={user && user.isAdmin ? <Products /> : <Home />}
         />
-        {/* RWD done */}
         <Route
           path="/moje-konto/produkty/:id"
           element={user && user.isAdmin ? <ProductDetail /> : <Home />}
         />
-        {/* RWD done */}
       </Routes>
     </BrowserRouter>
   );
