@@ -109,6 +109,7 @@ function App() {
           path="/moje-konto/produkty/:id"
           element={user && user.isAdmin ? <ProductDetail /> : <Home />}
         />
+        {/* RWD done */}
       </Routes>
     </BrowserRouter>
   );

@@ -7,8 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import TopNav from "../../../components/topNav/TopNav";
 import { logoutSucess } from "../../../redux/userRedux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { userRequest } from "../../requestMethods";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
@@ -173,9 +175,11 @@ const HomeAdmin = () => {
           <CenterContainer>
             <AdminCenterContainer>
               <AdminTextContainer>
+                <ToastContainer />
                 <AdminTextTitle>
                   Hej, {user.currentUser.username}
                 </AdminTextTitle>
+
                 <AdminTextDesc>
                   W ustawieniach swojego konta możesz przejrzeć swoje zamówienia
                   i zwroty, zarządzać adresami dostaw oraz sprawdzić instrukcje

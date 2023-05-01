@@ -15,6 +15,8 @@ import {
 } from "react-bootstrap-icons";
 import { userRequest } from "../../pages/requestMethods";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const OrderTable = ({ orders }) => {
   const [activeOrders, setActiveOrders] = useState([]);
@@ -83,13 +85,18 @@ const OrderTable = ({ orders }) => {
         },
       });
 
-      console.log(response.data);
+      if (response.data.status === "SUCCESS") {
+        toast.success("Zamówienie dodane do Baselinkera pomyślnie!", {
+          autoClose: 3000,
+        });
+      }
     } catch (error) {
       console.error(error);
     }
   };
   return (
     <>
+      <ToastContainer position="bottom-left" />
       <table className="styled-table">
         <thead>
           <tr>

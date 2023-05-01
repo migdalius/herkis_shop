@@ -10,6 +10,8 @@ import ProductTable from "../../../components/table/ProductTable";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // import Editors from "../../../components/editor/Editors";
 
@@ -31,6 +33,10 @@ const MainContainer = styled.div`
 
   gap: 10px;
   padding-bottom: 60px;
+  @media (max-width: 600px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
   @media (max-width: 640px) {
     flex-direction: column-reverse;
     height: auto;
@@ -38,10 +44,12 @@ const MainContainer = styled.div`
 `;
 
 const CenterContainer = styled.div`
-  width: 1600px;
+  width: 500px;
   height: auto;
-
   background-color: #fff;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 const AdminCenterContainer = styled.div``;
@@ -62,6 +70,9 @@ const InputContainer = styled.div`
   flex-direction: column;
   margin-bottom: 10px;
   width: 400px;
+  @media (max-width: 430px) {
+    width: 300px;
+  }
 `;
 
 const Label = styled.label`
@@ -99,6 +110,9 @@ const Select = styled.select`
   border: 1px solid #ccc;
   font-size: 16px;
   width: 400px;
+  @media (max-width: 430px) {
+    width: 300px;
+  }
 `;
 
 const Option = styled.option`
@@ -112,6 +126,7 @@ const InputButton = styled.button`
   background-color: #22c55e;
   color: #fff;
   font-size: 14px;
+  cursor: pointer;
 `;
 const ProductDetail = () => {
   const location = useLocation();
@@ -119,13 +134,6 @@ const ProductDetail = () => {
   const id = location.pathname.split("/")[3];
   const [selectedOption, setSelectedOption] = useState("");
   const [product, setProduct] = useState({});
-
-  // const [item, setItem] = useState({
-  //   title: "",
-  //   desc: "",
-  //   price: "",
-  //   img: "",
-  // });
 
   useEffect(() => {
     const getUser = async () => {
@@ -159,7 +167,10 @@ const ProductDetail = () => {
         categories: selectedOption || product.categories,
       });
       if (res.status === 200) {
-        navigate("/");
+        toast.success("Produkt zaktualizowany!", { autoClose: 2000 });
+        setTimeout(() => {
+          navigate("/moje-konto/produkty");
+        }, 3000);
       }
     } catch (err) {
       console.log(err);
@@ -182,6 +193,7 @@ const ProductDetail = () => {
           <CenterContainer>
             <AdminCenterContainer>
               <AdminTextContainer>
+                <ToastContainer position="bottom-left" />
                 <AdminTextTitle>
                   Szczegóły produktu - {product.title}
                 </AdminTextTitle>
@@ -235,7 +247,12 @@ const ProductDetail = () => {
                     />
                   </InputContainer>
                   <InputContainer>
-                    <InputButton onClick={handleClick} type="submit">
+                    <InputButton
+                      onClick={() => {
+                        handleClick();
+                      }}
+                      type="submit"
+                    >
                       Aktualizuj produkt
                     </InputButton>
                   </InputContainer>
