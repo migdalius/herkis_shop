@@ -85,7 +85,6 @@ const UserOrdersDetails = () => {
     getSingleOrder();
   }, [user.accessToken, id]);
 
-  console.log(order);
   return (
     <div className="app">
       <BackgroundContainer>

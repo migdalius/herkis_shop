@@ -12,7 +12,7 @@ import { useEffect } from "react";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
-  height: auto;
+  min-height: 100vh;
   background-color: #eceff1;
 `;
 

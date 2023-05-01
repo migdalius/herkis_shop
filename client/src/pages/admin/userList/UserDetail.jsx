@@ -59,7 +59,7 @@ const AdminTextTitle = styled.h3`
   padding-top: 20px;
 `;
 
-const AdminTextDesc = styled.p`
+const AdminTextDesc = styled.div`
   font-size: 14px;
   color: #222;
 `;
@@ -206,7 +206,7 @@ const UserDetail = () => {
                 <AdminTextTitle>Zamówienia użytkownika:</AdminTextTitle>
                 {products.map((product) => {
                   return (
-                    <ProductContainer>
+                    <ProductContainer key={product._id}>
                       <ProductLeft>
                         <Title>Adres dostawy zamówienia:</Title>
                         <AdminTextDesc>
@@ -236,7 +236,7 @@ const UserDetail = () => {
                         <AdminTextDesc>
                           {product.products.map((product) => {
                             return (
-                              <Container>
+                              <Container key={product._id}>
                                 <Link
                                   style={{ textDecoration: "none" }}
                                   to={`../subskrypcja/${product.productId}`}

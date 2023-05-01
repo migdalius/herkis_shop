@@ -100,10 +100,10 @@ const OrderTable = ({ orders }) => {
       <table className="styled-table">
         <thead>
           <tr>
-            <th class="product-title-id">ID</th>
-            <th class="product-title-username">Nazwa użytkownika</th>
+            <th className="product-title-id">ID</th>
+            <th className="product-title-username">Nazwa użytkownika</th>
             <th>Przedmioty</th>
-            <th class="product-title-price">Kwota</th>
+            <th className="product-title-price">Kwota</th>
             <th>Baselinker</th>
             <th>Operacje</th>
           </tr>
@@ -112,71 +112,67 @@ const OrderTable = ({ orders }) => {
           {orders.map((order) => {
             const isActive = activeOrders.includes(order._id);
             return (
-              <>
-                <tr>
-                  <td class="product-title-id-content">{order._id}</td>
-                  <td class="product-title-user-name-content">
-                    {order.address.name}
-                  </td>
-                  <td>
-                    {order.products.map((product) => {
-                      return (
-                        <>
-                          <div className="container" key={product._id}>
-                            <div>
-                              <img
-                                className="thumbnail"
-                                src="../img/product.png"
-                                alt=""
-                              />
-                            </div>
-                            <div className="product-container">
-                              <div>
-                                {product.quantity} x {product.productName}
-                              </div>
-                              <div>{product.productPrice} zł</div>
-                            </div>
+              <tr key={order._id}>
+                <td className="product-title-id-content">{order._id}</td>
+                <td className="product-title-user-name-content">
+                  {order.address.name}
+                </td>
+                <td>
+                  {order.products.map((product) => {
+                    return (
+                      <div className="container" key={product._id}>
+                        <div>
+                          <img
+                            className="thumbnail"
+                            src="../img/product.png"
+                            alt=""
+                          />
+                        </div>
+                        <div className="product-container">
+                          <div>
+                            {product.quantity} x {product.productName}
                           </div>
-                        </>
-                      );
-                    })}
-                  </td>
+                          <div>{product.productPrice} zł</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </td>
 
-                  <td class="product-title-price">{order.amount} zł</td>
+                <td className="product-title-price">{order.amount} zł</td>
 
-                  <th>
-                    <div
-                      className={`baselinkerWraper${isActive ? " active" : ""}`}
-                      onClick={() => handleGetOrder(order)}
-                    >
-                      <PlusCircle
-                        size={20}
-                        color={"#e6f2fb"}
-                        style={{ cursor: "pointer" }}
-                      />
-                      <button className="baselinker">Baselinker</button>
-                    </div>
-                  </th>
+                <th>
+                  <div
+                    className={`baselinkerWraper${isActive ? " active" : ""}`}
+                    onClick={() => handleGetOrder(order)}
+                  >
+                    <PlusCircle
+                      size={20}
+                      color={"#e6f2fb"}
+                      style={{ cursor: "pointer" }}
+                    />
+                    <button className="baselinker">Baselinker</button>
+                  </div>
+                </th>
 
-                  <th>
-                    <div className="icons">
-                      <Link to={`../moje-konto/zamowienia/${order._id}`}>
-                        <PencilSquare
-                          size={24}
-                          color={"#064e3b"}
-                          style={{ cursor: "pointer" }}
-                        />
-                      </Link>
-
-                      <Trash3Fill
+                <th>
+                  <div className="icons">
+                    <Link to={`../moje-konto/zamowienia/${order._id}`}>
+                      <PencilSquare
                         size={24}
-                        color={"#dc2626"}
+                        color={"#064e3b"}
                         style={{ cursor: "pointer" }}
                       />
-                    </div>
-                  </th>
-                </tr>
-              </>
+                    </Link>
+
+                    <Trash3Fill
+                      size={24}
+                      color={"#dc2626"}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </div>
+                </th>
+              </tr>
             );
           })}
         </tbody>

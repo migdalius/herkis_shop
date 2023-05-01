@@ -73,7 +73,7 @@ const Img = styled.img`
   }
 `;
 
-const Desc = styled.p``;
+const Desc = styled.div``;
 const Title = styled.h3`
   font-size: 32px;
 `;
@@ -243,6 +243,7 @@ const Sub = () => {
   const [product, setProduct] = useState({});
 
   const [products, setProducts] = useState([]);
+
   const [months, setMonths] = useState([]);
   useEffect(() => {
     const getProducts = async () => {
@@ -320,7 +321,7 @@ const Sub = () => {
                 <PriceTitle>Nowy zestaw co tydzień</PriceTitle>
                 {products.map((item) => {
                   return (
-                    <SubContainer>
+                    <SubContainer key={item._id}>
                       <LeftContainer>
                         <ProductName>{item.title}</ProductName>
                         <TitleContainerPrice>
@@ -343,7 +344,7 @@ const Sub = () => {
                 <PriceTitle>Nowy zestaw co miesiąc</PriceTitle>
                 {months.map((item) => {
                   return (
-                    <SubContainer>
+                    <SubContainer key={item._id}>
                       <LeftContainer>
                         <ProductName>{item.title}</ProductName>
                         <TitleContainerPrice>
