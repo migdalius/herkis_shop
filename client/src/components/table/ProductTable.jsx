@@ -8,12 +8,11 @@ const ProductTable = ({ products }) => {
       <table className="styled-table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Miniatura</th>
+            <th class="p-title-id">ID</th>
+            <th class="p-trumbnail">Miniatura</th>
             <th>Nazwa produktu</th>
             <th>Cena</th>
-            <th>Kategoria</th>
-
+            <th class="p-category">Kategoria</th>
             <th>Operacje</th>
           </tr>
         </thead>
@@ -22,15 +21,15 @@ const ProductTable = ({ products }) => {
             return (
               <>
                 <tr>
-                  <td>{product._id}</td>
-                  <td>
+                  <td class="p-title-id-container">{product._id}</td>
+                  <td class="p-img">
                     <img class="product-img" src={product.img} />
                   </td>
                   <td>{product.title}</td>
 
                   <td>{product.price}</td>
 
-                  <td>
+                  <td class="p-category-content">
                     {product.categories.map((p) => {
                       return <p>{p}</p>;
                     })}

@@ -99,10 +99,12 @@ function App() {
           path="/moje-konto/zamowienia/:id"
           element={user && user.isAdmin ? <UserOrdersDetails /> : <Home />}
         />
+        {/* RWD done */}
         <Route
           path="/moje-konto/produkty"
           element={user && user.isAdmin ? <Products /> : <Home />}
         />
+        {/* RWD done */}
         <Route
           path="/moje-konto/produkty/:id"
           element={user && user.isAdmin ? <ProductDetail /> : <Home />}

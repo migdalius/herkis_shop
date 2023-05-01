@@ -7,60 +7,50 @@ import { userRequest } from "../../requestMethods";
 import { useSelector } from "react-redux";
 
 const BackgroundContainer = styled.div`
-  width: 100vw;
-  height: calc(100vh - 70px);
+  width: 100%;
+  min-height: 100vh;
   background-color: #eceff1;
 `;
 
 const MainContainer = styled.div`
   display: flex;
-  margin-top: 50px;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: auto;
-  margin-left: 5%;
-  margin-right: 5%;
-
-  gap: 10px;
-  padding-bottom: 60px;
-  @media (max-width: 640px) {
-    flex-direction: column-reverse;
-    height: auto;
-  }
+  padding: 50px 5% 60px;
 `;
 
 const CenterContainer = styled.div`
-  width: 1600px;
-  height: auto;
-
+  max-width: 1200px;
+  width: 100%;
   background-color: #fff;
+  padding: 20px;
 `;
 
-const AdminCenterContainer = styled.div``;
-
 const AdminTextContainer = styled.div`
-  margin: 20px;
+  margin: 20px 0;
 `;
 
 const AdminTextTitle = styled.h2``;
-const OrderWraper = styled.div`
+const OrderWrapper = styled.div`
   margin-top: 40px;
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 `;
-
 const OrderShop = styled.div`
   flex: 1;
+  min-width: 300px;
 `;
 const OrderBaselinker = styled.div`
   flex: 1;
+  min-width: 300px;
 `;
 
-const DataWraper = styled.div`
+const DataWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-top: 30px;
+  margin-bottom: 30px;
 `;
 
 const TextData = styled.p``;
@@ -69,7 +59,9 @@ const TextTitle = styled.h3``;
 const ProductContainer = styled.div`
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
 `;
+
 const ProductBody = styled.div``;
 const UserOrdersDetails = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -100,43 +92,38 @@ const UserOrdersDetails = () => {
         <TopNav />
         <MainContainer>
           <CenterContainer>
-            <AdminCenterContainer>
-              <AdminTextContainer>
-                <AdminTextTitle>
-                  Szczegóły produktu - Id zamówienia: {order?._id} | zamówienie
-                  od: {order?.address?.username}
-                </AdminTextTitle>
-                <OrderWraper>
-                  <OrderShop>
-                    <DataWraper>
-                      <TextTitle>Dane do wysyłki</TextTitle>
-                      <TextData>
-                        Imię i nazwisko: {order?.address?.name}
-                      </TextData>
-                      <TextData>
-                        Ulica i numer: {order?.address?.delivery}
-                      </TextData>
-                      <TextData>Kod pocztowy: {order?.address?.zip}</TextData>
-                      <TextData>Miasto: {order?.address?.city}</TextData>
-                      <TextData>Adres email: {order?.address?.email}</TextData>
-                    </DataWraper>
+            <AdminTextContainer>
+              <AdminTextTitle>
+                Szczegóły produktu - Id zamówienia: {order?._id} | zamówienie
+                od: {order?.address?.username}
+              </AdminTextTitle>
+              <OrderWrapper>
+                <OrderShop>
+                  <DataWrapper>
+                    <TextTitle>Dane do wysyłki</TextTitle>
+                    <TextData>Imię i nazwisko: {order?.address?.name}</TextData>
+                    <TextData>
+                      Ulica i numer: {order?.address?.delivery}
+                    </TextData>
+                    <TextData>Kod pocztowy: {order?.address?.zip}</TextData>
+                    <TextData>Miasto: {order?.address?.city}</TextData>
+                    <TextData>Adres email: {order?.address?.email}</TextData>
+                  </DataWrapper>
 
-                    <DataWraper>
-                      <TextTitle>Produkty w zamówieniu</TextTitle>
-                      {orderProduct?.map((product) => {
-                        return (
-                          <ProductContainer key={product?.productId}>
-                            <ProductBody>{product?.quantity} x </ProductBody>
-                            <ProductBody>{product?.productName}</ProductBody>
-                          </ProductContainer>
-                        );
-                      })}
-                    </DataWraper>
-                  </OrderShop>
-                  <OrderBaselinker>Baselinker</OrderBaselinker>
-                </OrderWraper>
-              </AdminTextContainer>
-            </AdminCenterContainer>
+                  <DataWrapper>
+                    <TextTitle>Produkty w zamówieniu</TextTitle>
+                    {orderProduct?.map((product) => {
+                      return (
+                        <ProductContainer key={product?.productId}>
+                          <ProductBody>{product?.quantity} x </ProductBody>
+                          <ProductBody>{product?.productName}</ProductBody>
+                        </ProductContainer>
+                      );
+                    })}
+                  </DataWrapper>
+                </OrderShop>
+              </OrderWrapper>
+            </AdminTextContainer>
           </CenterContainer>
         </MainContainer>
       </BackgroundContainer>

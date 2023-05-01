@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, unstable_HistoryRouter, useLocation } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import Footer from "../../../components/footer/Footer";
 import OrderTable from "../../../components/orderTable/OrderTable";
@@ -9,11 +9,13 @@ import { userRequest } from "../../requestMethods";
 import ProductTable from "../../../components/table/ProductTable";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 // import Editors from "../../../components/editor/Editors";
 
 const BackgroundContainer = styled.div`
   width: 100vw;
-  height: calc(100vh - 70px);
+  min-height: calc(100vh - 70px);
   background-color: #eceff1;
 `;
 
@@ -113,17 +115,17 @@ const InputButton = styled.button`
 `;
 const ProductDetail = () => {
   const location = useLocation();
-
+  const navigate = useNavigate();
   const id = location.pathname.split("/")[3];
   const [selectedOption, setSelectedOption] = useState("");
   const [product, setProduct] = useState({});
 
-  const [item, setItem] = useState({
-    title: "",
-    desc: "",
-    price: "",
-    img: "",
-  });
+  // const [item, setItem] = useState({
+  //   title: "",
+  //   desc: "",
+  //   price: "",
+  //   img: "",
+  // });
 
   useEffect(() => {
     const getUser = async () => {
@@ -142,7 +144,7 @@ const ProductDetail = () => {
   };
 
   const handleProductChange = (e) => {
-    setItem((prev) => {
+    setProduct((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
@@ -154,8 +156,11 @@ const ProductDetail = () => {
         desc: product.desc,
         price: product.price,
         img: product.img,
+        categories: selectedOption || product.categories,
       });
-      console.log(res);
+      if (res.status === 200) {
+        navigate("/");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -168,6 +173,7 @@ const ProductDetail = () => {
     month: "Miesięczny",
   };
 
+  console.log(product);
   return (
     <div className="app">
       <BackgroundContainer>
@@ -216,11 +222,17 @@ const ProductDetail = () => {
                       name="price"
                       type="number"
                       defaultValue={product.price}
+                      onChange={handleProductChange}
                     />
                   </InputContainer>
                   <InputContainer>
                     <Label>Miniatura</Label>
-                    <Input name="img" type="text" defaultValue={product.img} />
+                    <Input
+                      name="img"
+                      type="text"
+                      defaultValue={product.img}
+                      onChange={handleProductChange}
+                    />
                   </InputContainer>
                   <InputContainer>
                     <InputButton onClick={handleClick} type="submit">

@@ -28,6 +28,10 @@ const MainContainer = styled.div`
 
   gap: 10px;
   padding-bottom: 60px;
+  @media (max-width: 1130px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
   @media (max-width: 640px) {
     flex-direction: column-reverse;
     height: auto;
@@ -37,8 +41,22 @@ const MainContainer = styled.div`
 const CenterContainer = styled.div`
   width: 1600px;
   height: auto;
-
   background-color: #fff;
+
+  @media (max-width: 1800px) {
+    width: 1400px;
+  }
+  @media (max-width: 1580px) {
+    width: 1200px;
+  }
+
+  @media (max-width: 1350px) {
+    width: 1000px;
+  }
+
+  @media (max-width: 1130px) {
+    width: 100%;
+  }
 `;
 
 const AdminCenterContainer = styled.div``;

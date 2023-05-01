@@ -44,3 +44,32 @@
   width: 55px;
   height: 55px;
 }
+
+@media (max-width: 715px) {
+  .p-title-id {
+    display: none;
+  }
+
+  .p-title-id-container {
+    display: none;
+  }
+}
+
+@media (max-width: 490px) {
+  .p-img {
+    display: none;
+  }
+
+  .p-trumbnail {
+    display: none;
+  }
+}
+
+@media (max-width: 395px) {
+  .p-category {
+    display: none;
+  }
+  .p-category-content {
+    display: none;
+  }
+}
