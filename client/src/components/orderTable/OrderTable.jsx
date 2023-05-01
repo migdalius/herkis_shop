@@ -93,10 +93,10 @@ const OrderTable = ({ orders }) => {
       <table className="styled-table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nazwa użytkownika</th>
+            <th class="product-title-id">ID</th>
+            <th class="product-title-username">Nazwa użytkownika</th>
             <th>Przedmioty</th>
-            <th>Kwota</th>
+            <th class="product-title-price">Kwota</th>
             <th>Baselinker</th>
             <th>Operacje</th>
           </tr>
@@ -107,8 +107,10 @@ const OrderTable = ({ orders }) => {
             return (
               <>
                 <tr>
-                  <td>{order._id}</td>
-                  <td>{order.address.name}</td>
+                  <td class="product-title-id-content">{order._id}</td>
+                  <td class="product-title-user-name-content">
+                    {order.address.name}
+                  </td>
                   <td>
                     {order.products.map((product) => {
                       return (
@@ -133,7 +135,7 @@ const OrderTable = ({ orders }) => {
                     })}
                   </td>
 
-                  <td>{order.amount} zł</td>
+                  <td class="product-title-price">{order.amount} zł</td>
 
                   <th>
                     <div

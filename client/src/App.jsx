@@ -82,15 +82,19 @@ function App() {
           path="/moje-konto/lista-uzytkownikow"
           element={user && user.isAdmin ? <UserList /> : <Home />}
         />
+        {/* RWD done */}
 
         <Route
           path="/moje-konto/lista-uzytkownikow/:id"
           element={user && user.isAdmin ? <UserDetail /> : <Home />}
         />
+
+        {/* RWD done */}
         <Route
           path="/moje-konto/zamowienia"
           element={user && user.isAdmin ? <UserOrders /> : <Home />}
         />
+        {/* RWD done */}
         <Route
           path="/moje-konto/zamowienia/:id"
           element={user && user.isAdmin ? <UserOrdersDetails /> : <Home />}

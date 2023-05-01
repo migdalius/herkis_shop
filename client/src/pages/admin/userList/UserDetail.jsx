@@ -22,20 +22,29 @@ const MainContainer = styled.div`
   height: auto;
   margin-left: 5%;
   margin-right: 5%;
-
   gap: 10px;
   padding-bottom: 60px;
-  @media (max-width: 640px) {
-    flex-direction: column-reverse;
-    height: auto;
+
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    margin-left: 0;
+    margin-right: 0;
   }
 `;
 
 const CenterContainer = styled.div`
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   height: auto;
-
   background-color: #fff;
+
+  @media (max-width: 910px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: 620px) {
+    max-width: 100%;
+  }
 `;
 
 const AdminCenterContainer = styled.div``;
@@ -43,11 +52,13 @@ const AdminCenterContainer = styled.div``;
 const AdminTextContainer = styled.div`
   margin: 20px;
 `;
+
 const AdminTextTitle = styled.h3`
   font-size: 20px;
   padding-bottom: 20px;
   padding-top: 20px;
 `;
+
 const AdminTextDesc = styled.p`
   font-size: 14px;
   color: #222;
@@ -61,24 +72,42 @@ const TextWrap = styled.div`
 
 const ProductContainer = styled.div`
   display: flex;
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
   height: auto;
   border: 1px solid #ddd;
   margin-bottom: 20px;
   padding: 15px;
   border-radius: 5px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    flex-direction: column;
+    padding: 10px;
+  }
 `;
+
 const ProductLeft = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 `;
+
 const ProductRight = styled.div`
-  width: 60%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const SingleProductContainer = styled.div`
