@@ -49,3 +49,41 @@
     display: none;
   }
 }
+
+@media (max-width: 815px) {
+  .delivery-title {
+    display: none;
+  }
+  .user-delivery {
+    display: none;
+  }
+}
+
+@media (max-width: 705px) {
+  .date-title {
+    display: none;
+  }
+  .date-time {
+    display: none;
+  }
+}
+
+@media (max-width: 545px) {
+  .phone-title {
+    display: none;
+  }
+
+  .user-phone {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .email-title {
+    display: none;
+  }
+
+  .user-email {
+    display: none;
+  }
+}

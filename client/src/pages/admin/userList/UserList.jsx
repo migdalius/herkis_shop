@@ -44,15 +44,6 @@ const AdminTextDesc = styled.p`
   color: red;
 `;
 
-const Message = () => {
-  return (
-    <div>
-      Dla ekranów poniżej 815px szerokości kontant na tej stronie będzie
-      nieczytelny, prosimy użyć innego urządzenia.
-    </div>
-  );
-};
-
 const UserList = () => {
   const [showMessage, setShowMessage] = useState(false);
   const [users, setUsers] = useState([]);
