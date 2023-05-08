@@ -66,7 +66,23 @@ const AdminTextContainer = styled.div`
 `;
 
 const AdminTextTitle = styled.h2``;
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+const AddButton = styled.button`
+  padding: 15px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #22c55e;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 
+  &:hover {
+    background-color: #222;
+  }
+`;
 const Products = () => {
   const [products, setProducts] = useState([]);
 
@@ -92,6 +108,11 @@ const Products = () => {
             <AdminCenterContainer>
               <AdminTextContainer>
                 <AdminTextTitle>Wszystkie produkty</AdminTextTitle>
+                <ButtonContainer>
+                  <Link to={"/moje-konto/produkty/dodaj-nowy"}>
+                    <AddButton>Dodaj Produkt</AddButton>
+                  </Link>
+                </ButtonContainer>
                 <ProductTable products={products} />
               </AdminTextContainer>
             </AdminCenterContainer>

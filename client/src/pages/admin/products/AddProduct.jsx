@@ -171,8 +171,6 @@ const AddProduct = () => {
     month: "Miesięczny",
   };
 
-  console.log(product);
-
   return (
     <div className="app">
       <BackgroundContainer>
