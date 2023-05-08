@@ -22,6 +22,7 @@ import Products from "./pages/admin/products/Products";
 import Success from "./pages/pay/Success";
 import ProductDetail from "./pages/admin/products/ProductDetail";
 import UserOrdersDetails from "./pages/admin/userOrders/UserOrdersDetails";
+import AddProduct from "./pages/admin/products/AddProduct";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -83,6 +84,10 @@ function App() {
         <Route
           path="/moje-konto/produkty/:id"
           element={user && user.isAdmin ? <ProductDetail /> : <Home />}
+        />
+        <Route
+          path="/moje-konto/produkty/dodaj-nowy"
+          element={user && user.isAdmin ? <AddProduct /> : <Home />}
         />
       </Routes>
     </BrowserRouter>

@@ -13,8 +13,6 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// import Editors from "../../../components/editor/Editors";
-
 const BackgroundContainer = styled.div`
   width: 100vw;
   min-height: calc(100vh - 70px);
@@ -128,24 +126,13 @@ const InputButton = styled.button`
   font-size: 14px;
   cursor: pointer;
 `;
-const ProductDetail = () => {
+
+const AddProduct = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const id = location.pathname.split("/")[3];
+
   const [selectedOption, setSelectedOption] = useState("");
   const [product, setProduct] = useState({});
-
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const res = await userRequest.get(`/products/find/${id}`);
-        setProduct(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getUser();
-  }, [id]);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -159,7 +146,7 @@ const ProductDetail = () => {
 
   const handleClick = async () => {
     try {
-      const res = await userRequest.put(`products/${id}`, {
+      const res = await userRequest.post(`products`, {
         title: product.title,
         desc: product.desc,
         price: product.price,
@@ -167,7 +154,7 @@ const ProductDetail = () => {
         categories: selectedOption || product.categories,
       });
       if (res.status === 200) {
-        toast.success("Produkt zaktualizowany!", { autoClose: 2000 });
+        toast.success("Produkt Dodany!", { autoClose: 2000 });
         setTimeout(() => {
           navigate("/moje-konto/produkty");
         }, 3000);
@@ -184,6 +171,8 @@ const ProductDetail = () => {
     month: "Miesięczny",
   };
 
+  console.log(product);
+
   return (
     <div className="app">
       <BackgroundContainer>
@@ -193,9 +182,7 @@ const ProductDetail = () => {
             <AdminCenterContainer>
               <AdminTextContainer>
                 <ToastContainer position="bottom-left" />
-                <AdminTextTitle>
-                  Szczegóły produktu - {product.title}
-                </AdminTextTitle>
+                <AdminTextTitle>Szczegóły produktu -</AdminTextTitle>
                 <FormContainer>
                   <InputContainer>
                     <Label>Tytuł Produktu:</Label>
@@ -214,7 +201,6 @@ const ProductDetail = () => {
                       defaultValue={product.desc}
                       onChange={handleProductChange}
                     />
-                    {/* <Editors /> */}
                   </InputContainer>
                   <InputContainer>
                     <Label>Kategoria: obecna - {translate[category]}</Label>
@@ -252,7 +238,7 @@ const ProductDetail = () => {
                       }}
                       type="submit"
                     >
-                      Aktualizuj produkt
+                      Dodaj Produkt
                     </InputButton>
                   </InputContainer>
                 </FormContainer>
@@ -266,4 +252,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default AddProduct;
