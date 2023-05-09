@@ -66,6 +66,11 @@ const AdminTextContainer = styled.div`
   margin: 20px;
 `;
 
+const TextInfo = styled.p`
+  margin: 20px;
+  color: red;
+`;
+
 const UserOrders = () => {
   const [orders, setOrders] = React.useState([]);
   const user = useSelector((state) => state.user.currentUser);
@@ -92,6 +97,9 @@ const UserOrders = () => {
         <MainContainer>
           <CenterContainer>
             <AdminCenterContainer>
+              <TextInfo>
+                *Usuwanie zamówień w wersji demo zostało wyłączone.
+              </TextInfo>
               <AdminTextContainer>
                 <OrderTable orders={orders} />
               </AdminTextContainer>

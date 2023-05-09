@@ -61,8 +61,8 @@ const ProductTable = ({ products }) => {
                   <Trash3Fill
                     size={24}
                     color={"#dc2626"}
-                    style={{ cursor: "pointer" }}
-                    onClick={() => productDelete(product)}
+                    style={{ cursor: "not-allowed" }}
+                    // onClick={() => productDelete(product)}
                   />
                 </div>
               </th>

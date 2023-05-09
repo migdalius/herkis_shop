@@ -83,6 +83,11 @@ const AddButton = styled.button`
     background-color: #222;
   }
 `;
+
+const TextInfo = styled.p`
+  margin-top: 10px;
+  color: red;
+`;
 const Products = () => {
   const [products, setProducts] = useState([]);
 
@@ -108,6 +113,9 @@ const Products = () => {
             <AdminCenterContainer>
               <AdminTextContainer>
                 <AdminTextTitle>Wszystkie produkty</AdminTextTitle>
+                <TextInfo>
+                  *Usuwanie produktów w wersji demo zostało wyłączone.
+                </TextInfo>
                 <ButtonContainer>
                   <Link to={"/moje-konto/produkty/dodaj-nowy"}>
                     <AddButton>Dodaj Produkt</AddButton>

@@ -168,7 +168,7 @@ const OrderTable = ({ orders }) => {
                     <Trash3Fill
                       size={24}
                       color={"#dc2626"}
-                      style={{ cursor: "pointer" }}
+                      style={{ cursor: "not-allowed" }}
                     />
                   </div>
                 </th>
